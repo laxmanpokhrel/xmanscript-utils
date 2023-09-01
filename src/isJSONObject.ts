@@ -4,7 +4,7 @@
  * @returns The function isJSONObject returns a boolean value. It returns true if the input value is a
  * valid JSON object, and false otherwise.
  */
-export function isJSONObject(value: string): boolean {
+export function isJsonObject(value: string): boolean {
   if (typeof value !== 'string') {
     return false;
   }
