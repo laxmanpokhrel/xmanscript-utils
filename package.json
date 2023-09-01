@@ -17,9 +17,7 @@
   },
   "author": "Laxman Pokhrel",
   "license": "ISC",
-  "dependencies": {
-    "uuid": "^9.0.0"
-  },
+ 
   "devDependencies": {
     "@types/uuid": "^9.0.2",
     "@typescript-eslint/parser": "^6.2.1",
