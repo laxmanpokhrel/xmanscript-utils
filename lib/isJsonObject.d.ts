@@ -1,1 +1,1 @@
-export declare function isJsonObject(value: string): boolean;
+export declare function isJSONObject(value: string): boolean;

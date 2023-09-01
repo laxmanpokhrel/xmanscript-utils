@@ -1,3 +1,3 @@
-export * from './isJsonObject';
+export * from './isJSONObject';
 export * from './hasBinaryData';
 export * from './jsonToFormData';

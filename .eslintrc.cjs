@@ -34,7 +34,7 @@ module.exports = {
     'import/no-import-module-exports': 'off',
     'react/function-component-definition': 'off',
     'react/jsx-filename-extension': 'off',
-    'import/prefer-default-export': 'warn',
+    'import/prefer-default-export': 'off',
     'react/require-default-props': 'off',
     'object-curly-newline': 'off',
     'no-undef': 0,

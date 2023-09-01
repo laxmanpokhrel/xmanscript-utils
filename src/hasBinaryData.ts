@@ -1,3 +1,5 @@
+/* eslint-disable no-prototype-builtins */
+/* eslint-disable no-restricted-syntax */
 /**
  * The function checks if an object contains binary data by recursively iterating through its
  * properties.

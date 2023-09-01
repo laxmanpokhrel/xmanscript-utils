@@ -1,4 +1,4 @@
-import { isJSONObject } from "./isJsonObject";
+import { isJSONObject } from './isJSONObject';
 
 /**
  * The function `jsonToFormData` converts a JSON object into a FormData object, handling file uploads
