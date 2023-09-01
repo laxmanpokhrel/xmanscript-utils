@@ -1,10 +1,10 @@
 {
-  "name": "npm-package-here",
-  "version": "1.0.2",
-  "description": "Boilerplate for starting to develop a npm package in Typescript",
+  "name": "lxu-utils",
+  "version": "1.0.0",
+  "description": "Complex utility functions package with more that 20+ functions.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/"
+    "url": "https://github.com/laxmanpokhrel/lxu-utils"
   },
   "bugs": {
     "url": "https://github.com/"
