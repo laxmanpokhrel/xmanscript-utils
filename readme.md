@@ -1,3 +1,19 @@
+<a href="#top">
+  <img src=https://th.bing.com/th/id/R.9cc421033be60dde14f685eda25b9ea8?rik=csFzHg5b9Mb6UA&riu=http%3a%2f%2fwww.photoclassic.jp%2fwp%2fwp-content%2fthemes%2fphotoclassic2015%2fimages%2fgototop_button.png&ehk=%2bacAQEKPsCxhsEomhYCj95BIXP9zdzl%2fCmjD6xPCiyY%3d&risl=&pid=ImgRaw&r=0" alt="Go to Top" width="50" height="50">
+</a>
+<style>
+  /* Style for the Go to Top button */
+  a[href="#top"] {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+  }
+</style>
+
+
+<a name="top"></a>
+
 ## `splitArrayByIteratorId` Function
 
 The `splitArrayByIteratorId` function splits an array of objects into two separate arrays based on whether each object has an `iteratorId` property.
