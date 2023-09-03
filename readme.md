@@ -1,18 +1,19 @@
 # `lxu-utils` 
 ### Library that has complex utility functions used to handle complex utility operations in any react project.
-## `splitArrayByIteratorId` Function
+## `partitionObjectsByKey` Function
 
-The `splitArrayByIteratorId` function splits an array of objects into two separate arrays based on whether each object has an `iteratorId` property.
+The `partitionObjectsByKey` function splits an array of objects into two separate arrays based on the presence of a specified key.
 
 ### Parameters
 - `arr` (Type: `Record<string, any>[]`): An array of objects, where each object has a string key and any value.
+- `key` (Type: `string`): The key to be used for splitting the objects.
 
 ### Returns
-- `[Record<string, any>[], Record<string, any>[]]`: Returns an array containing two elements. The first element is an array of objects that have the property `iteratorId`, and the second element is an array of objects that do not have the property `iteratorId`.
+- `[Record<string, any>[], Record<string, any>[]]`: Returns an array containing two elements. The first element is an array of objects that have the specified `key`, and the second element is an array of objects that do not have the specified `key`.
 
 ### Example Usage
 ```typescript
-import { splitArrayByIteratorId } from 'lxu-utils';
+import { partitionObjectsByKey } from 'your-utils-library';
 
 const array = [
   { id: 1, name: 'Alice' },
@@ -21,19 +22,20 @@ const array = [
   { id: 4, name: 'David', iteratorId: 'x2' },
 ];
 
-const [withIteratorId, withoutIteratorId] = splitArrayByIteratorId(array);
+const [withKey, withoutKey] = partitionObjectsByKey(array, 'iteratorId');
 
-console.log(withIteratorId);
+console.log(withKey);
 // Result: [
 //   { id: 2, name: 'Bob', iteratorId: 'x1' },
 //   { id: 4, name: 'David', iteratorId: 'x2' },
 // ]
 
-console.log(withoutIteratorId);
+console.log(withoutKey);
 // Result: [
 //   { id: 1, name: 'Alice' },
 //   { id: 3, name: 'Charlie' },
 // ]
+
 ```
 ## `convertObject` Function
 
@@ -66,12 +68,12 @@ const convertedObject = convertObject(input);
 //     { name: 'Bob', age: 25 },
 //   ],
 //   status: 'active',
-// }
+// } 
 ```
 
-## `addCheckedFieldByString` Function
+## `markCheckedByStringMatch` Function
 
-The `addCheckedFieldByString` function adds a "checked" field to each object in an array based on whether a corresponding string value is included in another array.
+The `markCheckedByStringMatch` function adds a "checked" field to each object in an array based on whether a corresponding string value is included in another array.
 
 ### Parameters
 - `objects` (Type: `T[]`): An array of objects of type `T`.
@@ -83,7 +85,7 @@ The `addCheckedFieldByString` function adds a "checked" field to each object in 
 
 ### Example Usage
 ```typescript
-import { addCheckedFieldByString } from 'lxu-utils';
+import { markCheckedByStringMatch } from 'lxu-utils';
 
 interface Item {
   id: number;
@@ -98,7 +100,7 @@ const items: Item[] = [
 
 const selectedItems: string[] = ['Banana', 'Cherry'];
 
-const itemsWithCheckedField = addCheckedFieldByString(items, selectedItems, 'name');
+const itemsWithCheckedField = markCheckedByStringMatch(items, selectedItems, 'name');
 
 // Result:
 // [
@@ -140,34 +142,36 @@ const intersection = intersectObjects(object1, object2);
 ```
 
 
-## `hasBinaryData` Function
+## `containsBinaryData` Function
 
-The `hasBinaryData` function checks if an object contains binary data by recursively iterating through its properties.
+The `containsBinaryData` function recursively checks if an object or any of its nested properties contain binary data.
 
 ### Parameters
-- `obj` (Type: `Record<string, any>`): The object to check for binary data. It should have string keys and values of any type.
+- `obj` (Type: `Record<string, any>`): An object with string keys and values of any type.
 
 ### Returns
-- `boolean`: Returns `true` if binary data (Blob, File, or ArrayBuffer) is found within the object or its nested properties. Otherwise, it returns `false`.
+- `boolean`: Returns `true` if the object or any of its nested properties contains binary data (e.g., `Blob`, `File`, or `ArrayBuffer`), otherwise returns `false`.
 
 ### Example Usage
 ```typescript
-import { hasBinaryData } from 'lxu-utils';
+import { containsBinaryData } from 'lxu-utils';
 
-const obj1 = {
+const objectWithBinaryData = {
+  image: new Blob(['binary data'], { type: 'image/png' }),
+  document: new File(['binary data'], 'document.pdf', { type: 'application/pdf' }),
+};
+
+const objectWithoutBinaryData = {
   name: 'John',
-  image: new Blob([new ArrayBuffer(1024)]),
+  age: 30,
 };
 
-const obj2 = {
-  name: 'Alice',
-  details: {
-    profilePic: new File(['data'], 'profile.jpg'),
-  },
-};
+const hasBinary = containsBinaryData(objectWithBinaryData);
+console.log(hasBinary); // Result: true
 
-console.log(hasBinaryData(obj1)); // true
-console.log(hasBinaryData(obj2)); // true
+const hasNoBinary = containsBinaryData(objectWithoutBinaryData);
+console.log(hasNoBinary); // Result: false
+
 ``````
 
 
@@ -192,9 +196,9 @@ console.log(isJSONObject(jsonString1)); // true
 console.log(isJSONObject(jsonString2)); // false
 ```
 
-## `jsonToFormData` Function
+## `objectToFormDataWithFiles` Function
 
-The `jsonToFormData` function converts a JSON object into a FormData object, handling file uploads and nested objects.
+The `objectToFormDataWithFiles` function converts a JSON object into a FormData object, handling file uploads and nested objects.
 
 ### Parameters
 - `obj` (Type: `Record<string, any>`): The object containing key-value pairs. The keys represent the names of the form fields, and the values represent the corresponding values for those fields. Values can be of any type, including strings, numbers, booleans, arrays, or objects.
@@ -204,9 +208,9 @@ The `jsonToFormData` function converts a JSON object into a FormData object, han
 
 ### Example Usage
 ```typescript
-import { jsonToFormData } from 'lxu-utils';
+import { objectToFormDataWithFiles } from 'lxu-utils';
 
-const formData = jsonToFormData({
+const formData = objectToFormDataWithFiles({
   name: 'John',
   age: 30,
   file: [new File(['data'], 'profile.jpg')],
@@ -219,9 +223,9 @@ const formData = jsonToFormData({
 // Use `formData` in a fetch request or form submission.
 ```
 
-## `objectsEqual` Function
+## `areObjectsEqual` Function
 
-The `objectsEqual` function checks if two objects are equal by comparing their keys and values.
+The `areObjectsEqual` function checks if two objects are equal by comparing their keys and values.
 
 ### Parameters
 - `obj1` (Type: `any`): The first object to compare.
@@ -232,18 +236,18 @@ The `objectsEqual` function checks if two objects are equal by comparing their k
 
 ### Example Usage
 ```typescript
-import { objectsEqual } from 'lxu-utils';
+import { areObjectsEqual } from 'lxu-utils';
 
 const obj1 = { name: 'John', age: 30 };
 const obj2 = { age: 30, name: 'John' };
 const obj3 = { name: 'Alice', age: 25 };
 
-console.log(objectsEqual(obj1, obj2)); // true
-console.log(objectsEqual(obj1, obj3)); // false
+console.log(areObjectsEqual(obj1, obj2)); // true
+console.log(areObjectsEqual(obj1, obj3)); // false
 ```
-## `convertToCurrencySystem` Function
+## `abbreviateCurrencyValue` Function
 
-The `convertToCurrencySystem` function converts a number into a currency system by abbreviating it with "B" for billions, "M" for millions, and "K" for thousands.
+The `abbreviateCurrencyValue` function converts a number into a currency system by abbreviating it with "B" for billions, "M" for millions, and "K" for thousands.
 
 ### Parameters
 - `labelValue` (Type: `number`): The number to convert into a currency system. It represents a value in the currency system.
@@ -253,22 +257,22 @@ The `convertToCurrencySystem` function converts a number into a currency system 
 
 ### Example Usage
 ```typescript
-import { convertToCurrencySystem } from 'lxu-utils';
+import { abbreviateCurrencyValue } from 'lxu-utils';
 
 const value1 = 1500000000; // 1.5 billion
 const value2 = 7500000;    // 7.5 million
 const value3 = 2500;       // 2.5 thousand
 const value4 = 42;         // 42
 
-console.log(convertToCurrencySystem(value1)); // "1.5 B"
-console.log(convertToCurrencySystem(value2)); // "7.5 M"
+console.log(abbreviateCurrencyValue(value1)); // "1.5 B"
+console.log(abbreviateCurrencyValue(value2)); // "7.5 M"
 console.log(convertToCurrencySystem(value3)); // "2.5 K"
-console.log(convertToCurrencySystem(value4)); // 42
+console.log(abbreviateCurrencyValue(value4)); // 42
 ```
 
-## `removeKeyFromObject` Function
+## `omitKey` Function
 
-The `removeKeyFromObject` function removes a specified key from an object and returns a new object without that key.
+The `omitKey` function removes a specified key from an object and returns a new object without that key.
 
 ### Parameters
 - `obj` (Type: `T`): The object from which you want to remove a key. It can be of any type `T`.
@@ -279,7 +283,7 @@ The `removeKeyFromObject` function removes a specified key from an object and re
 
 ### Example Usage
 ```typescript
-import { removeKeyFromObject } from 'lxu-utils';
+import { omitKey } from 'lxu-utils';
 
 const user = {
   id: 1,
@@ -287,14 +291,14 @@ const user = {
   age: 30,
 };
 
-const userWithoutId = removeKeyFromObject(user, 'id');
+const userWithoutId = omitKey(user, 'id');
 
 // Result: { name: 'John', age: 30 }
 ```
 
-## `assignZeroToKey` Function
+## `setKeyToZeroInObjects` Function
 
-The `assignZeroToKey` function assigns the value of zero to a specified key in each object of an array.
+The `setKeyToZeroInObjects` function assigns the value of zero to a specified key in each object of an array.
 
 ### Parameters
 - `arr` (Type: `Record<string, any>[]`): An array of objects with string keys and any values.
@@ -305,7 +309,7 @@ The `assignZeroToKey` function assigns the value of zero to a specified key in e
 
 ### Example Usage
 ```typescript
-import { assignZeroToKey } from 'lxu-utils';
+import { setKeyToZeroInObjects } from 'lxu-utils';
 
 const data = [
   { id: 1, value: 10 },
@@ -313,14 +317,14 @@ const data = [
   { id: 3, value: 30 },
 ];
 
-const newData = assignZeroToKey(data, 'value');
+const newData = setKeyToZeroInObjects(data, 'value');
 
 // Result: [{ id: 1, value: 0 }, { id: 2, value: 0 }, { id: 3, value: 0 }]
 ```
 
-## `assignZeroToKeys` Function
+## `setKeysToZeroInObjects` Function
 
-The `assignZeroToKeys` function takes an array of objects and an array of keys, and returns a new array of objects where the specified keys are assigned the value of zero.
+The `setKeysToZeroInObjects` function takes an array of objects and an array of keys, and returns a new array of objects where the specified keys are assigned the value of zero.
 
 ### Parameters
 - `arr` (Type: `Record<string, any>[]`): An array of objects, where each object represents a record with key-value pairs.
@@ -331,14 +335,14 @@ The `assignZeroToKeys` function takes an array of objects and an array of keys, 
 
 ### Example Usage
 ```typescript
-import { assignZeroToKeys } from 'lxu-utils';
+import { setKeysToZeroInObjects } from 'lxu-utils';
 
 const data = [
   { id: 1, value1: 10, value2: 20 },
   { id: 2, value1: 30, value2: 40 },
 ];
 
-const newData = assignZeroToKeys(data, ['value1', 'value2']);
+const newData = setKeysToZeroInObjects(data, ['value1', 'value2']);
 
 // Result: [
 //   { id: 1, value1: 0, value2: 0 },
@@ -346,9 +350,9 @@ const newData = assignZeroToKeys(data, ['value1', 'value2']);
 // ]
 ```
 
-## `removeOrAddStringFromArray` Function
+## `toggleStringInArray` Function
 
-The `removeOrAddStringFromArray` function removes the target string from the array if it exists, otherwise, it adds the target string to the array.
+The `toggleStringInArray` function removes the target string from the array if it exists, otherwise, it adds the target string to the array.
 
 ### Parameters
 - `arr` (Type: `string[]`): An array of strings.
@@ -359,22 +363,22 @@ The `removeOrAddStringFromArray` function removes the target string from the arr
 
 ### Example Usage
 ```typescript
-import { removeOrAddStringFromArray } from 'lxu-utils';
+import { toggleStringInArray } from 'lxu-utils';
 
 const myArray = ['apple', 'banana', 'cherry'];
 
 // Remove 'banana' from the array
-const newArray1 = removeOrAddStringFromArray(myArray, 'banana');
+const newArray1 = toggleStringInArray(myArray, 'banana');
 // Result: ['apple', 'cherry']
 
 // Add 'strawberry' to the array
-const newArray2 = removeOrAddStringFromArray(myArray, 'strawberry');
+const newArray2 = toggleStringInArray(myArray, 'strawberry');
 // Result: ['apple', 'banana', 'cherry', 'strawberry']
 ```
 
-## `removeOrAddObjectFromArray` Function
+## `toggleObjectInArray` Function
 
-The `removeOrAddObjectFromArray` function removes the target object from the array if it exists, otherwise, it adds it to the array. The equality comparison is done using the `isEqual` function.
+The `toggleObjectInArray` function removes the target object from the array if it exists, otherwise, it adds it to the array. The equality comparison is done using the `isEqual` function.
 
 ### Parameters
 - `arr` (Type: `T[]`): An array of objects of type `T`.
@@ -385,7 +389,7 @@ The `removeOrAddObjectFromArray` function removes the target object from the arr
 
 ### Example Usage
 ```typescript
-import { removeOrAddObjectFromArray } from 'lxu-utils';
+import { toggleObjectInArray } from 'lxu-utils';
 
 const data = [
   { id: 1, name: 'Alice' },
@@ -393,40 +397,16 @@ const data = [
 ];
 
 // Remove the object with id: 2
-const updatedData1 = removeOrAddObjectFromArray(data, { id: 2, name: 'Bob' });
+const updatedData1 = toggleObjectInArray(data, { id: 2, name: 'Bob' });
 // Result: [{ id: 1, name: 'Alice' }]
 
 // Add a new object
-const updatedData2 = removeOrAddObjectFromArray(data, { id: 3, name: 'Charlie' });
+const updatedData2 = toggleObjectInArray(data, { id: 3, name: 'Charlie' });
 // Result: [{ id: 1, name: 'Alice' }, { id: 3, name: 'Charlie' }]
 ```
+## `calculateAndInjectPercentage` Function
 
-## `calculatePercentage` Function
-
-The `calculatePercentage` function calculates the percentage of a value in relation to a total.
-
-### Parameters
-- `total` (Type: `number`): The total number or quantity that the `value` is being compared to.
-- `value` (Type: `number`): The numerical value that you want to calculate the percentage of.
-
-### Returns
-- `number`: Returns a number, which is the percentage calculated based on the `total` and `value` parameters passed to the function. If the `total` parameter is 0, the function returns 0.
-
-### Example Usage
-```typescript
-import { calculatePercentage } from 'lxu-utils';
-
-const total = 100;
-const value = 25;
-
-const percentage = calculatePercentage(total, value);
-
-// Result: 25
-
-```
-## `calculatePercentageAndInjectValue` Function
-
-The `calculatePercentageAndInjectValue` function calculates the percentage of a specific key's value in each object of an array and injects the percentage value into each object.
+The `calculateAndInjectPercentage` function calculates the percentage of a specific key's value in each object of an array and injects the percentage value into each object.
 
 ### Parameters
 - `arr` (Type: `Record<string, any>[]`): An array of objects. Each object represents a data entry and contains various properties.
@@ -437,7 +417,7 @@ The `calculatePercentageAndInjectValue` function calculates the percentage of a 
 
 ### Example Usage
 ```typescript
-import { calculatePercentageAndInjectValue } from 'lxu-utils';
+import { calculateAndInjectPercentage } from 'lxu-utils';
 
 const data = [
   { name: 'A', value: 50 },
@@ -445,7 +425,7 @@ const data = [
   { name: 'C', value: 100 },
 ];
 
-const newData = calculatePercentageAndInjectValue(data, 'value');
+const newData = calculateAndInjectPercentage(data, 'value');
 
 // Result:
 // [
@@ -454,9 +434,9 @@ const newData = calculatePercentageAndInjectValue(data, 'value');
 //   { name: 'C', value: 100, percentage: 66.67 },
 // ]
 ```
-## `getSumOfKey` Function
+## `calculateSumOfKey` Function
 
-The `getSumOfKey` function calculates the sum of a specified key in an array of objects.
+The `calculateSumOfKey` function calculates the sum of a specified key in an array of objects.
 
 ### Parameters
 - `data` (Type: `Record<string, any>[]`): An array of objects where each object has one or more key-value pairs.
@@ -467,7 +447,7 @@ The `getSumOfKey` function calculates the sum of a specified key in an array of 
 
 ### Example Usage
 ```typescript
-import { getSumOfKey } from 'lxu-utils';
+import { calculateSumOfKey } from 'lxu-utils';
 
 const data = [
   { value: 10 },
@@ -475,13 +455,13 @@ const data = [
   { value: 30 },
 ];
 
-const total = getSumOfKey(data, 'value');
+const total = calculateSumOfKey(data, 'value');
 
 // Result: 60
 ```
-## `setZeroValueForObjectsWithKeyValues` Function
+## `setZeroValueForMatchingObjects` Function
 
-The `setZeroValueForObjectsWithKeyValues` function changes the 'value' property of objects in an array if their specified key-value pair matches the provided values. The 'value' property of matching objects will be set to zero.
+The `setZeroValueForMatchingObjects` function changes the 'value' property of objects in an array if their specified key-value pair matches the provided values. The 'value' property of matching objects will be set to zero.
 
 ### Parameters
 - `arr` (Type: `Record<string, any>[]`): An array of objects where each object has key-value pairs.
@@ -493,7 +473,7 @@ The `setZeroValueForObjectsWithKeyValues` function changes the 'value' property 
 
 ### Example Usage
 ```typescript
-import { setZeroValueForObjectsWithKeyValues } from 'lxu-utils';
+import { setZeroValueForMatchingObjects } from 'lxu-utils';
 
 const data = [
   { name: 'A', value: 'x' },
@@ -501,7 +481,7 @@ const data = [
   { name: 'C', value: 'x' },
 ];
 
-const modifiedData = setZeroValueForObjectsWithKeyValues(data, 'value', ['x']);
+const modifiedData = setZeroValueForMatchingObjects(data, 'value', ['x']);
 
 // Result:
 // [
@@ -573,9 +553,47 @@ const newArray = removeObjectAtIndex(originalArray, 2);
 // Result: [1, 2, 4, 5] (Element 3 removed)
 ```
 
-## `dividePercentageIntoEqualParts` Function
+## `convertNestedKeysToObject` Function
 
-The `dividePercentageIntoEqualParts` function divides a given percentage into equal parts and distributes any remaining percentage across the parts.
+The `convertNestedKeysToObject` function converts an input object with nested keys in the format of "name[index].nestedKey" into an output object with nested arrays and objects.
+
+## Parameters
+- `input` (Type: `Record<string, any>`): A JavaScript object with string keys and any values.
+
+## Returns
+- `any`: An object with the converted input. The input is an object with string keys and any values. The function converts any keys that match the pattern of "name[index].nestedKey" into nested objects within an array. The function returns the converted object.
+
+## Example Usage
+
+```typescript
+import { convertNestedKeysToObject } from 'lxu-utils';
+
+const inputObject = {
+  'person[0].name': 'Alice',
+  'person[0].age': 30,
+  'person[1].name': 'Bob',
+  'person[1].age': 25,
+  'city.population': 1000000,
+  'city.area': 50,
+};
+
+const outputObject = convertNestedKeysToObject(inputObject);
+
+console.log(outputObject);
+
+// Result:
+// {
+//   person: [
+//     { name: 'Alice', age: 30 },
+//     { name: 'Bob', age: 25 }
+//   ],
+//   city: { population: 1000000, area: 50 }
+// }
+```
+
+## `distributePercentageEquallyWithRemainder` Function
+
+The `distributePercentageEquallyWithRemainder` function divides a given percentage into equal parts and distributes any remaining percentage across the parts.
 
 ### Parameters
 - `array` (Type: `Record<string, any>[]`): An array of objects, where each object represents a part that needs to be divided into equal parts. Each object should have a `percentage` property.
@@ -585,7 +603,7 @@ The `dividePercentageIntoEqualParts` function divides a given percentage into eq
 
 ### Example Usage
 ```typescript
-import { dividePercentageIntoEqualParts } from 'lxu-utils';
+import { distributePercentageEquallyWithRemainder } from 'lxu-utils';
 
 const partsToDivide = [
   { percentage: 30 },
@@ -593,14 +611,14 @@ const partsToDivide = [
   { percentage: 25 },
 ];
 
-const dividedParts = dividePercentageIntoEqualParts(partsToDivide);
+const dividedParts = distributePercentageEquallyWithRemainder(partsToDivide);
 
 // Result: [{ percentage: 33 }, { percentage: 33 }, { percentage: 34 }]
 ```
 
-## `splitArrayToMultipleArrayOfSize` Function
+## `splitArrayIntoChunks` Function
 
-The `splitArrayToMultipleArrayOfSize` function splits an array into multiple arrays of a specified size.
+The `splitArrayIntoChunks` function splits an array into multiple arrays of a specified size.
 
 ### Parameters
 - `array` (Type: `Record<string, any>[]`): An array of objects, where each object has string keys and any values.
@@ -611,7 +629,7 @@ The `splitArrayToMultipleArrayOfSize` function splits an array into multiple arr
 
 ### Example Usage
 ```typescript
-import { splitArrayToMultipleArrayOfSize } from 'lxu-utils';
+import { splitArrayIntoChunks } from 'lxu-utils';
 
 const originalArray = [
   { id: 1, name: 'Item 1' },
@@ -621,7 +639,7 @@ const originalArray = [
   { id: 5, name: 'Item 5' },
 ];
 
-const subarrays = splitArrayToMultipleArrayOfSize(originalArray, 2);
+const subarrays = splitArrayIntoChunks(originalArray, 2);
 
 // Result:
 // [
@@ -631,28 +649,7 @@ const subarrays = splitArrayToMultipleArrayOfSize(originalArray, 2);
 // ]
 ```
 
-## `getPercentage` Function
 
-The `getPercentage` function calculates the percentage of one number in relation to another number.
-
-### Parameters
-- `x` (Type: `number`): The numerator in a fraction.
-- `y` (Type: `number`): The denominator or total value in a fraction.
-
-### Returns
-- `number`: Returns the percentage of `x` in relation to `y`.
-
-### Example Usage
-```typescript
-import { getPercentage } from 'lxu-utils';
-
-const numerator = 25;
-const denominator = 100;
-
-const percentage = getPercentage(numerator, denominator);
-
-// Result: 25 (since 25% of 100 is 25)
-```
 
 ## `getFileExtension` Function
 
@@ -678,9 +675,9 @@ const extension3 = getFileExtension(url3); // Result: null
 const extension4 = getFileExtension(undefined); // Result: ''
 ```
 
-## `removeObjectFromArrayOfObjects` Function
+## `removeObjectFromArray` Function
 
-The `removeObjectFromArrayOfObjects` function removes a specified object from an array of objects based on a deep comparison.
+The `removeObjectFromArray` function removes a specified object from an array of objects based on a deep comparison.
 
 ### Parameters
 - `objects` (Type: `Record<string, any>[]`): An array of objects.
@@ -691,7 +688,7 @@ The `removeObjectFromArrayOfObjects` function removes a specified object from an
 
 ### Example Usage
 ```typescript
-import { removeObjectFromArrayOfObjects } from 'lxu-utils';
+import { removeObjectFromArray } from 'lxu-utils';
 
 const array = [
   { id: 1, name: 'Alice' },
@@ -701,7 +698,7 @@ const array = [
 
 const objectToRemove = { id: 2, name: 'Bob' };
 
-const updatedArray = removeObjectFromArrayOfObjects(array, objectToRemove);
+const updatedArray = removeObjectFromArray(array, objectToRemove);
 
 console.log(updatedArray);
 // Result: [
@@ -760,9 +757,9 @@ const groupedData = groupArrayOfObjectsByValueOfAKey(data, 'category');
 ```
 
 
-## `countKeyInJSON` Function
+## `countKeyOccurrences` Function
 
-The `countKeyInJSON` function counts the number of occurrences of a specific key in a JSON object or array.
+The `countKeyOccurrences` function counts the number of occurrences of a specific key in a JSON object or array.
 
 ### Parameters
 - `json` (Type: `any`): The `json` parameter is the JSON object or array that you want to search for the specified key in.
@@ -773,7 +770,7 @@ The `countKeyInJSON` function counts the number of occurrences of a specific key
 
 ### Example Usage
 ```typescript
-import { countKeyInJSON } from 'lxu-utils';
+import { countKeyOccurrences } from 'lxu-utils';
 
 const jsonObject = {
  key1: 'value',
@@ -784,7 +781,7 @@ const jsonObject = {
  },
 };
 
-const keyCount = countKeyInJSON(jsonObject, 'key1');
+const keyCount = countKeyOccurrences(jsonObject, 'key1');
 // Result: 2 (Occurrences of 'key1' in the JSON object)
 ```
 ## `dividePercentage` Function
@@ -814,9 +811,9 @@ const updatedJsonObject = dividePercentage(jsonObject, 'percentage');
 // Result: All items' 'percentage' values in the JSON object are evenly distributed. {"items": [{ "name": "A", "percentage": 33 },{ "name": "B", "percentage": 33 },{ "name": "C", "percentage": 34 }]}
 ```
 
-## `extractUniqueValuesByKey` function
+## `uniqueValuesForKey` function
 
-The `extractUniqueValuesByKey` function is used to extract unique string values from a specified key in an array of objects.
+The `uniqueValuesForKey` function is used to extract unique string values from a specified key in an array of objects.
 
 ### Parameters
 
@@ -830,7 +827,7 @@ The `extractUniqueValuesByKey` function is used to extract unique string values 
 ### Example Usage
 
 ```typescript
-import { extractUniqueValuesByKey } from 'lxu-utils';
+import { uniqueValuesForKey } from 'lxu-utils';
 
 const data = [
   { id: 1, name: 'John' },
@@ -838,61 +835,13 @@ const data = [
   { id: 3, name: 'John' },
 ];
 
-const uniqueNames = extractUniqueValuesByKey(data, 'name');
+const uniqueNames = uniqueValuesForKey(data, 'name');
 console.log(uniqueNames);
 // Output: ['John', 'Jane']
 ```
+## `formatNumberToCommaString` Function
 
-## `filterObjectsByKeyAndValue` Function
-
-The `filterObjectsByKeyAndValue` function filters an array of objects to return objects that have a specified key-value pair.
-
-### Parameters
-- `array` (Type: `Record<string, any>[]`): An array of objects where each object has multiple key-value pairs.
-- `key` (Type: `string`): The property name to search for in the objects.
-- `value` (Type: `any`): The value to search for in the specified key.
-
-### Returns
-- (Type: `Record<string, any>[]`): An array of objects that have the specified key-value pair.
-
-### Example Usage
-```typescript
-import { filterObjectsByKeyAndValue } from 'lxu-utils';
-
-const data = [
-  { id: 1, name: 'John' },
-  { id: 2, name: 'Jane' },
-  { id: 3, name: 'John' },
-];
-
-const filteredData = filterObjectsByKeyAndValue(data, 'name', 'John');
-console.log(filteredData);
-// Output: [{ "id": 1, "name": "John" }, { "id": 3, "name": "John" }]
-```
-
-## `removeValueFromArray` Function
-
-The `removeValueFromArray` function removes a specific value from an array of strings and returns the updated array.
-
-### Parameters
-- `arr` (Type: `string[]`): An array of strings from which to remove a specific value.
-- `value` (Type: `string`): The string value to remove from the array.
-
-### Returns
-- (Type: `string[]`): A new array of strings with the specified value removed.
-
-### Example Usage
-```typescript
-import { removeValueFromArray } from 'lxu-utils';
-
-const fruits = ['apple', 'banana', 'cherry', 'banana', 'date'];
-const updatedFruits = removeValueFromArray(fruits, 'banana');
-console.log(updatedFruits);
-// Output: ['apple', 'cherry', 'date']
-```
-## `formatNumberWithCommas` Function
-
-The `formatNumberWithCommas` function converts a number to a comma-separated string representation, rounded to the nearest whole number.
+The `formatNumberToCommaString` function converts a number to a comma-separated string representation, rounded to the nearest whole number.
 
 ### Parameters
 - `value` (Type: `number`): The number to be converted.
@@ -902,38 +851,19 @@ The `formatNumberWithCommas` function converts a number to a comma-separated str
 
 ### Example Usage
 ```typescript
-import { formatNumberWithCommas } from 'lxu-utils';
+import { formatNumberToCommaString } from 'lxu-utils';
 
 const number = 1234567.89;
-const formattedNumber = formatNumberWithCommas(number);
+const formattedNumber = formatNumberToCommaString(number);
 console.log(formattedNumber);
 // Output: '1,234,568'
 ```
 
-## `isEmptyObjectOrArray` Function
 
-The `isEmptyObjectOrArray` function checks if an object or array is empty by examining its length or the number of keys it has.
 
-### Parameters
-- `obj` (Type: `Record<string, any> | any[]`): The object or array to be checked.
+## `getMinMax` Function
 
-### Returns
-- (Type: `boolean`): `true` if the input object or array is empty, `false` otherwise.
-
-### Example Usage
-```typescript
-import { isEmptyObjectOrArray } from 'lxu-utils';
-
-const emptyArray = [];
-const nonEmptyObject = { key: 'value' };
-
-console.log(isEmptyObjectOrArray(emptyArray)); // Output: true
-console.log(isEmptyObjectOrArray(nonEmptyObject)); // Output: false
-```
-
-## `findMinMaxValues` Function
-
-The `findMinMaxValues` function finds the minimum and maximum values of a specified key in an array of objects.
+The `getMinMax` function finds the minimum and maximum values of a specified key in an array of objects.
 
 ### Parameters
 - `arr` (Type: `any[]`): An array of objects where each object has a property specified by the `key` parameter.
@@ -944,7 +874,7 @@ The `findMinMaxValues` function finds the minimum and maximum values of a specif
 
 ### Example Usage
 ```typescript
-import { findMinMaxValues } from 'lxu-utils';
+import { getMinMax } from 'lxu-utils';
 
 const data = [
   { age: 25 },
@@ -953,7 +883,7 @@ const data = [
   { age: 42 },
 ];
 
-const result = findMinMaxValues(data, 'age');
+const result = getMinMax(data, 'age');
 console.log(result);
 // Output: { min: 18, max: 42 }
 ```
@@ -973,7 +903,7 @@ The `assignPercentageToItems` function assigns a percentage value to each item i
 import { assignPercentageToItems } from 'lxu-utils';
 
 const items = ['A', 'B', 'C', 'D'];
-const itemsWithPercentage = assignPercentageToItems(items);
-console.log(itemsWithPercentage);
+const calculateItemPercentages = assignPercentageToItems(items);
+console.log(calculateItemPercentages);
 // Output: [{ "percentage": 25 }, { "percentage": 25 }, { "percentage": 25 }, { "percentage": 25 }]
 ```
