@@ -1,6 +1,6 @@
 {
   "name": "lxu-utils",
-  "version": "1.0.0",
+  "version": "1.0.22",
   "description": "Complex utility functions package with more that 20+ functions.",
   "repository": {
     "type": "git",
@@ -17,9 +17,6 @@
   },
   "author": "Laxman Pokhrel",
   "license": "ISC",
-  "dependencies": {
-    "uuid": "^9.0.0"
-  },
   "devDependencies": {
     "@types/uuid": "^9.0.2",
     "@typescript-eslint/parser": "^6.2.1",
@@ -44,5 +41,9 @@
       "eslint --fix",
       "prettier --cache --write"
     ]
+  },
+  "dependencies": {
+    "clsx": "^2.0.0",
+    "tailwind-merge": "^1.14.0"
   }
 }
