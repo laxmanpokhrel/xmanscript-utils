@@ -41,9 +41,5 @@
       "eslint --fix",
       "prettier --cache --write"
     ]
-  },
-  "dependencies": {
-    "clsx": "^2.0.0",
-    "tailwind-merge": "^1.14.0"
   }
 }

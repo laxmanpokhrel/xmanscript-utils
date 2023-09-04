@@ -13,7 +13,7 @@ The `partitionObjectsByKey` function splits an array of objects into two separat
 
 ### Example Usage
 ```typescript
-import { partitionObjectsByKey } from 'your-utils-library';
+import { partitionObjectsByKey } from 'lxu-utils';
 
 const array = [
   { id: 1, name: 'Alice' },
