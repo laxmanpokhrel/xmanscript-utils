@@ -404,9 +404,9 @@ const updatedData1 = toggleObjectInArray(data, { id: 2, name: 'Bob' });
 const updatedData2 = toggleObjectInArray(data, { id: 3, name: 'Charlie' });
 // Result: [{ id: 1, name: 'Alice' }, { id: 3, name: 'Charlie' }]
 ```
-## `calculateAndInjectPercentage` Function
+## `calculateAndInjectPercentageByMaxValue` Function
 
-The `calculateAndInjectPercentage` function calculates the percentage of a specific key's value in each object of an array and injects the percentage value into each object.
+The `calculateAndInjectPercentageByMaxValue` function calculates the percentage of a specific key's value in each object of an array and injects the percentage value into each object based on the max value of that key.
 
 ### Parameters
 - `arr` (Type: `Record<string, any>[]`): An array of objects. Each object represents a data entry and contains various properties.
@@ -417,7 +417,7 @@ The `calculateAndInjectPercentage` function calculates the percentage of a speci
 
 ### Example Usage
 ```typescript
-import { calculateAndInjectPercentage } from 'lxu-utils';
+import { calculateAndInjectPercentageByMaxValue } from 'lxu-utils';
 
 const data = [
   { name: 'A', value: 50 },
@@ -425,15 +425,49 @@ const data = [
   { name: 'C', value: 100 },
 ];
 
-const newData = calculateAndInjectPercentage(data, 'value');
+const newData = calculateAndInjectPercentageByMaxValue(data, 'value');
 
 // Result:
 // [
-//   { name: 'A', value: 50, percentage: 33.33 },
-//   { name: 'B', value: 75, percentage: 50.0 },
-//   { name: 'C', value: 100, percentage: 66.67 },
+//   { name: 'A', value: 50, percentage: 50 },
+//   { name: 'B', value: 75, percentage: 75 },
+//   { name: 'C', value: 100, percentage: 100 },
 // ]
 ```
+
+## `calculateAndInjectPercentageBySum` Function
+
+The `calculateAndInjectPercentageBySum` function calculates the percentage of a specific key's value in each object of an array and injects the percentage value into each object based on the sum of values of the key.
+
+### Parameters
+- `arr` (Type: `Record<string, any>[]`): An array of objects. Each object represents a data entry and contains various properties.
+- `key` (Type: `string`): The string representing the key or property name in each object of the `arr` array. This key is used to access the corresponding value in each object for calculating the percentage.
+
+### Returns
+- `Record<string, any>[]`: Returns the modified array `arr` with an additional `percentage` property added to each object.
+
+### Example Usage
+```typescript
+import { calculateAndInjectPercentageBySum } from 'lxu-utils';
+
+const data = [
+  { name: 'A', value: 25 },
+  { name: 'B', value: 25 },
+  { name: 'C', value: 25 },
+  { name: 'D', value: 25 },
+];
+
+const newData = calculateAndInjectPercentageBySum(data, 'value');
+
+// Result:
+// [
+//   { name: 'A', value: 50, percentage: 25 },
+//   { name: 'B', value: 75, percentage: 25 },
+//   { name: 'C', value: 100, percentage: 25 },
+//   { name: 'D', value: 100, percentage: 25 },
+// ]
+```
+
 ## `calculateSumOfKey` Function
 
 The `calculateSumOfKey` function calculates the sum of a specified key in an array of objects.
@@ -459,9 +493,9 @@ const total = calculateSumOfKey(data, 'value');
 
 // Result: 60
 ```
-## `setZeroValueForMatchingObjects` Function
+## `setZeroValueForMatchingValuesOfAKey` Function
 
-The `setZeroValueForMatchingObjects` function changes the 'value' property of objects in an array if their specified key-value pair matches the provided values. The 'value' property of matching objects will be set to zero.
+The `setZeroValueForMatchingValuesOfAKey` function changes the 'value' property of objects in an array if their specified key-value pair matches the provided values. The 'value' property of matching objects will be set to zero.
 
 ### Parameters
 - `arr` (Type: `Record<string, any>[]`): An array of objects where each object has key-value pairs.
@@ -473,7 +507,7 @@ The `setZeroValueForMatchingObjects` function changes the 'value' property of ob
 
 ### Example Usage
 ```typescript
-import { setZeroValueForMatchingObjects } from 'lxu-utils';
+import { setZeroValueForMatchingValuesOfAKey } from 'lxu-utils';
 
 const data = [
   { name: 'A', value: 'x' },
@@ -481,7 +515,7 @@ const data = [
   { name: 'C', value: 'x' },
 ];
 
-const modifiedData = setZeroValueForMatchingObjects(data, 'value', ['x']);
+const modifiedData = setZeroValueForMatchingValuesOfAKey(data, 'value', ['x']);
 
 // Result:
 // [
@@ -508,49 +542,6 @@ import { scrollToComponent } from 'lxu-utils';
 
 // Scroll to component with id "myComponent" and focus on it after scrolling.
 scrollToComponent({ componentId: 'myComponent', focusAfterScroll: true });
-```
-
-## `replaceObjectAtPosition` Function
-
-The `replaceObjectAtPosition` function replaces an object at a specified position in an array and returns a new array.
-
-### Parameters
-- `arr` (Type: `T[]`): An array of type `T`, which represents the original array where the object needs to be replaced.
-- `position` (Type: `number`): The index at which the `newObj` should replace the existing object in the `arr` array.
-- `newObj` (Type: `T`): The new object that you want to replace at the specified position in the array.
-
-### Returns
-- `T[]`: Returns a new array with the object at the specified position replaced with the new object.
-
-### Example Usage
-```typescript
-import { replaceObjectAtPosition } from 'lxu-utils';
-
-const data = [1, 2, 3, 4, 5];
-const newData = replaceObjectAtPosition(data, 2, 99);
-
-// Result: [1, 2, 99, 4, 5]
-```
-
-## `removeObjectAtIndex` Function
-
-The `removeObjectAtIndex` function removes an object from an array at a specified index and returns a new array.
-
-### Parameters
-- `array` (Type: `T[]`): An array of elements of type `T`.
-- `index` (Type: `number`): A number that represents the position of the object to be removed from the array. It should be a non-negative integer that is less than the length of the array.
-
-### Returns
-- `T[]`: Returns a new array with the object at the specified index removed. If the index is out of bounds, the function returns the original array.
-
-### Example Usage
-```typescript
-import { removeObjectAtIndex } from 'lxu-utils';
-
-const originalArray = [1, 2, 3, 4, 5];
-const newArray = removeObjectAtIndex(originalArray, 2);
-
-// Result: [1, 2, 4, 5] (Element 3 removed)
 ```
 
 ## `convertNestedKeysToObject` Function
@@ -784,9 +775,9 @@ const jsonObject = {
 const keyCount = countKeyOccurrences(jsonObject, 'key1');
 // Result: 2 (Occurrences of 'key1' in the JSON object)
 ```
-## `dividePercentage` Function
+## `distributePercentageEquall` Function
 
-The `dividePercentage` function takes a JSON object and a key, and updates the values of that key in the object to distribute a percentage evenly among all occurrences of the key.
+The `distributePercentageEquall` function takes a JSON object and a key, and updates the values of that key in the object to distribute a percentage evenly among all occurrences of the key.
 
 ### Parameters
 - `json` (Type: `any`): The `json` parameter is an object or an array that represents a JSON structure. It can contain nested objects and arrays.
@@ -797,7 +788,7 @@ The `dividePercentage` function takes a JSON object and a key, and updates the v
 
 ### Example Usage
 ```typescript
-import { dividePercentage } from 'lxu-utils';
+import { distributePercentageEquall } from 'lxu-utils';
 
 const jsonObject = {
   items: [
@@ -807,13 +798,13 @@ const jsonObject = {
   ],
 };
 
-const updatedJsonObject = dividePercentage(jsonObject, 'percentage');
+const updatedJsonObject = distributePercentageEquall(jsonObject, 'percentage');
 // Result: All items' 'percentage' values in the JSON object are evenly distributed. {"items": [{ "name": "A", "percentage": 33 },{ "name": "B", "percentage": 33 },{ "name": "C", "percentage": 34 }]}
 ```
 
-## `uniqueValuesForKey` function
+## `uniqueValuesOfKey` function
 
-The `uniqueValuesForKey` function is used to extract unique string values from a specified key in an array of objects.
+The `uniqueValuesOfKey` function is used to extract unique string values from a specified key in an array of objects.
 
 ### Parameters
 
@@ -827,7 +818,7 @@ The `uniqueValuesForKey` function is used to extract unique string values from a
 ### Example Usage
 
 ```typescript
-import { uniqueValuesForKey } from 'lxu-utils';
+import { uniqueValuesOfKey } from 'lxu-utils';
 
 const data = [
   { id: 1, name: 'John' },
@@ -835,7 +826,7 @@ const data = [
   { id: 3, name: 'John' },
 ];
 
-const uniqueNames = uniqueValuesForKey(data, 'name');
+const uniqueNames = uniqueValuesOfKey(data, 'name');
 console.log(uniqueNames);
 // Output: ['John', 'Jane']
 ```
@@ -886,24 +877,4 @@ const data = [
 const result = getMinMax(data, 'age');
 console.log(result);
 // Output: { min: 18, max: 42 }
-```
-
-## `assignPercentageToItems` Function
-
-The `assignPercentageToItems` function assigns a percentage value to each item in an array based on the array's length and returns a new array of objects.
-
-### Parameters
-- `arr` (Type: `any[]`): An array of any type.
-
-### Returns
-- (Type: `object[]`): An array of objects where each object has a `percentage` property representing the divided percentage value.
-
-### Example Usage
-```typescript
-import { assignPercentageToItems } from 'lxu-utils';
-
-const items = ['A', 'B', 'C', 'D'];
-const calculateItemPercentages = assignPercentageToItems(items);
-console.log(calculateItemPercentages);
-// Output: [{ "percentage": 25 }, { "percentage": 25 }, { "percentage": 25 }, { "percentage": 25 }]
 ```
