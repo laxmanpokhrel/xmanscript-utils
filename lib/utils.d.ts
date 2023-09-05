@@ -41,7 +41,7 @@ export declare function removeObjectFromArray(
   objects: Record<string, any>[],
   object: Record<string, any>,
 ): Record<string, any>[];
-export declare function parseToBollean(val: string): boolean | undefined;
+export declare function parseToBoolean(val: string): boolean | undefined;
 export declare function groupArrayOfObjectsByValueOfAKey(
   arr: Record<string, any>[],
   key: string,
