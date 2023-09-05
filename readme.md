@@ -13,7 +13,7 @@ The `partitionObjectsByKey` function splits an array of objects into two separat
 
 ### Example Usage
 ```typescript
-import { partitionObjectsByKey } from 'your-utils-library';
+import { partitionObjectsByKey } from 'lxu-utils';
 
 const array = [
   { id: 1, name: 'Alice' },
@@ -37,9 +37,9 @@ console.log(withoutKey);
 // ]
 
 ```
-## `convertObject` Function
+## `convertNestedKeysToObject` Function
 
-The `convertObject` function converts an input object with nested keys in the format of "name[index].nestedKey" into an output object with nested arrays and objects.
+The `convertNestedKeysToObject` function converts an input object with nested keys in the format of "name[index].nestedKey" into an output object with nested arrays and objects.
 
 ### Parameters
 - `input` (Type: `Record<string, any>`): A JavaScript object with string keys and any values.
@@ -49,7 +49,7 @@ The `convertObject` function converts an input object with nested keys in the fo
 
 ### Example Usage
 ```typescript
-import { convertObject } from 'lxu-utils';
+import { convertNestedKeysToObject } from 'lxu-utils';
 
 const input = {
   'user[0].name': 'Alice',
@@ -59,7 +59,7 @@ const input = {
   'status': 'active',
 };
 
-const convertedObject = convertObject(input);
+const convertedObject = convertNestedKeysToObject(input);
 
 // Result:
 // {
@@ -266,12 +266,12 @@ const value4 = 42;         // 42
 
 console.log(abbreviateCurrencyValue(value1)); // "1.5 B"
 console.log(abbreviateCurrencyValue(value2)); // "7.5 M"
-console.log(convertToCurrencySystem(value3)); // "2.5 K"
+console.log(abbreviateCurrencyValue(value3)); // "2.5 K"
 console.log(abbreviateCurrencyValue(value4)); // 42
 ```
 
 ## `omitKey` Function
-
+r
 The `omitKey` function removes a specified key from an object and returns a new object without that key.
 
 ### Parameters

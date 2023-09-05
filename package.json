@@ -1,6 +1,6 @@
 {
   "name": "lxu-utils",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "description": "Complex utility functions package with more that 20+ functions.",
   "repository": {
     "type": "git",
@@ -41,9 +41,5 @@
       "eslint --fix",
       "prettier --cache --write"
     ]
-  },
-  "dependencies": {
-    "clsx": "^2.0.0",
-    "tailwind-merge": "^1.14.0"
   }
 }
