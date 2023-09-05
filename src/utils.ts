@@ -555,7 +555,7 @@ export function removeObjectFromArray(objects: Record<string, any>[], object: Re
  * either `true` or `false`. If the input string is not equal to either `true` or `false`, it logs an
  * error message to the console and returns `undefined`.
  */
-export function parseToBollean(val: string): boolean | undefined {
+export function parseToBoolean(val: string): boolean | undefined {
   if (val === 'true') return true;
   if (val === 'false') return false;
   console.error('String cannot be parsed to boolean.', val);
