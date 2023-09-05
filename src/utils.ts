@@ -285,16 +285,15 @@ function validateObjectsForKey(arr: Record<string, any>[], key: string): Error |
 }
 
 /**
- * The function calculates the percentage of a specific key's value in each object of an array and
- * injects the percentage value into each object.
- * @param {Record<string, any>[]} arr - An array of objects. Each object represents a data entry and
+ * The function calculates and injects the percentage value based on the maximum value of a specified
+ * key in an array of objects.
+ * @param {Record<string, any>[]} arr - An array of objects. Each object represents a data point and
  * contains various properties.
- * @param {string} key - The "key" parameter is a string that represents the key or property name in
- * each object of the "arr" array. This key is used to access the corresponding value in each object
- * for calculating the percentage.
- * @returns the modified array `arr` with an additional `percentage` property added to each object.
+ * @param {string} key - The `key` parameter is a string that represents the key in each object of the
+ * `arr` array that contains the value to be used for calculating the percentage.
+ * @returns the modified array `arr` with the added `percentage` property in each object.
  */
-export function calculateAndInjectPercentage(arr: Record<string, any>[], key: string) {
+export function calculateAndInjectPercentageByMaxValue(arr: Record<string, any>[], key: string) {
   try {
     validateObjectsForKey(arr, 'value');
   } catch (error: any) {
@@ -305,6 +304,30 @@ export function calculateAndInjectPercentage(arr: Record<string, any>[], key: st
   const maxValue = Math.max(...arr.map((obj) => obj[key]));
   for (const obj of arr) {
     obj.percentage = parseFloat(((obj[key] / maxValue) * 100).toFixed(2));
+  }
+  return arr;
+}
+
+/**
+ * The function calculates the percentage of a specific key's value based on sum of values in that key in each object of an array and
+ * injects it as a new property called "percentage".
+ * @param {Record<string, any>[]} arr - An array of objects. Each object represents a record and
+ * contains various key-value pairs.
+ * @param {string} key - The `key` parameter is a string that represents the key in each object of the
+ * `arr` array that contains the value to be used for calculation.
+ * @returns the modified array with the added "percentage" property for each object.
+ */
+export function calculateAndInjectPercentageBySum(arr: Record<string, any>[], key: string) {
+  try {
+    validateObjectsForKey(arr, 'value');
+  } catch (error: any) {
+    console.error(error.message);
+    return arr;
+  }
+
+  const sumOfValuesOfKey = arr.reduce((total, item) => total + (item[key] || 0), 0);
+  for (const obj of arr) {
+    obj.percentage = parseFloat(((obj[key] / sumOfValuesOfKey) * 100).toFixed(2));
   }
   return arr;
 }
@@ -333,7 +356,7 @@ export function calculateSumOfKey(data: Record<string, any>[], key: string) {
  * in each object. Objects with matching key-value pairs will have their 'value' property set to zero.
  * @returns the modified array where the 'value' property of matching objects is set to zero.
  */
-export function setZeroValueForMatchingObjects(
+export function setZeroValueForMatchingValuesOfAKey(
   arr: Record<string, any>[],
   key: string,
   values: string[],
@@ -366,45 +389,6 @@ export function scrollToComponent({ componentId, focusAfterScroll }: scrollToCom
       element.focus();
     }
   }
-}
-
-/**
- * The function replaces an object at a specified position in an array and returns a new array.
- * @param {T[]} arr - An array of type T, which represents the original array where the object needs to
- * be replaced.
- * @param {number} position - The `position` parameter represents the index at which the `newObj`
- * should replace the existing object in the `arr` array.
- * @param {T} newObj - The `newObj` parameter is the new object that you want to replace at the
- * specified position in the array.
- * @returns The function `replaceObjectAtPosition` returns a new array with the object at the specified
- * position replaced with the new object.
- */
-export function replaceObjectAtPosition<T>(arr: T[], position: number, newObj: T): T[] {
-  if (position < 0 || position >= arr.length) {
-    throw new Error('Invalid position');
-  }
-
-  const newArray = [...arr];
-  newArray[position] = newObj;
-  return newArray;
-}
-
-/**
- * This TypeScript function removes an object from an array at a specified index and returns a new
- * array.
- * @param {T[]} array - An array of elements of type T.
- * @param {number} index - The index parameter is a number that represents the position of the object
- * to be removed from the array. It should be a non-negative integer that is less than the length of
- * the array.
- * @returns a new array with the object at the specified index removed. If the index is out of bounds,
- * the function returns the original array.
- */
-export function removeObjectAtIndex<T>(array: T[], index: number): T[] {
-  if (index < 0 || index >= array.length) {
-    return array;
-  }
-  const newArray = [...array.slice(0, index), ...array.slice(index + 1)];
-  return newArray;
 }
 
 /**
@@ -559,20 +543,23 @@ export function getFileExtension(url: string | undefined): string | null {
 export function removeObjectFromArray(objects: Record<string, any>[], object: Record<string, any>) {
   const index: number = objects.findIndex((item) => JSON.stringify(item) === JSON.stringify(object));
   if (index < 0) return objects;
-  const result = removeObjectAtIndex(objects, index);
+  const result = [...objects.slice(0, index), ...objects.slice(index + 1)];
   return result;
 }
 
 /**
- * The function "parseToBoolean" takes a string value and returns a boolean value based on whether the
- * string is equal to "true".
+ * The function `parseToBoolean` takes a string as input and returns a boolean value if the string is
+ * either 'true' or 'false', otherwise it logs an error message and returns undefined.
  * @param {string} val - The `val` parameter is a string that represents a boolean value.
- * @returns a boolean value. If the input string is equal to 'true', it will return true. Otherwise, it
- * will return false.
+ * @returns The function `parseToBoolean` returns a boolean value if the input string can be parsed to
+ * either `true` or `false`. If the input string is not equal to either `true` or `false`, it logs an
+ * error message to the console and returns `undefined`.
  */
-export function parseToBollean(val: string): boolean {
+export function parseToBollean(val: string): boolean | undefined {
   if (val === 'true') return true;
-  return false;
+  if (val === 'false') return false;
+  console.error('String cannot be parsed to boolean.', val);
+  return undefined;
 }
 
 /**
@@ -665,7 +652,7 @@ export function countKeyOccurrences(json: any, key: string) {
 }
 
 /**
- * The `dividePercentage` function takes a JSON object and a key, and updates the values of that key in
+ * The `distributePercentageEquall` function takes a JSON object and a key, and updates the values of that key in
  * the object to distribute a percentage evenly among all occurrences of the key.
  * @param {any} json - The `json` parameter is an object or an array that represents a JSON structure.
  * It can contain nested objects and arrays.
@@ -674,7 +661,7 @@ export function countKeyOccurrences(json: any, key: string) {
  * @returns the updated JSON object with the percentage values divided evenly among the objects that
  * have the specified key.
  */
-export function dividePercentage(json: any, key: string) {
+export function distributePercentageEquall(json: any, key: string) {
   const count = countKeyOccurrences(json, key);
 
   function updatePercentage(obj: any) {
@@ -730,7 +717,7 @@ export function dividePercentage(json: any, key: string) {
  * @param {string} key - The key to extract unique values from.
  * @returns {string[]} An array of unique string values from the specified key.
  */
-export function uniqueValuesForKey(data: Record<string, any>[], key: string): string[] {
+export function uniqueValuesOfKey(data: Record<string, any>[], key: string): string[] {
   if (!Array.isArray(data) || typeof key !== 'string') {
     console.error('Invalid input: data should be an array of objects, and key should be a string.');
     return [];
@@ -779,29 +766,4 @@ export function getMinMax(arr: any[], key: string): { min: any; max: any } {
   const max = Math.max(...values);
 
   return { min, max };
-}
-
-/**
- * The function takes an array and returns a new array with each item assigned a percentage value based
- * on the length of the original array.
- * @param {any[]} arr - The parameter `arr` is an array of any type.
- * @returns The function `calculateItemPercentages` returns an array of objects. Each object in
- * the array has a `percentage` property that represents the divided percentage value based on the
- * length of the input array.
- */
-
-export function calculateItemPercentages(arr: any[]) {
-  const tempIterationsWithDividedPercentage = arr.map((item, index) => {
-    if (index === arr.length - 1)
-      return {
-        ...item,
-        percentage: 100 - (arr.length - 1) * Math.floor(+(100 / +arr.length)),
-      };
-
-    return {
-      ...item,
-      percentage: Math.floor(+(100 / +arr.length)),
-    };
-  });
-  return tempIterationsWithDividedPercentage;
 }
