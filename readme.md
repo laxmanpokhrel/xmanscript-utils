@@ -1,5 +1,50 @@
 # `lxu-utils` 
+
 ### Library that has complex utility functions used to handle complex utility operations in any react project.
+
+# Installation Guide
+
+Installation guide for **lxu-utils**, a versatile npm package that provides various utilities for your JavaScript projects.
+
+It is not recommended to add it to your project's `devDependencies`.
+
+
+## Prerequisites
+
+Before you can install and use **lxu-utils**, ensure that you have the following prerequisites installed on your system:
+
+- Node.js: [Download Node.js](https://nodejs.org/)
+- npm: npm is included with Node.js, so there's no need to install it separately.
+
+## Installation
+
+You can install **lxu-utils** using one of the following package managers: npm, yarn, or pnpm.
+
+### npm
+
+To install **lxu-utils** using npm, open your terminal and run the following command:
+
+```shell
+npm install lxu-utils
+```
+### yarn
+
+To install **lxu-utils** using npm, open your terminal and run the following command:
+
+```shell
+yarn add lxu-utils
+```
+### pnpm
+
+To install **lxu-utils** using npm, open your terminal and run the following command:
+
+```shell
+pnpm add lxu-utils
+```
+
+## Utility Functions Provided By The Package
+
+
 ## `partitionObjectsByKey` Function
 
 The `partitionObjectsByKey` function splits an array of objects into two separate arrays based on the presence of a specified key.
