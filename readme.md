@@ -42,7 +42,20 @@ To install **@lxu/utils** using npm, open your terminal and run the following co
 pnpm add @lxu/utils
 ```
 
-## Utility Functions Provided By The Package
+## Utility Functions Provided By The Package:
+1. partitionObjectsByKey
+2. convertNestedKeysToObject
+3. markCheckedByStringMatch
+4. intersectObjects
+5. containsBinaryData
+6. isJSONObject
+7. objectToFormDataWithFiles
+8. areObjectsEqual
+9. abbreviateCurrencyValue
+10. omitKey
+11. setKeysToZeroInObjects
+12. 
+
 
 
 ## `partitionObjectsByKey` Function
@@ -339,32 +352,6 @@ const user = {
 const userWithoutId = omitKey(user, 'id');
 
 // Result: { name: 'John', age: 30 }
-```
-
-## `setKeyToZeroInObjects` Function
-
-The `setKeyToZeroInObjects` function assigns the value of zero to a specified key in each object of an array.
-
-### Parameters
-- `arr` (Type: `Record<string, any>[]`): An array of objects with string keys and any values.
-- `key` (Type: `string`): The key in each object of the `arr` array to which you want to assign the value of zero.
-
-### Returns
-- `Record<string, any>[]`: Returns an array of objects where the specified key is assigned the value of zero.
-
-### Example Usage
-```typescript
-import { setKeyToZeroInObjects } from '@lxu/utils';
-
-const data = [
-  { id: 1, value: 10 },
-  { id: 2, value: 20 },
-  { id: 3, value: 30 },
-];
-
-const newData = setKeyToZeroInObjects(data, 'value');
-
-// Result: [{ id: 1, value: 0 }, { id: 2, value: 0 }, { id: 3, value: 0 }]
 ```
 
 ## `setKeysToZeroInObjects` Function

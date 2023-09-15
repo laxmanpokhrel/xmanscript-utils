@@ -184,29 +184,6 @@ export function omitKey<T, K extends keyof T>(obj: T, key: K): Omit<T, K> {
 }
 
 /**
- * The function assigns the value of zero to a specified key in each object of an array.
- * @param {Record<string, any>[]} arr - An array of objects with string keys and any values.
- * @param {string} key - The `key` parameter is a string that represents the key in each object of the
- * `arr` array that you want to assign the value of zero to.
- * @returns an array of objects where the specified key is assigned the value of zero.
- */
-export function setKeyToZeroInObjects(arr: Record<string, any>[], key: string): Record<string, any>[] {
-  if (typeof arr !== 'object') {
-    console.error('Invalid array type.');
-    return arr;
-  }
-  if (!key) return arr;
-
-  const value = arr.map((obj) => {
-    return {
-      ...obj,
-      [key]: 0,
-    };
-  });
-  return value;
-}
-
-/**
  * The function `setKeysToZeroInObjects` takes an array of objects and an array of keys, and returns a new
  * array of objects where the specified keys are assigned the value 0.
  * @param {Record<string, any>[]} arr - An array of objects, where each object represents a record with
