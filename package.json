@@ -4,13 +4,13 @@
   "description": "Complex utility functions package with more that 20+ functions.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/laxmanpokhrel/lxu-utils"
+    "url": "https://github.com/laxmanpokhrel/xmanscript-utils"
   },
   "keywords": ["utils","comples","complex utilities","utilities","light weight"],
   "bugs": {
-    "url": "https://github.com/laxmanpokhrel/lxu-utils/issues"
+    "url": "https://github.com/laxmanpokhrel/xmanscript-utils/issues"
   },
-  "homepage": "https://github.com/laxmanpokhrel/lxu-utils#readme",
+  "homepage": "https://github.com/laxmanpokhrel/xmanscript-utils#readme",
   "main": "./lib/index.js",
   "scripts": {
     "build": "rm -rf lib && tsc",
