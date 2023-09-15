@@ -1,5 +1,5 @@
 {
-  "name": "lxu-utils",
+  "name": "@lxu/utils",
   "version": "3.0.0",
   "description": "Complex utility functions package with more that 20+ functions.",
   "repository": {
@@ -9,10 +9,10 @@
   "bugs": {
     "url": "https://github.com/"
   },
-  "homepage": "https://github.com/",
+  "homepage": "https://github.com/laxmanpokhrel/lxu-utils",
   "main": "./lib/index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "rm -rf lib && tsc",
     "prepare": "husky install"
   },
   "author": "Laxman Pokhrel",

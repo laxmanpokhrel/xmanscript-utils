@@ -761,7 +761,7 @@ export function getMinMax(arr: any[], key: string): { min: any; max: any } {
     return { min: null, max: null };
   }
 
-  const values = arr.map((item) => item[key]);
+  const values = arr.map((item) => +item[key]);
   const min = Math.min(...values);
   const max = Math.max(...values);
 
