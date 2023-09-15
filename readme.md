@@ -1,45 +1,45 @@
-# `@lxu/utils` 
+# `@xmanscript/utils` 
 
 ### Library that has complex utility functions used to handle complex utility operations in any react project.
 
 # Installation Guide
 
-Installation guide for **@lxu/utils**, a versatile npm package that provides various utilities for your JavaScript projects.
+Installation guide for **@xmanscript/utils**, a versatile npm package that provides various utilities for your JavaScript projects.
 
 It is not recommended to add it to your project's `devDependencies`.
 
 
 ## Prerequisites
 
-Before you can install and use **@lxu/utils**, ensure that you have the following prerequisites installed on your system:
+Before you can install and use **@xmanscript/utils**, ensure that you have the following prerequisites installed on your system:
 
 - Node.js: [Download Node.js](https://nodejs.org/)
 - npm: npm is included with Node.js, so there's no need to install it separately.
 
 ## Installation
 
-You can install **@lxu/utils** using one of the following package managers: npm, yarn, or pnpm.
+You can install **@xmanscript/utils** using one of the following package managers: npm, yarn, or pnpm.
 
 ### npm
 
-To install **@lxu/utils** using npm, open your terminal and run the following command:
+To install **@xmanscript/utils** using npm, open your terminal and run the following command:
 
 ```shell
-npm install @lxu/utils
+npm install @xmanscript/utils
 ```
 ### yarn
 
-To install **@lxu/utils** using npm, open your terminal and run the following command:
+To install **@xmanscript/utils** using npm, open your terminal and run the following command:
 
 ```shell
-yarn add @lxu/utils
+yarn add @xmanscript/utils
 ```
 ### pnpm
 
-To install **@lxu/utils** using npm, open your terminal and run the following command:
+To install **@xmanscript/utils** using npm, open your terminal and run the following command:
 
 ```shell
-pnpm add @lxu/utils
+pnpm add @xmanscript/utils
 ```
 
 ## Utility Functions Provided By The Package:
@@ -88,7 +88,7 @@ The `partitionObjectsByKey` function splits an array of objects into two separat
 
 ### Example Usage
 ```typescript
-import { partitionObjectsByKey } from '@lxu/utils';
+import { partitionObjectsByKey } from '@xmanscript/utils';
 
 const array = [
   { id: 1, name: 'Alice' },
@@ -124,7 +124,7 @@ The `convertNestedKeysToObject` function converts an input object with nested ke
 
 ### Example Usage
 ```typescript
-import { convertNestedKeysToObject } from '@lxu/utils';
+import { convertNestedKeysToObject } from '@xmanscript/utils';
 
 const input = {
   'user[0].name': 'Alice',
@@ -160,7 +160,7 @@ The `markCheckedByStringMatch` function adds a "checked" field to each object in
 
 ### Example Usage
 ```typescript
-import { markCheckedByStringMatch } from '@lxu/utils';
+import { markCheckedByStringMatch } from '@xmanscript/utils';
 
 interface Item {
   id: number;
@@ -198,7 +198,7 @@ The `intersectObjects` function takes two objects as input and returns a new obj
 
 ### Example Usage
 ```typescript
-import { intersectObjects } from '@lxu/utils';
+import { intersectObjects } from '@xmanscript/utils';
 
 const object1 = {
   name: 'John',
@@ -229,7 +229,7 @@ The `containsBinaryData` function recursively checks if an object or any of its 
 
 ### Example Usage
 ```typescript
-import { containsBinaryData } from '@lxu/utils';
+import { containsBinaryData } from '@xmanscript/utils';
 
 const objectWithBinaryData = {
   image: new Blob(['binary data'], { type: 'image/png' }),
@@ -262,7 +262,7 @@ The `isJSONObject` function checks if a given string is a valid JSON object.
 
 ### Example Usage
 ```typescript
-import { isJSONObject } from '@lxu/utils';
+import { isJSONObject } from '@xmanscript/utils';
 
 const jsonString1 = '{"name": "John", "age": 30}';
 const jsonString2 = 'This is not a JSON object';
@@ -283,7 +283,7 @@ The `objectToFormDataWithFiles` function converts a JSON object into a FormData 
 
 ### Example Usage
 ```typescript
-import { objectToFormDataWithFiles } from '@lxu/utils';
+import { objectToFormDataWithFiles } from '@xmanscript/utils';
 
 const formData = objectToFormDataWithFiles({
   name: 'John',
@@ -311,7 +311,7 @@ The `areObjectsEqual` function checks if two objects are equal by comparing thei
 
 ### Example Usage
 ```typescript
-import { areObjectsEqual } from '@lxu/utils';
+import { areObjectsEqual } from '@xmanscript/utils';
 
 const obj1 = { name: 'John', age: 30 };
 const obj2 = { age: 30, name: 'John' };
@@ -332,7 +332,7 @@ The `abbreviateCurrencyValue` function converts a number into a currency system 
 
 ### Example Usage
 ```typescript
-import { abbreviateCurrencyValue } from '@lxu/utils';
+import { abbreviateCurrencyValue } from '@xmanscript/utils';
 
 const value1 = 1500000000; // 1.5 billion
 const value2 = 7500000;    // 7.5 million
@@ -358,7 +358,7 @@ The `omitKey` function removes a specified key from an object and returns a new 
 
 ### Example Usage
 ```typescript
-import { omitKey } from '@lxu/utils';
+import { omitKey } from '@xmanscript/utils';
 
 const user = {
   id: 1,
@@ -384,7 +384,7 @@ The `setKeysToZeroInObjects` function takes an array of objects and an array of 
 
 ### Example Usage
 ```typescript
-import { setKeysToZeroInObjects } from '@lxu/utils';
+import { setKeysToZeroInObjects } from '@xmanscript/utils';
 
 const data = [
   { id: 1, value1: 10, value2: 20 },
@@ -412,7 +412,7 @@ The `toggleStringInArray` function removes the target string from the array if i
 
 ### Example Usage
 ```typescript
-import { toggleStringInArray } from '@lxu/utils';
+import { toggleStringInArray } from '@xmanscript/utils';
 
 const myArray = ['apple', 'banana', 'cherry'];
 
@@ -438,7 +438,7 @@ The `toggleObjectInArray` function removes the target object from the array if i
 
 ### Example Usage
 ```typescript
-import { toggleObjectInArray } from '@lxu/utils';
+import { toggleObjectInArray } from '@xmanscript/utils';
 
 const data = [
   { id: 1, name: 'Alice' },
@@ -466,7 +466,7 @@ The `calculateAndInjectPercentageByMaxValue` function calculates the percentage 
 
 ### Example Usage
 ```typescript
-import { calculateAndInjectPercentageByMaxValue } from '@lxu/utils';
+import { calculateAndInjectPercentageByMaxValue } from '@xmanscript/utils';
 
 const data = [
   { name: 'A', value: 50 },
@@ -497,7 +497,7 @@ The `calculateAndInjectPercentageBySum` function calculates the percentage of a 
 
 ### Example Usage
 ```typescript
-import { calculateAndInjectPercentageBySum } from '@lxu/utils';
+import { calculateAndInjectPercentageBySum } from '@xmanscript/utils';
 
 const data = [
   { name: 'A', value: 25 },
@@ -530,7 +530,7 @@ The `calculateSumOfKey` function calculates the sum of a specified key in an arr
 
 ### Example Usage
 ```typescript
-import { calculateSumOfKey } from '@lxu/utils';
+import { calculateSumOfKey } from '@xmanscript/utils';
 
 const data = [
   { value: 10 },
@@ -556,7 +556,7 @@ The `setZeroValueForMatchingValuesOfAKey` function changes the 'value' property 
 
 ### Example Usage
 ```typescript
-import { setZeroValueForMatchingValuesOfAKey } from '@lxu/utils';
+import { setZeroValueForMatchingValuesOfAKey } from '@xmanscript/utils';
 
 const data = [
   { name: 'A', value: 'x' },
@@ -587,7 +587,7 @@ The `scrollToComponent` function scrolls to a specified component on the page an
 
 ### Example Usage
 ```typescript
-import { scrollToComponent } from '@lxu/utils';
+import { scrollToComponent } from '@xmanscript/utils';
 
 // Scroll to component with id "myComponent" and focus on it after scrolling.
 scrollToComponent({ componentId: 'myComponent', focusAfterScroll: true });
@@ -606,7 +606,7 @@ The `convertNestedKeysToObject` function converts an input object with nested ke
 ## Example Usage
 
 ```typescript
-import { convertNestedKeysToObject } from '@lxu/utils';
+import { convertNestedKeysToObject } from '@xmanscript/utils';
 
 const inputObject = {
   'person[0].name': 'Alice',
@@ -643,7 +643,7 @@ The `distributePercentageEquallyWithRemainder` function divides a given percenta
 
 ### Example Usage
 ```typescript
-import { distributePercentageEquallyWithRemainder } from '@lxu/utils';
+import { distributePercentageEquallyWithRemainder } from '@xmanscript/utils';
 
 const partsToDivide = [
   { percentage: 30 },
@@ -669,7 +669,7 @@ The `splitArrayIntoChunks` function splits an array into multiple arrays of a sp
 
 ### Example Usage
 ```typescript
-import { splitArrayIntoChunks } from '@lxu/utils';
+import { splitArrayIntoChunks } from '@xmanscript/utils';
 
 const originalArray = [
   { id: 1, name: 'Item 1' },
@@ -703,7 +703,7 @@ The `getFileExtension` function takes a URL as input and returns the file extens
 
 ### Example Usage
 ```typescript
-import { getFileExtension } from '@lxu/utils';
+import { getFileExtension } from '@xmanscript/utils';
 
 const url1 = 'https://example.com/image.jpg';
 const url2 = 'https://example.com/document.pdf';
@@ -728,7 +728,7 @@ The `removeObjectFromArray` function removes a specified object from an array of
 
 ### Example Usage
 ```typescript
-import { removeObjectFromArray } from '@lxu/utils';
+import { removeObjectFromArray } from '@xmanscript/utils';
 
 const array = [
   { id: 1, name: 'Alice' },
@@ -759,7 +759,7 @@ The `parseToBoolean` function takes a string value and returns a boolean value b
 
 ### Example Usage
 ```typescript
-import { parseToBoolean } from '@lxu/utils';
+import { parseToBoolean } from '@xmanscript/utils';
 
 const result1 = parseToBoolean('true');
 // Result: true
@@ -783,7 +783,7 @@ The `groupArrayOfObjectsByValueOfAKey` function takes an array of objects and a 
 
 ### Example Usage
 ```typescript
-import { groupArrayOfObjectsByValueOfAKey } from '@lxu/utils';
+import { groupArrayOfObjectsByValueOfAKey } from '@xmanscript/utils';
 
 const data = [
   { category: 'A', value: 1 },
@@ -810,7 +810,7 @@ The `countKeyOccurrences` function counts the number of occurrences of a specifi
 
 ### Example Usage
 ```typescript
-import { countKeyOccurrences } from '@lxu/utils';
+import { countKeyOccurrences } from '@xmanscript/utils';
 
 const jsonObject = {
  key1: 'value',
@@ -837,7 +837,7 @@ The `distributePercentageEquall` function takes a JSON object and a key, and upd
 
 ### Example Usage
 ```typescript
-import { distributePercentageEquall } from '@lxu/utils';
+import { distributePercentageEquall } from '@xmanscript/utils';
 
 const jsonObject = {
   items: [
@@ -867,7 +867,7 @@ The `uniqueValuesOfKey` function is used to extract unique string values from a 
 ### Example Usage
 
 ```typescript
-import { uniqueValuesOfKey } from '@lxu/utils';
+import { uniqueValuesOfKey } from '@xmanscript/utils';
 
 const data = [
   { id: 1, name: 'John' },
@@ -891,7 +891,7 @@ The `formatNumberToCommaString` function converts a number to a comma-separated 
 
 ### Example Usage
 ```typescript
-import { formatNumberToCommaString } from '@lxu/utils';
+import { formatNumberToCommaString } from '@xmanscript/utils';
 
 const number = 1234567.89;
 const formattedNumber = formatNumberToCommaString(number);
@@ -914,7 +914,7 @@ The `getMinMax` function finds the minimum and maximum values of a specified key
 
 ### Example Usage
 ```typescript
-import { getMinMax } from '@lxu/utils';
+import { getMinMax } from '@xmanscript/utils';
 
 const data = [
   { age: 25 },
