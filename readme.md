@@ -54,11 +54,28 @@ pnpm add @lxu/utils
 9. abbreviateCurrencyValue
 10. omitKey
 11. setKeysToZeroInObjects
-12. 
+12. toggleStringInArray
+13. toggleObjectInArray
+14. calculateAndInjectPercentageByMaxValue
+15. calculateAndInjectPercentageBySum
+16. calculateSumOfKey
+17. setZeroValueForMatchingValuesOfAKey
+18. scrollToComponent
+19. convertNestedKeysToObject
+20. distributePercentageEquallyWithRemainder
+21. splitArrayIntoChunks
+22. getFileExtension
+23. removeObjectFromArray
+24. parseToBoolean
+25. groupArrayOfObjectsByValueOfAKey
+26. countKeyOccurrences
+27. distributePercentageEquall
+28. uniqueValuesOfKey
+29. formatNumberToCommaString
+30. getMinMax
 
-
-
-## `partitionObjectsByKey` Function
+##
+## 1. `partitionObjectsByKey` Function
 
 The `partitionObjectsByKey` function splits an array of objects into two separate arrays based on the presence of a specified key.
 
@@ -95,7 +112,7 @@ console.log(withoutKey);
 // ]
 
 ```
-## `convertNestedKeysToObject` Function
+## 2. `convertNestedKeysToObject` Function
 
 The `convertNestedKeysToObject` function converts an input object with nested keys in the format of "name[index].nestedKey" into an output object with nested arrays and objects.
 
@@ -129,7 +146,7 @@ const convertedObject = convertNestedKeysToObject(input);
 // } 
 ```
 
-## `markCheckedByStringMatch` Function
+## 3. `markCheckedByStringMatch` Function
 
 The `markCheckedByStringMatch` function adds a "checked" field to each object in an array based on whether a corresponding string value is included in another array.
 
@@ -168,7 +185,7 @@ const itemsWithCheckedField = markCheckedByStringMatch(items, selectedItems, 'na
 // ]
 ```
 
-## `intersectObjects` Function
+## 4. `intersectObjects` Function
 
 The `intersectObjects` function takes two objects as input and returns a new object containing only the properties that exist in both input objects.
 
@@ -200,7 +217,7 @@ const intersection = intersectObjects(object1, object2);
 ```
 
 
-## `containsBinaryData` Function
+## 5. `containsBinaryData` Function
 
 The `containsBinaryData` function recursively checks if an object or any of its nested properties contain binary data.
 
@@ -233,7 +250,7 @@ console.log(hasNoBinary); // Result: false
 ``````
 
 
-## `isJSONObject` Function
+## 6. `isJSONObject` Function
 
 The `isJSONObject` function checks if a given string is a valid JSON object.
 
@@ -254,7 +271,7 @@ console.log(isJSONObject(jsonString1)); // true
 console.log(isJSONObject(jsonString2)); // false
 ```
 
-## `objectToFormDataWithFiles` Function
+## 7. `objectToFormDataWithFiles` Function
 
 The `objectToFormDataWithFiles` function converts a JSON object into a FormData object, handling file uploads and nested objects.
 
@@ -281,7 +298,7 @@ const formData = objectToFormDataWithFiles({
 // Use `formData` in a fetch request or form submission.
 ```
 
-## `areObjectsEqual` Function
+## 8. `areObjectsEqual` Function
 
 The `areObjectsEqual` function checks if two objects are equal by comparing their keys and values.
 
@@ -303,7 +320,7 @@ const obj3 = { name: 'Alice', age: 25 };
 console.log(areObjectsEqual(obj1, obj2)); // true
 console.log(areObjectsEqual(obj1, obj3)); // false
 ```
-## `abbreviateCurrencyValue` Function
+## 9.`abbreviateCurrencyValue` Function
 
 The `abbreviateCurrencyValue` function converts a number into a currency system by abbreviating it with "B" for billions, "M" for millions, and "K" for thousands.
 
@@ -328,8 +345,8 @@ console.log(abbreviateCurrencyValue(value3)); // "2.5 K"
 console.log(abbreviateCurrencyValue(value4)); // 42
 ```
 
-## `omitKey` Function
-r
+## 10. `omitKey` Function
+
 The `omitKey` function removes a specified key from an object and returns a new object without that key.
 
 ### Parameters
@@ -354,7 +371,7 @@ const userWithoutId = omitKey(user, 'id');
 // Result: { name: 'John', age: 30 }
 ```
 
-## `setKeysToZeroInObjects` Function
+## 11. `setKeysToZeroInObjects` Function
 
 The `setKeysToZeroInObjects` function takes an array of objects and an array of keys, and returns a new array of objects where the specified keys are assigned the value of zero.
 
@@ -382,7 +399,7 @@ const newData = setKeysToZeroInObjects(data, ['value1', 'value2']);
 // ]
 ```
 
-## `toggleStringInArray` Function
+## 12. `toggleStringInArray` Function
 
 The `toggleStringInArray` function removes the target string from the array if it exists, otherwise, it adds the target string to the array.
 
@@ -408,7 +425,7 @@ const newArray2 = toggleStringInArray(myArray, 'strawberry');
 // Result: ['apple', 'banana', 'cherry', 'strawberry']
 ```
 
-## `toggleObjectInArray` Function
+## 13. `toggleObjectInArray` Function
 
 The `toggleObjectInArray` function removes the target object from the array if it exists, otherwise, it adds it to the array. The equality comparison is done using the `isEqual` function.
 
@@ -436,7 +453,7 @@ const updatedData1 = toggleObjectInArray(data, { id: 2, name: 'Bob' });
 const updatedData2 = toggleObjectInArray(data, { id: 3, name: 'Charlie' });
 // Result: [{ id: 1, name: 'Alice' }, { id: 3, name: 'Charlie' }]
 ```
-## `calculateAndInjectPercentageByMaxValue` Function
+## 14. `calculateAndInjectPercentageByMaxValue` Function
 
 The `calculateAndInjectPercentageByMaxValue` function calculates the percentage of a specific key's value in each object of an array and injects the percentage value into each object based on the max value of that key.
 
@@ -467,7 +484,7 @@ const newData = calculateAndInjectPercentageByMaxValue(data, 'value');
 // ]
 ```
 
-## `calculateAndInjectPercentageBySum` Function
+## 15. `calculateAndInjectPercentageBySum` Function
 
 The `calculateAndInjectPercentageBySum` function calculates the percentage of a specific key's value in each object of an array and injects the percentage value into each object based on the sum of values of the key.
 
@@ -500,7 +517,7 @@ const newData = calculateAndInjectPercentageBySum(data, 'value');
 // ]
 ```
 
-## `calculateSumOfKey` Function
+## 16. `calculateSumOfKey` Function
 
 The `calculateSumOfKey` function calculates the sum of a specified key in an array of objects.
 
@@ -525,7 +542,7 @@ const total = calculateSumOfKey(data, 'value');
 
 // Result: 60
 ```
-## `setZeroValueForMatchingValuesOfAKey` Function
+## 17. `setZeroValueForMatchingValuesOfAKey` Function
 
 The `setZeroValueForMatchingValuesOfAKey` function changes the 'value' property of objects in an array if their specified key-value pair matches the provided values. The 'value' property of matching objects will be set to zero.
 
@@ -556,7 +573,7 @@ const modifiedData = setZeroValueForMatchingValuesOfAKey(data, 'value', ['x']);
 //   { name: 'C', value: 0 },
 // ]
 ```
-## `scrollToComponent` Function
+## 18. `scrollToComponent` Function
 
 The `scrollToComponent` function scrolls to a specified component on the page and optionally focuses on it after scrolling.
 
@@ -576,7 +593,7 @@ import { scrollToComponent } from '@lxu/utils';
 scrollToComponent({ componentId: 'myComponent', focusAfterScroll: true });
 ```
 
-## `convertNestedKeysToObject` Function
+## 19. `convertNestedKeysToObject` Function
 
 The `convertNestedKeysToObject` function converts an input object with nested keys in the format of "name[index].nestedKey" into an output object with nested arrays and objects.
 
@@ -614,7 +631,7 @@ console.log(outputObject);
 // }
 ```
 
-## `distributePercentageEquallyWithRemainder` Function
+## 20. `distributePercentageEquallyWithRemainder` Function
 
 The `distributePercentageEquallyWithRemainder` function divides a given percentage into equal parts and distributes any remaining percentage across the parts.
 
@@ -639,7 +656,7 @@ const dividedParts = distributePercentageEquallyWithRemainder(partsToDivide);
 // Result: [{ percentage: 33 }, { percentage: 33 }, { percentage: 34 }]
 ```
 
-## `splitArrayIntoChunks` Function
+## 21. `splitArrayIntoChunks` Function
 
 The `splitArrayIntoChunks` function splits an array into multiple arrays of a specified size.
 
@@ -674,7 +691,7 @@ const subarrays = splitArrayIntoChunks(originalArray, 2);
 
 
 
-## `getFileExtension` Function
+## 22. `getFileExtension` Function
 
 The `getFileExtension` function takes a URL as input and returns the file extension of the URL as a lowercase string. If the URL is undefined or empty, it returns an empty string. If no file extension is found in the URL, it returns null.
 
@@ -698,7 +715,7 @@ const extension3 = getFileExtension(url3); // Result: null
 const extension4 = getFileExtension(undefined); // Result: ''
 ```
 
-## `removeObjectFromArray` Function
+## 23. `removeObjectFromArray` Function
 
 The `removeObjectFromArray` function removes a specified object from an array of objects based on a deep comparison.
 
@@ -730,7 +747,7 @@ console.log(updatedArray);
 // ]
 ```
 
-## `parseToBoolean` Function
+## 24. `parseToBoolean` Function
 
 The `parseToBoolean` function takes a string value and returns a boolean value based on whether the string is equal to "true."
 
@@ -753,7 +770,7 @@ const result2 = parseToBoolean('false');
 ```
 
 
-## `groupArrayOfObjectsByValueOfAKey` Function
+## 25. `groupArrayOfObjectsByValueOfAKey` Function
 
 The `groupArrayOfObjectsByValueOfAKey` function takes an array of objects and a key, and groups the objects based on the similarity of their values for that key.
 
@@ -780,7 +797,7 @@ const groupedData = groupArrayOfObjectsByValueOfAKey(data, 'category');
 ```
 
 
-## `countKeyOccurrences` Function
+## 26. `countKeyOccurrences` Function
 
 The `countKeyOccurrences` function counts the number of occurrences of a specific key in a JSON object or array.
 
@@ -807,7 +824,7 @@ const jsonObject = {
 const keyCount = countKeyOccurrences(jsonObject, 'key1');
 // Result: 2 (Occurrences of 'key1' in the JSON object)
 ```
-## `distributePercentageEquall` Function
+## 27. `distributePercentageEquall` Function
 
 The `distributePercentageEquall` function takes a JSON object and a key, and updates the values of that key in the object to distribute a percentage evenly among all occurrences of the key.
 
@@ -834,7 +851,7 @@ const updatedJsonObject = distributePercentageEquall(jsonObject, 'percentage');
 // Result: All items' 'percentage' values in the JSON object are evenly distributed. {"items": [{ "name": "A", "percentage": 33 },{ "name": "B", "percentage": 33 },{ "name": "C", "percentage": 34 }]}
 ```
 
-## `uniqueValuesOfKey` function
+## 28. `uniqueValuesOfKey` function
 
 The `uniqueValuesOfKey` function is used to extract unique string values from a specified key in an array of objects.
 
@@ -862,7 +879,7 @@ const uniqueNames = uniqueValuesOfKey(data, 'name');
 console.log(uniqueNames);
 // Output: ['John', 'Jane']
 ```
-## `formatNumberToCommaString` Function
+## 29. `formatNumberToCommaString` Function
 
 The `formatNumberToCommaString` function converts a number to a comma-separated string representation, rounded to the nearest whole number.
 
@@ -884,7 +901,7 @@ console.log(formattedNumber);
 
 
 
-## `getMinMax` Function
+## 30. `getMinMax` Function
 
 The `getMinMax` function finds the minimum and maximum values of a specified key in an array of objects.
 
