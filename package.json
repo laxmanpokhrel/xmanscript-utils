@@ -6,10 +6,11 @@
     "type": "git",
     "url": "https://github.com/laxmanpokhrel/lxu-utils"
   },
+  "keywords": ["utils","comples","complex utilities","utilities","light weight"],
   "bugs": {
-    "url": "https://github.com/"
+    "url": "https://github.com/laxmanpokhrel/lxu-utils/issues"
   },
-  "homepage": "https://github.com/laxmanpokhrel/lxu-utils",
+  "homepage": "https://github.com/laxmanpokhrel/lxu-utils#readme",
   "main": "./lib/index.js",
   "scripts": {
     "build": "rm -rf lib && tsc",
