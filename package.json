@@ -1,18 +1,19 @@
 {
-  "name": "lxu-utils",
-  "version": "3.0.0",
+  "name": "@xmanscript/utils",
+  "version": "1.0.2",
   "description": "Complex utility functions package with more that 20+ functions.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/laxmanpokhrel/lxu-utils"
+    "url": "https://github.com/laxmanpokhrel/xmanscript-utils"
   },
+  "keywords": ["utils","comples","complex utilities","utilities","light weight"],
   "bugs": {
-    "url": "https://github.com/"
+    "url": "https://github.com/laxmanpokhrel/xmanscript-utils/issues"
   },
-  "homepage": "https://github.com/",
+  "homepage": "https://github.com/laxmanpokhrel/xmanscript-utils#readme",
   "main": "./lib/index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "rm -rf lib && tsc",
     "prepare": "husky install"
   },
   "author": "Laxman Pokhrel",
