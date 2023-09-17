@@ -40,7 +40,7 @@ jobs:
       # create release info and push it upstream
       - name: conventional Changelog Action
         id: changelog
-        uses: TriPSs/conventional-changelog-action@v3
+        uses: TriPSs/conventional-changelog-action@v4
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           version-file: './package.json'
