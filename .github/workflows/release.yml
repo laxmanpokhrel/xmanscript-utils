@@ -5,9 +5,10 @@ on:
       - main
     # paths-ignore:
     #   - 'data/**'
-
-# concurrency:
-#   group: 'main-branch'
+    # concurrency:
+    #   group: 'main-branch'
+permissions:
+  contents: write
 
 jobs:
   changelog:
@@ -37,7 +38,7 @@ jobs:
       - name: update app config
         run: sed -i 's/0.0.0/${{ steps.package-version.outputs.current-version}}/g' config/app.json
 
-      # create release info and push it upstream
+      # create relese info and push it upstream
       - name: conventional Changelog Action
         id: changelog
         uses: TriPSs/conventional-changelog-action@v3
