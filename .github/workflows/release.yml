@@ -43,7 +43,7 @@ jobs:
         uses: TriPSs/conventional-changelog-action@v3
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          version-file: './package.json,./package-lock.json'
+          version-file: './package.json'
           git-branch: 'release-from-${{ github.sha }}'
           skip-git-pull: true
 
@@ -68,7 +68,7 @@ jobs:
         if: steps.changelog.outputs.skipped == 'false'
         uses: ncipollo/release-action@v1.13.0
         with:
-          token: ${{ secrets.CHANGELOG_RELEASE }}
+          # token: ${{ secrets.CHANGELOG_RELEASE }}
           tag: ${{ steps.changelog.outputs.tag }}
           name: ${{ steps.changelog.outputs.tag }}
           body: ${{ steps.changelog.outputs.clean_changelog }}
