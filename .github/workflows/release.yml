@@ -4,10 +4,10 @@ on:
     branches:
       - main
     paths-ignore:
-      - "data/**"
+      - 'data/**'
 
 concurrency:
-  group: "main-branch"
+  group: 'main-branch'
 
 jobs:
   changelog:
@@ -43,8 +43,8 @@ jobs:
         uses: TriPSs/conventional-changelog-action@v3
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          version-file: "./package.json,./package-lock.json,./config/app.json"
-          git-branch: "release-from-${{ github.sha }}"
+          version-file: './package.json,./package-lock.json,./config/app.json'
+          git-branch: 'release-from-${{ github.sha }}'
           skip-git-pull: true
 
       # create PR using GitHub CLI
@@ -66,9 +66,12 @@ jobs:
       # release info is now in main so we can continue as before
       - name: create release with last commit
         if: steps.changelog.outputs.skipped == 'false'
-        uses: ncipollo/release-action@v1
+        uses: ncipollo/release-action@v1.13.0
         with:
-          token: ${{ secrets.CHANGELOG_RELEASE }}
+          # token: ${{ secrets.CHANGELOG_RELEASE }}
           tag: ${{ steps.changelog.outputs.tag }}
           name: ${{ steps.changelog.outputs.tag }}
           body: ${{ steps.changelog.outputs.clean_changelog }}
+
+          # - name: Create Release
+          # uses: ncipollo/release-action@v1.13.0
