@@ -3,15 +3,15 @@ on:
   push:
     branches:
       - main
-    paths-ignore:
-      - 'data/**'
+    # paths-ignore:
+    #   - 'data/**'
 
-concurrency:
-  group: 'main-branch'
+# concurrency:
+#   group: 'main-branch'
 
 jobs:
   changelog:
-    if: github.repository == 'laxmanpokhrel/xmanscript-util'
+    if: github.repository == 'laxmanpokhrel/xmanscript-utils'
     runs-on: ubuntu-latest
 
     steps:
@@ -68,7 +68,7 @@ jobs:
         if: steps.changelog.outputs.skipped == 'false'
         uses: ncipollo/release-action@v1.13.0
         with:
-          # token: ${{ secrets.CHANGELOG_RELEASE }}
+          token: ${{ secrets.CHANGELOG_RELEASE }}
           tag: ${{ steps.changelog.outputs.tag }}
           name: ${{ steps.changelog.outputs.tag }}
           body: ${{ steps.changelog.outputs.clean_changelog }}
