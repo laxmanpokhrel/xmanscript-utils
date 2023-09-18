@@ -20,7 +20,7 @@
  */
 export function partitionObjectsByKey(
   arr: Record<string, any>[],
-  key: string,
+  key: string
 ): [Record<string, any>[], Record<string, any>[]] {
   if (!Array.isArray(arr) || typeof key !== 'string') {
     console.error('Invalid input. Expected an array of objects and a string key.');
@@ -102,7 +102,7 @@ export function objectToFormDataWithFiles(obj: Record<string, any>): FormData {
   file.forEach((item: File) => {
     formData.append('file', item);
   });
-  Object.keys(rest).forEach((key) => {
+  Object.keys(rest).forEach(key => {
     const value = rest[key];
     if (Array.isArray(value) || isJSONObject(value)) formData.append(key, JSON.stringify(value));
     else formData.append(key, value);
@@ -179,6 +179,7 @@ export function abbreviateCurrencyValue(labelValue: number): string | number {
  * removed.
  */
 export function omitKey<T, K extends keyof T>(obj: T, key: K): Omit<T, K> {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { [key]: omitted, ...rest } = obj;
   return rest;
 }
@@ -195,9 +196,9 @@ export function omitKey<T, K extends keyof T>(obj: T, key: K): Omit<T, K> {
 export function setKeysToZeroInObjects(arr: Record<string, any>[], keys: string[]): Record<string, any>[] {
   if (!keys.length) return arr;
 
-  return arr.map((obj) => {
+  return arr.map(obj => {
     const newObj: Record<string, any> = { ...obj };
-    keys.forEach((key) => {
+    keys.forEach(key => {
       newObj[key] = 0;
     });
     return newObj;
@@ -232,7 +233,7 @@ export function toggleStringInArray(arr: string[], targetString: string): string
  * @returns the updated array after either removing or adding the target object.
  */
 export function toggleObjectInArray<T>(arr: T[], targetObject: T): T[] {
-  const index = arr.findIndex((obj) => areObjectsEqual(obj, targetObject));
+  const index = arr.findIndex(obj => areObjectsEqual(obj, targetObject));
 
   if (index !== -1) {
     arr.splice(index, 1);
@@ -278,7 +279,7 @@ export function calculateAndInjectPercentageByMaxValue(arr: Record<string, any>[
     return arr;
   }
 
-  const maxValue = Math.max(...arr.map((obj) => obj[key]));
+  const maxValue = Math.max(...arr.map(obj => obj[key]));
   for (const obj of arr) {
     obj.percentage = parseFloat(((obj[key] / maxValue) * 100).toFixed(2));
   }
@@ -336,9 +337,9 @@ export function calculateSumOfKey(data: Record<string, any>[], key: string) {
 export function setZeroValueForMatchingValuesOfAKey(
   arr: Record<string, any>[],
   key: string,
-  values: string[],
+  values: string[]
 ): Record<string, any>[] {
-  return arr.map((item) => {
+  return arr.map(item => {
     if (values.includes(item[key])) {
       return { ...item, value: 0 };
     }
@@ -353,6 +354,7 @@ type scrollToComponentProps = { componentId: string; focusAfterScroll: boolean }
  * @param {scrollToComponentProps}  - - `componentId`: The id of the component to scroll to.
  */
 export function scrollToComponent({ componentId, focusAfterScroll }: scrollToComponentProps) {
+  // eslint-disable-next-line no-undef
   const element = document.getElementById(componentId);
 
   if (element) {
@@ -418,7 +420,7 @@ export function distributePercentageEquallyWithRemainder(array: Record<string, a
   const parts: Record<string, any>[] = [];
 
   // Create equal parts with the calculated percentage
-  for (let i = 0; i < array.length; i++) {
+  for (let i = 0; i < array.length; i += 1) {
     const part: Record<string, any> = {
       percentage: +equalPartPercentage,
     };
@@ -426,8 +428,8 @@ export function distributePercentageEquallyWithRemainder(array: Record<string, a
   }
 
   // Distribute the remaining percentage across the parts
-  for (let i = 0; i < remainingPercentage; i++) {
-    parts[i].percentage++;
+  for (let i = 0; i < remainingPercentage; i += 1) {
+    parts[i].percentage += 1;
   }
   return parts;
 }
@@ -446,7 +448,7 @@ export function distributePercentageEquallyWithRemainder(array: Record<string, a
  */
 
 export function markCheckedByStringMatch<T>(objects: T[], strings: string[], chooseKey: keyof T): T[] {
-  const x = objects.map((object) => {
+  const x = objects.map(object => {
     const chooseValue = (object[chooseKey] as unknown as string).toString();
     const checked = strings.includes(chooseValue);
     return { ...object, checked };
@@ -518,7 +520,7 @@ export function getFileExtension(url: string | undefined): string | null {
  * @returns the updated array after removing the specified object.
  */
 export function removeObjectFromArray(objects: Record<string, any>[], object: Record<string, any>) {
-  const index: number = objects.findIndex((item) => JSON.stringify(item) === JSON.stringify(object));
+  const index: number = objects.findIndex(item => JSON.stringify(item) === JSON.stringify(object));
   if (index < 0) return objects;
   const result = [...objects.slice(0, index), ...objects.slice(index + 1)];
   return result;
@@ -612,15 +614,15 @@ export function countKeyOccurrences(json: any, key: string) {
 
   if (typeof json === 'object' && !Array.isArray(json)) {
     const keys = Object.keys(json);
-    if (keys.includes(key)) count++;
+    if (keys.includes(key)) count += 1;
 
-    keys.forEach((k) => {
+    keys.forEach(k => {
       count += countKeyOccurrences(json[k], key);
     });
   }
 
   if (Array.isArray(json)) {
-    json.forEach((item) => {
+    json.forEach(item => {
       count += countKeyOccurrences(item, key);
     });
   }
@@ -648,7 +650,7 @@ export function distributePercentageEquall(json: any, key: string) {
         obj[key] = Math.floor(100 / count);
       }
 
-      keys.forEach((k) => {
+      keys.forEach(k => {
         updatePercentage(obj[k]);
       });
     }
@@ -662,7 +664,7 @@ export function distributePercentageEquall(json: any, key: string) {
         let remainingValue = 100 - valuePerKey * (percentageCount - 1);
         let lastPercentageIndex = -1;
 
-        for (let i = 0; i < obj.length; i++) {
+        for (let i = 0; i < obj.length; i += 1) {
           const item = obj[i];
           if (typeof item === 'object' && key in item) {
             if (lastPercentageIndex >= 0) {
@@ -678,7 +680,7 @@ export function distributePercentageEquall(json: any, key: string) {
         }
       }
 
-      obj.forEach((item) => {
+      obj.forEach(item => {
         updatePercentage(item);
       });
     }
@@ -738,7 +740,7 @@ export function getMinMax(arr: any[], key: string): { min: any; max: any } {
     return { min: null, max: null };
   }
 
-  const values = arr.map((item) => +item[key]);
+  const values = arr.map(item => +item[key]);
   const min = Math.min(...values);
   const max = Math.max(...values);
 

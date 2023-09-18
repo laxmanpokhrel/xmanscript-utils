@@ -20,5 +20,5 @@
     "allowSyntheticDefaultImports": false
   },
   "exclude": ["node_modules"],
-  "include": [".eslintrc.cjs", "src", "src/**/*.ts"]
+  "include": [".eslintrc.js", "src", "src/**/*.ts"]
 }
