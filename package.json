@@ -1,10 +1,10 @@
 {
   "name": "@xmanscript/utils",
-  "version": "0.0.0-development",
-  "description": "Complex utility functions package with more that 20+ functions.",
+  "version": "1.0.0",
+  "description": "Complex utility functions package with 20+ utility functions.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/laxmanpokhrel/xmanscript-utils"
+    "url": "https://github.com/laxmanpokhrel/xmanscript-utils.git"
   },
   "keywords": [
     "utils",
