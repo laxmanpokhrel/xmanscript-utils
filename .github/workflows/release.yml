@@ -43,14 +43,25 @@ jobs:
         run: sed -i 's/0.0.0/${{ steps.package-version.outputs.current-version}}/g' package.json
 
       # create relese info and push it upstream
-      - name: conventional Changelog Action
+      # - name: conventional Changelog Action
+      #   id: changelog
+      #   uses: TriPSs/conventional-changelog-action@v3
+      #   with:
+      #     github-token: ${{ secrets.GITHUB_TOKEN }}
+      #     version-file: './package.json'
+      #     git-branch: 'release-from-${{ github.sha }}'
+      #     skip-git-pull: true
+
+      - name: Conventional Changelog Action
         id: changelog
         uses: TriPSs/conventional-changelog-action@v3
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          version-file: './package.json'
+          github-token: ${{ secrets.github_token }}
+          git-user-name: 'laxmanpokhrel'
+          git-user-email: 'laxmanpokhrel102@gmail.com'
+          version-file: 'package.json'
           git-branch: 'release-from-${{ github.sha }}'
-          skip-git-pull: true
+          # output-file: 'false'
 
       # create PR using GitHub CLI
       - name: create PR with release info

@@ -1,4 +1,4 @@
-# `@xmanscript/utils` 
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 ### Library that has complex utility functions used to handle complex utility operations in any react project.
 
