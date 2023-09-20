@@ -61,18 +61,17 @@ pnpm add @xmanscript/utils
 16. calculateSumOfKey
 17. setZeroValueForMatchingValuesOfAKey
 18. scrollToComponent
-19. convertNestedKeysToObject
-20. distributePercentageEquallyWithRemainder
-21. splitArrayIntoChunks
-22. getFileExtension
-23. removeObjectFromArray
-24. parseToBoolean
-25. groupArrayOfObjectsByValueOfAKey
-26. countKeyOccurrences
-27. distributePercentageEquall
-28. uniqueValuesOfKey
-29. formatNumberToCommaString
-30. getMinMax
+19. distributePercentageEquallyWithRemainder
+20. splitArrayIntoChunks
+21. getFileExtension
+22. removeObjectFromArray
+23. parseToBoolean
+24. groupArrayOfObjectsByValueOfAKey
+25. countKeyOccurrences
+26. distributePercentageEquall
+27. uniqueValuesOfKey
+28. formatNumberToCommaString
+29. getMinMax
 
 ##
 ## 1. `partitionObjectsByKey` Function
@@ -593,45 +592,8 @@ import { scrollToComponent } from '@xmanscript/utils';
 scrollToComponent({ componentId: 'myComponent', focusAfterScroll: true });
 ```
 
-## 19. `convertNestedKeysToObject` Function
 
-The `convertNestedKeysToObject` function converts an input object with nested keys in the format of "name[index].nestedKey" into an output object with nested arrays and objects.
-
-## Parameters
-- `input` (Type: `Record<string, any>`): A JavaScript object with string keys and any values.
-
-## Returns
-- `any`: An object with the converted input. The input is an object with string keys and any values. The function converts any keys that match the pattern of "name[index].nestedKey" into nested objects within an array. The function returns the converted object.
-
-## Example Usage
-
-```typescript
-import { convertNestedKeysToObject } from '@xmanscript/utils';
-
-const inputObject = {
-  'person[0].name': 'Alice',
-  'person[0].age': 30,
-  'person[1].name': 'Bob',
-  'person[1].age': 25,
-  'city.population': 1000000,
-  'city.area': 50,
-};
-
-const outputObject = convertNestedKeysToObject(inputObject);
-
-console.log(outputObject);
-
-// Result:
-// {
-//   person: [
-//     { name: 'Alice', age: 30 },
-//     { name: 'Bob', age: 25 }
-//   ],
-//   city: { population: 1000000, area: 50 }
-// }
-```
-
-## 20. `distributePercentageEquallyWithRemainder` Function
+## 19. `distributePercentageEquallyWithRemainder` Function
 
 The `distributePercentageEquallyWithRemainder` function divides a given percentage into equal parts and distributes any remaining percentage across the parts.
 
@@ -656,7 +618,7 @@ const dividedParts = distributePercentageEquallyWithRemainder(partsToDivide);
 // Result: [{ percentage: 33 }, { percentage: 33 }, { percentage: 34 }]
 ```
 
-## 21. `splitArrayIntoChunks` Function
+## 20. `splitArrayIntoChunks` Function
 
 The `splitArrayIntoChunks` function splits an array into multiple arrays of a specified size.
 
@@ -691,7 +653,7 @@ const subarrays = splitArrayIntoChunks(originalArray, 2);
 
 
 
-## 22. `getFileExtension` Function
+## 21. `getFileExtension` Function
 
 The `getFileExtension` function takes a URL as input and returns the file extension of the URL as a lowercase string. If the URL is undefined or empty, it returns an empty string. If no file extension is found in the URL, it returns null.
 
@@ -715,7 +677,7 @@ const extension3 = getFileExtension(url3); // Result: null
 const extension4 = getFileExtension(undefined); // Result: ''
 ```
 
-## 23. `removeObjectFromArray` Function
+## 22. `removeObjectFromArray` Function
 
 The `removeObjectFromArray` function removes a specified object from an array of objects based on a deep comparison.
 
@@ -747,7 +709,7 @@ console.log(updatedArray);
 // ]
 ```
 
-## 24. `parseToBoolean` Function
+## 23. `parseToBoolean` Function
 
 The `parseToBoolean` function takes a string value and returns a boolean value based on whether the string is equal to "true."
 
@@ -770,7 +732,7 @@ const result2 = parseToBoolean('false');
 ```
 
 
-## 25. `groupArrayOfObjectsByValueOfAKey` Function
+## 24. `groupArrayOfObjectsByValueOfAKey` Function
 
 The `groupArrayOfObjectsByValueOfAKey` function takes an array of objects and a key, and groups the objects based on the similarity of their values for that key.
 
@@ -797,7 +759,7 @@ const groupedData = groupArrayOfObjectsByValueOfAKey(data, 'category');
 ```
 
 
-## 26. `countKeyOccurrences` Function
+## 25. `countKeyOccurrences` Function
 
 The `countKeyOccurrences` function counts the number of occurrences of a specific key in a JSON object or array.
 
@@ -824,7 +786,7 @@ const jsonObject = {
 const keyCount = countKeyOccurrences(jsonObject, 'key1');
 // Result: 2 (Occurrences of 'key1' in the JSON object)
 ```
-## 27. `distributePercentageEquall` Function
+## 26. `distributePercentageEquall` Function
 
 The `distributePercentageEquall` function takes a JSON object and a key, and updates the values of that key in the object to distribute a percentage evenly among all occurrences of the key.
 
@@ -851,7 +813,7 @@ const updatedJsonObject = distributePercentageEquall(jsonObject, 'percentage');
 // Result: All items' 'percentage' values in the JSON object are evenly distributed. {"items": [{ "name": "A", "percentage": 33 },{ "name": "B", "percentage": 33 },{ "name": "C", "percentage": 34 }]}
 ```
 
-## 28. `uniqueValuesOfKey` function
+## 27. `uniqueValuesOfKey` function
 
 The `uniqueValuesOfKey` function is used to extract unique string values from a specified key in an array of objects.
 
@@ -879,7 +841,7 @@ const uniqueNames = uniqueValuesOfKey(data, 'name');
 console.log(uniqueNames);
 // Output: ['John', 'Jane']
 ```
-## 29. `formatNumberToCommaString` Function
+## 28. `formatNumberToCommaString` Function
 
 The `formatNumberToCommaString` function converts a number to a comma-separated string representation, rounded to the nearest whole number.
 
@@ -901,7 +863,7 @@ console.log(formattedNumber);
 
 
 
-## 30. `getMinMax` Function
+## 29. `getMinMax` Function
 
 The `getMinMax` function finds the minimum and maximum values of a specified key in an array of objects.
 
