@@ -24,7 +24,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "commit": "cz",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "test":"nodemon test.ts"
   },
   "author": "Laxman Pokhrel",
   "license": "ISC",

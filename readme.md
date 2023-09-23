@@ -889,3 +889,25 @@ const result = getMinMax(data, 'age');
 console.log(result);
 // Output: { min: 18, max: 42 }
 ```
+## 30. `getDifferenceObject` Function
+
+The `getDifferenceObject` function finds the minimum and maximum values of a specified key in an array of objects.
+
+### Parameters
+- `object1`:  The first object to compare. It should be of type `Record<string, any>`, which means it can have any number of properties of any type.
+- `object2`:  The `object2` parameter is a record (object) containing key-value pairs.
+
+### Returns
+- (Type: `object`): a record object that represents the difference between `object1` and `object2`.
+
+### Example Usage
+```typescript
+import { getDifferenceObject } from '@xmanscript/utils';
+
+const obj1 = { name: 'john', family: 'deo' };
+const obj1 =  { name: 'john', family: { familyName: 'deo' } };
+
+const result = getDifferenceObject(obj1, obj2);
+console.log(result);
+// Output: { family: { familyName: 'deo' } }
+```
