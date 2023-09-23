@@ -72,6 +72,8 @@ pnpm add @xmanscript/utils
 27. uniqueValuesOfKey
 28. formatNumberToCommaString
 29. getMinMax
+30. getDifferenceObject (new)
+31. strictIntersectObjects (new)
 
 ##
 ## 1. `partitionObjectsByKey` Function
