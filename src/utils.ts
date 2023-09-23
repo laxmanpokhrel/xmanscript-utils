@@ -748,13 +748,12 @@ export function getMinMax(arr: any[], key: string): { min: any; max: any } {
 }
 
 /**
- * The strictIntersectObjects function takes two objects as input and returns a new object that contains
- * only the properties that exist in both input objects.
- * @param obj1 - An object of type `Record<string, any>`, which means it can have any number of
- * properties of any type.
- * @param obj2 - The `obj2` parameter is a record object that contains key-value pairs.
- * @returns The function `strictIntersectObjects` returns a new object that contains the intersection of
- * properties between `obj1` and `obj2`.
+ * The function `strictIntersectObjects` takes two objects as input and returns a new object that
+ * contains only the key-value pairs that exist in both input objects and have the same value.
+ * @param obj1 - An object with string keys and any values.
+ * @param obj2 - obj2 is a record object containing key-value pairs.
+ * @returns a new object that contains the key-value pairs from `obj2` that also exist in `obj1` and
+ * have the same value.
  */
 export function strictIntersectObjects(obj1: Record<string, any>, obj2: Record<string, any>): Record<string, any> {
   const obj2Keys = Object.keys(obj2);

@@ -911,3 +911,38 @@ const result = getDifferenceObject(obj1, obj2);
 console.log(result);
 // Output: { family: { familyName: 'deo' } }
 ```
+
+
+# 31. `strictIntersectObjects` Function
+
+The `strictIntersectObjects` takes two objects as input and returns a new object that
+ * contains only the key-value pairs that exist in both input objects and have the same value.
+
+### Parameters
+- `obj1` (Type: `Record<string, any>`): An object that can have any number of properties of any type.
+- `obj2` (Type: `Record<string, any>`): A record object that contains key-value pairs.
+
+### Returns
+- `Record<string, any>`: a new object that contains the key-value pairs from `obj2` that also exist in `obj1` and
+ * have the same value.
+
+### Example Usage
+```typescript
+import { strictIntersectObjects } from '@xmanscript/utils';
+
+const object1 = {
+  name: 'John',
+  age: 30,
+  country: 'USA',
+};
+
+const object2 = {
+  name: 'Sara',
+  age: 30,
+  city: 'New York',
+};
+
+const intersection = strictIntersectObjects(object1, object2);
+
+// Result: { age: 30 }
+```
