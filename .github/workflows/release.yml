@@ -31,6 +31,8 @@ jobs:
         run: npm run build
       - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
         run: npm audit signatures
+      - name: Cleanup Unnecessary Files
+        run: rm -rf node_modules && rm -rf src
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

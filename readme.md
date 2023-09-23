@@ -889,3 +889,60 @@ const result = getMinMax(data, 'age');
 console.log(result);
 // Output: { min: 18, max: 42 }
 ```
+## 30. `getDifferenceObject` Function
+
+The `getDifferenceObject` function finds the minimum and maximum values of a specified key in an array of objects.
+
+### Parameters
+- `object1`:  The first object to compare. It should be of type `Record<string, any>`, which means it can have any number of properties of any type.
+- `object2`:  The `object2` parameter is a record (object) containing key-value pairs.
+
+### Returns
+- (Type: `object`): a record object that represents the difference between `object1` and `object2`.
+
+### Example Usage
+```typescript
+import { getDifferenceObject } from '@xmanscript/utils';
+
+const obj1 = { name: 'john', family: 'deo' };
+const obj1 =  { name: 'john', family: { familyName: 'deo' } };
+
+const result = getDifferenceObject(obj1, obj2);
+console.log(result);
+// Output: { family: { familyName: 'deo' } }
+```
+
+
+# 31. `strictIntersectObjects` Function
+
+The `strictIntersectObjects` takes two objects as input and returns a new object that
+ * contains only the key-value pairs that exist in both input objects and have the same value.
+
+### Parameters
+- `obj1` (Type: `Record<string, any>`): An object that can have any number of properties of any type.
+- `obj2` (Type: `Record<string, any>`): A record object that contains key-value pairs.
+
+### Returns
+- `Record<string, any>`: a new object that contains the key-value pairs from `obj2` that also exist in `obj1` and
+ * have the same value.
+
+### Example Usage
+```typescript
+import { strictIntersectObjects } from '@xmanscript/utils';
+
+const object1 = {
+  name: 'John',
+  age: 30,
+  country: 'USA',
+};
+
+const object2 = {
+  name: 'Sara',
+  age: 30,
+  city: 'New York',
+};
+
+const intersection = strictIntersectObjects(object1, object2);
+
+// Result: { age: 30 }
+```
