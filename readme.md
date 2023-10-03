@@ -53,7 +53,7 @@ pnpm add @xmanscript/utils
 8. areObjectsEqual
 9. abbreviateCurrencyValue
 10. omitKey
-11. setKeysToZeroInObjects
+11. setKeysToValueInObjects
 12. toggleStringInArray
 13. toggleObjectInArray
 14. calculateAndInjectPercentageByMaxValue
@@ -372,9 +372,9 @@ const userWithoutId = omitKey(user, 'id');
 // Result: { name: 'John', age: 30 }
 ```
 
-## 11. `setKeysToZeroInObjects` Function
+## 11. `setKeysToValueInObjects` Function
 
-The `setKeysToZeroInObjects` function takes an array of objects and an array of keys, and returns a new array of objects where the specified keys are assigned the value of zero.
+The `setKeysToValueInObjects` function takes an array of objects and an array of keys, and returns a new array of objects where the specified keys are assigned the value of zero.
 
 ### Parameters
 - `arr` (Type: `Record<string, any>[]`): An array of objects, where each object represents a record with key-value pairs.
@@ -385,14 +385,14 @@ The `setKeysToZeroInObjects` function takes an array of objects and an array of 
 
 ### Example Usage
 ```typescript
-import { setKeysToZeroInObjects } from '@xmanscript/utils';
+import { setKeysToValueInObjects } from '@xmanscript/utils';
 
 const data = [
   { id: 1, value1: 10, value2: 20 },
   { id: 2, value1: 30, value2: 40 },
 ];
 
-const newData = setKeysToZeroInObjects(data, ['value1', 'value2']);
+const newData = setKeysToValueInObjects(data, ['value1', 'value2']);
 
 // Result: [
 //   { id: 1, value1: 0, value2: 0 },
@@ -511,10 +511,10 @@ const newData = calculateAndInjectPercentageBySum(data, 'value');
 
 // Result:
 // [
-//   { name: 'A', value: 50, percentage: 25 },
-//   { name: 'B', value: 75, percentage: 25 },
-//   { name: 'C', value: 100, percentage: 25 },
-//   { name: 'D', value: 100, percentage: 25 },
+//   { name: 'A', value: 25, percentage: 25 },
+//   { name: 'B', value: 25, percentage: 25 },
+//   { name: 'C', value: 25, percentage: 25 },
+//   { name: 'D', value: 25, percentage: 25 },
 // ]
 ```
 
@@ -582,6 +582,8 @@ The `scrollToComponent` function scrolls to a specified component on the page an
 - `props` (Type: `scrollToComponentProps`): An object with two properties:
   - `componentId` (Type: `string`): The id of the component to scroll to.
   - `focusAfterScroll` (Type: `boolean`): A boolean indicating whether to focus on the component after scrolling.
+  - `scrollDelay` (Type: `number`): Delay time to scroll
+  - `focusDelay` (Type: `number`): Delay time to focus
 
 ### Returns
 - No return value.
@@ -590,8 +592,8 @@ The `scrollToComponent` function scrolls to a specified component on the page an
 ```typescript
 import { scrollToComponent } from '@xmanscript/utils';
 
-// Scroll to component with id "myComponent" and focus on it after scrolling.
-scrollToComponent({ componentId: 'myComponent', focusAfterScroll: true });
+// Scroll to component with id "myComponent" and focus on it after scrolling. There is no delay in scrolling and focusing by default.
+scrollToComponent({ componentId: 'myComponent', focusAfterScroll: true, scrollDelay:100, focusDelay:100 });
 ```
 
 
@@ -610,14 +612,18 @@ The `distributePercentageEquallyWithRemainder` function divides a given percenta
 import { distributePercentageEquallyWithRemainder } from '@xmanscript/utils';
 
 const partsToDivide = [
-  { percentage: 30 },
-  { percentage: 20 },
-  { percentage: 25 },
+  { id: 30 },
+  { id: 20 },
+  { id: 25 },
 ];
 
 const dividedParts = distributePercentageEquallyWithRemainder(partsToDivide);
 
-// Result: [{ percentage: 33 }, { percentage: 33 }, { percentage: 34 }]
+//  Result: [ 
+//   { id: 30, percentage:33 },
+//   { id: 20, percentage:33 },
+//   { id: 25, percentage:34 },]
+
 ```
 
 ## 20. `splitArrayIntoChunks` Function

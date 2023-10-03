@@ -185,21 +185,25 @@ export function omitKey<T, K extends keyof T>(obj: T, key: K): Omit<T, K> {
 }
 
 /**
- * The function `setKeysToZeroInObjects` takes an array of objects and an array of keys, and returns a new
- * array of objects where the specified keys are assigned the value 0.
+ * The function `setKeysToValueInObjects` takes an array of objects and an array of keys, and returns a new
+ * array of objects where the specified keys are assigned the `value`
  * @param {Record<string, any>[]} arr - An array of objects, where each object represents a record with
  * key-value pairs.
  * @param {string[]} keys - An array of strings representing the keys that need to be assigned the
- * value of zero in each object in the array.
- * @returns an array of objects where the specified keys are assigned the value of zero.
+ * `value` in each object in the array.
+ * @returns an array of objects where the specified keys are assigned the `value`.
  */
-export function setKeysToZeroInObjects(arr: Record<string, any>[], keys: string[]): Record<string, any>[] {
+export function setKeysToValueInObjects(
+  arr: Record<string, any>[],
+  keys: string[],
+  value: number
+): Record<string, any>[] {
   if (!keys.length) return arr;
 
   return arr.map(obj => {
     const newObj: Record<string, any> = { ...obj };
     keys.forEach(key => {
-      newObj[key] = 0;
+      newObj[key] = value;
     });
     return newObj;
   });
@@ -347,25 +351,52 @@ export function setZeroValueForMatchingValuesOfAKey(
   });
 }
 
-type scrollToComponentProps = { componentId: string; focusAfterScroll: boolean };
+type scrollToComponentProps = {
+  componentId: string;
+  focusAfterScroll?: boolean;
+  scrollDelay?: number;
+  focusDelay?: number;
+};
+
 /**
  * The scrollToComponent function scrolls to a specified component on the page and optionally focuses
  * on it after scrolling.
  * @param {scrollToComponentProps}  - - `componentId`: The id of the component to scroll to.
  */
-export function scrollToComponent({ componentId, focusAfterScroll }: scrollToComponentProps) {
+
+export function scrollToComponent({
+  componentId,
+  focusAfterScroll = false,
+  scrollDelay,
+  focusDelay,
+}: scrollToComponentProps) {
   // eslint-disable-next-line no-undef
   const element = document.getElementById(componentId);
 
   if (element) {
+    // scroll after delay
+    if (scrollDelay) {
+      setTimeout(() => {
+        element.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+        });
+      }, scrollDelay);
+    }
+    // scroll without delay
     element.scrollIntoView({
       behavior: 'smooth',
       block: 'center',
     });
+    // focus to element
     if (focusAfterScroll) {
-      element.focus();
-      setTimeout(() => {}, 800);
-      element.focus();
+      // focus after delay
+      if (focusDelay)
+        setTimeout(() => {
+          element.focus();
+        }, focusDelay || 300);
+      // focus without delay
+      else element.focus();
     }
   }
 }
