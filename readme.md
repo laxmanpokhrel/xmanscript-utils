@@ -59,7 +59,7 @@ pnpm add @xmanscript/utils
 14. calculateAndInjectPercentageByMaxValue
 15. calculateAndInjectPercentageBySum
 16. calculateSumOfKey
-17. setZeroValueForMatchingValuesOfAKey
+17. setValueOfKeyForMatchingValuesOfAKey
 18. scrollToComponent
 19. distributePercentageEquallyWithRemainder
 20. splitArrayIntoChunks
@@ -378,10 +378,11 @@ The `setKeysToValueInObjects` function takes an array of objects and an array of
 
 ### Parameters
 - `arr` (Type: `Record<string, any>[]`): An array of objects, where each object represents a record with key-value pairs.
-- `keys` (Type: `string[]`): An array of strings representing the keys that need to be assigned the value of zero in each object in the array.
+- `keys` (Type: `string[]`): An array of strings representing the keys that need to be assigned the `value` in each object in the array.
+- `value` (Type: `any`): A value that need to be assigned in each object in the array.
 
 ### Returns
-- `Record<string, any>[]`: Returns an array of objects where the specified keys are assigned the value of zero.
+- `Record<string, any>[]`: Returns an array of objects where the specified keys are assigned the specified value.
 
 ### Example Usage
 ```typescript
@@ -392,7 +393,7 @@ const data = [
   { id: 2, value1: 30, value2: 40 },
 ];
 
-const newData = setKeysToValueInObjects(data, ['value1', 'value2']);
+const newData = setKeysToValueInObjects(data, ['value1', 'value2', 0]);
 
 // Result: [
 //   { id: 1, value1: 0, value2: 0 },
@@ -543,35 +544,38 @@ const total = calculateSumOfKey(data, 'value');
 
 // Result: 60
 ```
-## 17. `setZeroValueForMatchingValuesOfAKey` Function
+## 17. `setValueOfKeyForMatchingValuesOfAKey` Function
 
-The `setZeroValueForMatchingValuesOfAKey` function changes the 'value' property of objects in an array if their specified key-value pair matches the provided values. The 'value' property of matching objects will be set to zero.
+The `setValueOfKeyForMatchingValuesOfAKey` function changes the 'value' property of objects in an array if their specified key-value pair matches the provided values. The 'value' property of matching objects will be set to zero.
 
 ### Parameters
 - `arr` (Type: `Record<string, any>[]`): An array of objects where each object has key-value pairs.
 - `key` (Type: `string`): A string representing the key or property name of the object in the array that you want to check for a specific value.
 - `values` (Type: `any[]`): An array of values to be matched against the value of the specified key in each object. Objects with matching key-value pairs will have their 'value' property set to zero.
+- `updateKey` (Type: `string`): A key that need to be updated in each object that matches the criteria in the array.
+- `value` (Type: `any`): A value that need to be assigned in each object in the array.
+
 
 ### Returns
 - `Record<string, any>[]`: Returns the modified array where the 'value' property of matching objects is set to zero.
 
 ### Example Usage
 ```typescript
-import { setZeroValueForMatchingValuesOfAKey } from '@xmanscript/utils';
+import { setValueOfKeyForMatchingValuesOfAKey } from '@xmanscript/utils';
 
 const data = [
-  { name: 'A', value: 'x' },
-  { name: 'B', value: 'y' },
-  { name: 'C', value: 'x' },
+  { name: 'A', code: 'x', value:100 },
+  { name: 'B', code: 'y' },
+  { name: 'C', code: 'x' },
 ];
 
-const modifiedData = setZeroValueForMatchingValuesOfAKey(data, 'value', ['x']);
+const modifiedData = setValueOfKeyForMatchingValuesOfAKey(data, 'code', ['x'],'value', 50);
 
 // Result:
 // [
-//   { name: 'A', value: 0 },
-//   { name: 'B', value: 'y' },
-//   { name: 'C', value: 0 },
+//   { name: 'A', code: 'x', value: 50 },
+//   { name: 'B', code: 'y' },
+//   { name: 'C', code: 'x', value: 50 },
 // ]
 ```
 ## 18. `scrollToComponent` Function
