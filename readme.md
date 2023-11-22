@@ -379,9 +379,10 @@ The `setKeysToValueInObjects` function takes an array of objects and an array of
 ### Parameters
 - `arr` (Type: `Record<string, any>[]`): An array of objects, where each object represents a record with key-value pairs.
 - `keys` (Type: `string[]`): An array of strings representing the keys that need to be assigned the value of zero in each object in the array.
+- `value` (Type: `any`): A value that need to be assigned in each object in the array.
 
 ### Returns
-- `Record<string, any>[]`: Returns an array of objects where the specified keys are assigned the value of zero.
+- `Record<string, any>[]`: Returns an array of objects where the specified keys are assigned the specified value.
 
 ### Example Usage
 ```typescript
@@ -392,7 +393,7 @@ const data = [
   { id: 2, value1: 30, value2: 40 },
 ];
 
-const newData = setKeysToValueInObjects(data, ['value1', 'value2']);
+const newData = setKeysToValueInObjects(data, ['value1', 'value2', 0]);
 
 // Result: [
 //   { id: 1, value1: 0, value2: 0 },

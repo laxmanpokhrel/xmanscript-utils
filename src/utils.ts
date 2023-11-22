@@ -193,11 +193,7 @@ export function omitKey<T, K extends keyof T>(obj: T, key: K): Omit<T, K> {
  * `value` in each object in the array.
  * @returns an array of objects where the specified keys are assigned the `value`.
  */
-export function setKeysToValueInObjects(
-  arr: Record<string, any>[],
-  keys: string[],
-  value: number
-): Record<string, any>[] {
+export function setKeysToValueInObjects(arr: Record<string, any>[], keys: string[], value: any): Record<string, any>[] {
   if (!keys.length) return arr;
 
   return arr.map(obj => {
