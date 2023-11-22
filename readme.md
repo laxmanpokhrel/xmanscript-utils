@@ -378,7 +378,7 @@ The `setKeysToValueInObjects` function takes an array of objects and an array of
 
 ### Parameters
 - `arr` (Type: `Record<string, any>[]`): An array of objects, where each object represents a record with key-value pairs.
-- `keys` (Type: `string[]`): An array of strings representing the keys that need to be assigned the value of zero in each object in the array.
+- `keys` (Type: `string[]`): An array of strings representing the keys that need to be assigned the `value` in each object in the array.
 - `value` (Type: `any`): A value that need to be assigned in each object in the array.
 
 ### Returns

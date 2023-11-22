@@ -191,6 +191,7 @@ export function omitKey<T, K extends keyof T>(obj: T, key: K): Omit<T, K> {
  * key-value pairs.
  * @param {string[]} keys - An array of strings representing the keys that need to be assigned the
  * `value` in each object in the array.
+ * @param {any} value - A value that need to be assigned in each object in the array.
  * @returns an array of objects where the specified keys are assigned the `value`.
  */
 export function setKeysToValueInObjects(arr: Record<string, any>[], keys: string[], value: any): Record<string, any>[] {
