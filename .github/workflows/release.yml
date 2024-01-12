@@ -28,7 +28,7 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Prune devDependencies
-        run: npm remove semantic-release husky jest
+        run: npm remove semantic-release jest
       - name: Build project
         run: npm run build
       - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
