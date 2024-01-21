@@ -6,6 +6,7 @@
     "type": "git",
     "url": "https://github.com/laxmanpokhrel/xmanscript-utils.git"
   },
+  "exports":{"./setValueOfKeyForMatchingValuesOfAKey":"./src/utils/setValueOfKeyForMatchingValuesOfAKey"},
   "keywords": [
     "utils",
     "comples",

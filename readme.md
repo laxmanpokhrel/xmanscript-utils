@@ -798,9 +798,9 @@ const jsonObject = {
 const keyCount = countKeyOccurrences(jsonObject, 'key1');
 // Result: 2 (Occurrences of 'key1' in the JSON object)
 ```
-## 26. `distributePercentageEquall` Function
+## 26. `distributePercentageEqually` Function
 
-The `distributePercentageEquall` function takes a JSON object and a key, and updates the values of that key in the object to distribute a percentage evenly among all occurrences of the key.
+The `distributePercentageEqually` function takes a JSON object and a key, and updates the values of that key in the object to distribute a percentage evenly among all occurrences of the key.
 
 ### Parameters
 - `json` (Type: `any`): The `json` parameter is an object or an array that represents a JSON structure. It can contain nested objects and arrays.
@@ -811,7 +811,7 @@ The `distributePercentageEquall` function takes a JSON object and a key, and upd
 
 ### Example Usage
 ```typescript
-import { distributePercentageEquall } from '@xmanscript/utils';
+import { distributePercentageEqually } from '@xmanscript/utils';
 
 const jsonObject = {
   items: [
@@ -821,7 +821,7 @@ const jsonObject = {
   ],
 };
 
-const updatedJsonObject = distributePercentageEquall(jsonObject, 'percentage');
+const updatedJsonObject = distributePercentageEqually(jsonObject, 'percentage');
 // Result: All items' 'percentage' values in the JSON object are evenly distributed. {"items": [{ "name": "A", "percentage": 33 },{ "name": "B", "percentage": 33 },{ "name": "C", "percentage": 34 }]}
 ```
 
