@@ -41,6 +41,7 @@ jobs:
           git config --global user.email $USER_EMAIL
 
       - name: Commit logs
+        continue-on-error: true
         run: |
           git add .
           git commit -m "ci: Release props logs generated."
