@@ -1,2 +1,2 @@
 # Improvements
-- export from lib dir
+- Ts config changes

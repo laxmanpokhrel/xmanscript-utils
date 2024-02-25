@@ -6,7 +6,6 @@
     "type": "git",
     "url": "https://github.com/laxmanpokhrel/xmanscript-utils.git"
   },
-  "types": "./lib",
   "exports": {
     "./abbreviateCurrencyValue": "./lib/abbreviateCurrencyValue",
     "./areObjectsEqual": "./lib/areObjectsEqual",
