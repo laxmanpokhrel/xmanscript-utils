@@ -1,2 +1,2 @@
 # Improvements
-- ts config for module resolution
+- ts config added on publish
