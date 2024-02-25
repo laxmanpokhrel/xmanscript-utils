@@ -5,7 +5,7 @@
     "declaration": true,
     "sourceMap": true,
     "outDir": "./lib",
-    "baseUrl": "src/",
+    // "baseUrl": "src/",
     "strict": true,
     "lib": ["ES2020", "DOM"],
     "removeComments": false,
@@ -19,7 +19,7 @@
     "noFallthroughCasesInSwitch": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": false,
-    "moduleResolution": "node"
+    // "moduleResolution": "node"
   },
   "exclude": ["node_modules"],
   "include": [".eslintrc.js", "src", "src/**/*.ts"]
