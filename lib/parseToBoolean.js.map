@@ -1,1 +1,0 @@
-{"version":3,"file":"parseToBoolean.js","sourceRoot":"","sources":["../src/parseToBoolean.ts"],"names":[],"mappings":";;AAAA;;;;;;;GAOG;AACH,SAAwB,cAAc,CAAC,GAAW;IAChD,IAAI,GAAG,KAAK,MAAM;QAAE,OAAO,IAAI,CAAC;IAChC,IAAI,GAAG,KAAK,OAAO;QAAE,OAAO,KAAK,CAAC;IAClC,OAAO,CAAC,KAAK,CAAC,qCAAqC,EAAE,GAAG,CAAC,CAAC;IAC1D,OAAO,SAAS,CAAC;AACnB,CAAC;AALD,iCAKC"}

@@ -1,1 +1,0 @@
-{"version":3,"file":"formatNumberToCommaString.js","sourceRoot":"","sources":["../src/formatNumberToCommaString.ts"],"names":[],"mappings":";;AAAA;;;;GAIG;AACH,SAAwB,yBAAyB,CAAC,KAAa;IAC7D,IAAI,OAAO,KAAK,KAAK,QAAQ,EAAE;QAC7B,OAAO,CAAC,KAAK,CAAC,0CAA0C,CAAC,CAAC;QAC1D,OAAO,EAAE,CAAC;KACX;IAED,OAAO,IAAI,CAAC,KAAK,CAAC,KAAK,CAAC,CAAC,cAAc,CAAC,OAAO,CAAC,CAAC;AACnD,CAAC;AAPD,4CAOC"}
