@@ -1,6 +1,6 @@
 {
   "name": "@xmanscript/utils",
-  "version": "1.7.7",
+  "version": "1.7.10",
   "description": "Complex utility functions package with 20+ utility functions.",
   "repository": {
     "type": "git",
@@ -34,7 +34,7 @@
     "./partitionObjectsByKey": "./lib/partitionObjectsByKey",
     "./removeObjectFromArray": "./lib/removeObjectFromArray",
     "./scrollToComponent": {
-      "types":"./dist/scrollToComponent/index.d.ts",
+      "types": "./dist/scrollToComponent/index.d.ts",
       "default": "./dist/scrollToComponent/index.js"
     },
     "./setKeysToValueInObjects": "./lib/setKeysToValueInObjects",
