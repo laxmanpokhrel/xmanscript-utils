@@ -1,2 +1,2 @@
-# Improvements /\n
-- types of exports
+# Improvements
+- ts config for module resolution
