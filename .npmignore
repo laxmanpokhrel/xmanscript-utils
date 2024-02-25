@@ -1,4 +1,5 @@
 # Ignore development tools and configuration files
+
 node_modules/
 .git/
 .editorconfig
@@ -9,6 +10,7 @@ node_modules/
 
 .eslintignore
 .eslintrc.cjs
+.eslintrc.js
 .lintstagedrc
 .prettierrc
 .releaserc
