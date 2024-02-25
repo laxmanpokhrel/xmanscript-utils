@@ -12,8 +12,6 @@ tsconfig.json
 .github
 .husky
 .release
-scripts
-src
 
 .eslintignore
 .eslintrc.cjs
