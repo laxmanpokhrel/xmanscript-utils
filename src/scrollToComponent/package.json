@@ -1,0 +1,8 @@
+{
+        "name": "@xmanscript/utils/scrollToComponent",
+        "type": "module",
+        "main": "../../lib/scrollToComponent/index.js",
+        "module": "../../lib/scrollToComponent/index.js",
+        "types": "../../lib/scrollToComponent/index.d.ts",
+        "sideEffects": false
+      }

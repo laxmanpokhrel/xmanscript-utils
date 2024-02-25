@@ -1,0 +1,8 @@
+{
+        "name": "@xmanscript/utils/getDifferenceObject",
+        "type": "module",
+        "main": "../../lib/getDifferenceObject/index.js",
+        "module": "../../lib/getDifferenceObject/index.js",
+        "types": "../../lib/getDifferenceObject/index.d.ts",
+        "sideEffects": false
+      }
