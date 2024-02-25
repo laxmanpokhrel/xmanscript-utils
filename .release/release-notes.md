@@ -1,2 +1,2 @@
 # Improvements
-- Ts config changes
+- Subpath test for getDifferenceObject, intersectObjects and scrollToComponent
