@@ -1,2 +1,2 @@
 # Improvements
-- Subpath export for getDifferenceObject, intersectObjects and scrollToComponent in package,json
+- module resolution bundler
