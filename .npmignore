@@ -3,7 +3,6 @@ node_modules/
 .git/
 .editorconfig
 .eslintrc
-tsconfig.json
 .github
 .husky
 .release
@@ -15,3 +14,4 @@ tsconfig.json
 .releaserc
 yarn.lock
 package-lock.json
+tsconfig.json
