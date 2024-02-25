@@ -1,2 +1,2 @@
 # Improvements
-- Subpath test for getDifferenceObject, intersectObjects and scrollToComponent
+- Subpath export for getDifferenceObject, intersectObjects and scrollToComponent in package,json
