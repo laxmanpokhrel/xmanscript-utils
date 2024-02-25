@@ -1,2 +1,2 @@
 # Improvements /\n
-- No src ignore
+- types of exports
