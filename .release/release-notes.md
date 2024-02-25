@@ -1,2 +1,2 @@
 # Improvements
-- ts config added base url
+- export from lib dir
