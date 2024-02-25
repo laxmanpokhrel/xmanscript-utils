@@ -1,2 +1,2 @@
 # Improvements
-- ts config added on publish
+- ts config added base url
