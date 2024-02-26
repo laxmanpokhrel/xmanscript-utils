@@ -26,6 +26,6 @@
     "outDir": "./lib/commonjs",
     "moduleResolution": "node",
   },
-  "exclude": ["node_modules",".eslintrc.js"],
-  "include": [ "src", "src/**/*.ts"]
+  "exclude": ["node_modules",],
+  "include": [".eslintrc.cjs", "src", "src/**/*.ts"]
 }

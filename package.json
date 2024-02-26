@@ -6,6 +6,7 @@
     "type": "git",
     "url": "https://github.com/laxmanpokhrel/xmanscript-utils.git"
   },
+  "type": "module",
   "types": "./@types",
   "exports": {
     "./abbreviateCurrencyValue": {
