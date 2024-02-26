@@ -1,6 +1,6 @@
 {
   "name": "@xmanscript/utils",
-  "version": "1.7.10",
+  "version": "1.7.17",
   "description": "Complex utility functions package with 20+ utility functions.",
   "repository": {
     "type": "git",
@@ -256,7 +256,6 @@
       "import": "./lib/esm/validateObjectsForKey/index.js",
       "require": "./lib/cjs/validateObjectsForKey/index.js"
     }
-    
   },
   "keywords": [
     "utils",
