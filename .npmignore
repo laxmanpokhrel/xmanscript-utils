@@ -16,3 +16,5 @@ node_modules/
 .releaserc
 yarn.lock
 package-lock.json
+tsconfig.esm.json
+tsconfig.json

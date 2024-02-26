@@ -1,10 +1,13 @@
+
+
+
 {
   "compilerOptions": {
     "target": "ES6",
-    "module": "ES2015",
+    // "module": "ES2015",
     "declaration": true,
     "sourceMap": true,
-    "outDir": "./lib",
+    // "outDir": "./lib",
     // "baseUrl": "src/",
     "strict": true,
     "lib": ["ES2020", "DOM"],
@@ -19,9 +22,10 @@
     "noFallthroughCasesInSwitch": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": false,
-    // "declarationDir": "./@types"
-
+    "module": "commonjs",
+    "outDir": "./lib/commonjs",
+    "moduleResolution": "node",
   },
-  "exclude": ["node_modules"],
-  "include": [".eslintrc.js", "src", "src/**/*.ts"]
+  "exclude": ["node_modules",],
+  "include": [".eslintrc.cjs", "src", "src/**/*.ts"]
 }

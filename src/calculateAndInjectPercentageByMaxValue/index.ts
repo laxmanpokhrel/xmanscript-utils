@@ -1,5 +1,6 @@
 /* eslint-disable no-restricted-syntax */
-import validateObjectsForKey from './validateObjectsForKey';
+
+import validateObjectsForKey from '../validateObjectsForKey';
 
 /**
  * The function calculates and injects the percentage value based on the maximum value of a specified

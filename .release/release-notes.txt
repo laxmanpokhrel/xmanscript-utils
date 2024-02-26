@@ -1,1 +1,2 @@
 ## This release for testing subpath modules and their declerations
+- Folder structure changed

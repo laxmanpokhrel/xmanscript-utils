@@ -1,5 +1,6 @@
 /* eslint-disable no-param-reassign */
-import countKeyOccurrences from './countKeyOccurrences';
+
+import countKeyOccurrences from '../countKeyOccurrences';
 
 /**
  * The `distributePercentageEqually` function takes a JSON object and a key, and updates the values of that key in

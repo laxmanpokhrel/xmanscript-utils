@@ -1,5 +1,6 @@
 /* eslint-disable no-restricted-syntax */
-import validateObjectsForKey from './validateObjectsForKey';
+
+import validateObjectsForKey from '../validateObjectsForKey';
 
 /**
  * The function calculates the percentage of a specific key's value based on sum of values in that key in each object of an array and
