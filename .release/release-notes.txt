@@ -1,5 +1,5 @@
-## This release for testing subpath modules and their declerations
+## Changes
 - Folder structure changed and types removed from package.json
 - changed export pattern
-- individual package.json
-- @types for decleration file
+- @types dir for decleration file
+- documented the types guidence

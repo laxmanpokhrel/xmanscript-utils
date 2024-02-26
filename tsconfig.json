@@ -1,11 +1,8 @@
 {
   "compilerOptions": {
     "target": "ES6",
-    // "module": "ES2015",
     "declaration": true,
     "sourceMap": true,
-    // "outDir": "./lib",
-    // "baseUrl": "src/",
     "strict": true,
     "lib": ["ES2020", "DOM"],
     "removeComments": false,
@@ -22,7 +19,7 @@
     "module": "commonjs",
     "outDir": "./lib/commonjs",
     "moduleResolution": "node",
-    "declarationDir": "./lib/@types"
+    "declarationDir": "./@types"
   },
   "exclude": ["node_modules",],
   "include": [".eslintrc.cjs", "src", "src/**/*.ts"]

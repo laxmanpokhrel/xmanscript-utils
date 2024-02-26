@@ -42,6 +42,29 @@ To install **@xmanscript/utils** using npm, open your terminal and run the follo
 pnpm add @xmanscript/utils
 ```
 
+### Additional Configuration for TypeScript Projects
+
+If you're using **@xmanscript/utils** in a TypeScript project, you'll need to add a specific configuration to your `tsconfig.json` file. This is necessary because the TypeScript compiler (TSC) might not automatically detect the declaration files of the package.
+
+To ensure proper recognition of declaration files, follow these steps:
+
+1. Open your `tsconfig.json` file in your project.
+
+2. Add the following configuration within the `"compilerOptions"` section:
+
+```json
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@xmanscript/utils/*": ["./node_modules/@xmanscript/utils/@types/*"]
+    }
+  }
+}
+```
+This configuration tells TypeScript where to find the declaration files for @xmanscript/utils. With this setup, TypeScript will be able to properly utilize the types provided by the package.
+
+
 ## Utility Functions Provided By The Package:
 1. partitionObjectsByKey
 2. convertNestedKeysToObject
