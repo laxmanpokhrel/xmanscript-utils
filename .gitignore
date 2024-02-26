@@ -10,4 +10,5 @@ yarn-error.log*
 
 .vscode/*
 test.ts
-lib
+lib/
+@types/

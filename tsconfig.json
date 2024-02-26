@@ -19,7 +19,8 @@
     "noFallthroughCasesInSwitch": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": false,
-    "moduleResolution": "Bundler"
+    // "declarationDir": "./@types"
+
   },
   "exclude": ["node_modules"],
   "include": [".eslintrc.js", "src", "src/**/*.ts"]

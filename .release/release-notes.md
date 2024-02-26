@@ -1,2 +1,0 @@
-# Improvements
-- module resolution bundler

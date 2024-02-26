@@ -6,6 +6,7 @@
     "type": "git",
     "url": "https://github.com/laxmanpokhrel/xmanscript-utils.git"
   },
+  "type": "module",
   "exports": {
     "./abbreviateCurrencyValue": "./lib/abbreviateCurrencyValue",
     "./areObjectsEqual": "./lib/areObjectsEqual",
@@ -19,8 +20,8 @@
     "./distributePercentageEquallyWithRemainder": "./lib/distributePercentageEquallyWithRemainder",
     "./formatNumberToCommaString": "./lib/formatNumberToCommaString",
     "./getDifferenceObject": {
-      "types": "./dist/getDifferenceObject/index.d.ts",
-      "default": "./dist/getDifferenceObject/index.js"
+      "types": "./lib/getDifferenceObject/index.d.ts",
+      "default": "./lib/getDifferenceObject/index.js"
     },
     "./getFileExtension": "./lib/getFileExtension",
     "./getMinMax": "./lib/getMinMax",
@@ -34,15 +35,15 @@
     "./partitionObjectsByKey": "./lib/partitionObjectsByKey",
     "./removeObjectFromArray": "./lib/removeObjectFromArray",
     "./scrollToComponent": {
-      "types": "./dist/scrollToComponent/index.d.ts",
-      "default": "./dist/scrollToComponent/index.js"
+      "types":"./lib/scrollToComponent/index.d.ts",
+      "default": "./lib/scrollToComponent/index.js"
     },
     "./setKeysToValueInObjects": "./lib/setKeysToValueInObjects",
     "./setValueOfKeyForMatchingValuesOfAKey": "./lib/setValueOfKeyForMatchingValuesOfAKey",
     "./splitArrayIntoChunks": "./lib/splitArrayIntoChunks",
     "./strictIntersectObjects": {
-      "types": "./dist/strictIntersectObjects/index.d.ts",
-      "default": "./dist/strictIntersectObjects/index.js"
+      "types": "./lib/strictIntersectObjects/index.d.ts",
+      "default": "./lib/strictIntersectObjects/index.js"
     },
     "./toggleObjectInArray": "./lib/toggleObjectInArray",
     "./uniqueValuesOfKey": "./lib/uniqueValuesOfKey",

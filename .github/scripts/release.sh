@@ -7,7 +7,8 @@ echo "=========================================================="
 
 # Declerations
 RELEASE_CONFIG_FILE=null
-RELEASE_TYPE=null
+VERSION_UPGRADE_TYPE=null
+RELEASE_TYPE=''
 TAG=null
 
 PACKAGEJSON=$(cat package.json)
@@ -30,13 +31,25 @@ fi
 # Check if release config file has `versionUpgradeType`
 echo "- reading 'versionUpgradeType'"
 if [ "$(echo "$RELEASE_CONFIG_FILE" | jq -r ".versionUpgradeType")" != "null" ]; then
-    RELEASE_TYPE=$(echo "$RELEASE_CONFIG_FILE" | jq -r ".versionUpgradeType")
-    echo "- 'versionUpgradeType': $RELEASE_TYPE"
+    VERSION_UPGRADE_TYPE=$(echo "$RELEASE_CONFIG_FILE" | jq -r ".versionUpgradeType")
+    echo "- 'versionUpgradeType': $VERSION_UPGRADE_TYPE"
 else
-    RELEASE_TYPE=null
+    VERSION_UPGRADE_TYPE=null
     echo "- no 'versionUpgradeType' provided"
     echo "- abort"
     exit 1
+fi
+
+# Check if release config file has `releaseType`
+echo "- reading 'releaseType'"
+if [ "$(echo "$RELEASE_CONFIG_FILE" | jq -r ".releaseType")" != "null" ]; then
+    RELEASE_TYPE=$(echo "$RELEASE_CONFIG_FILE" | jq -r ".releaseType")
+    echo "- 'releaseType': $RELEASE_TYPE"
+else
+    RELEASE_TYPE=''
+    echo "- no 'releaseType' provided"
+    # echo "- abort"
+    # exit 1
 fi
 
 # Check if npm view command succeeded or failed
@@ -54,7 +67,7 @@ else
     FINAL_RELEASE_VERSION=$PACKAGE_VERSION
 fi
 
-# Function to update version based on RELEASE_TYPE
+# Function to update version based on VERSION_UPGRADE_TYPE
 update_version() {
     local current_version=$1
     local release_type=$2
@@ -84,14 +97,14 @@ update_version() {
 if [ "$PACKAGE_NPM_VERSION" == "null" ]; then
     FINAL_RELEASE_VERSION=$PACKAGE_VERSION
 else
-    case $RELEASE_TYPE in
+    case $VERSION_UPGRADE_TYPE in
     "major" | "minor" | "patch")
         echo "- analysing version"
-        FINAL_RELEASE_VERSION=$(update_version "$PACKAGE_NPM_VERSION" "$RELEASE_TYPE") TAG=$FINAL_RELEASE_VERSION
+        FINAL_RELEASE_VERSION=$(update_version "$PACKAGE_NPM_VERSION" "$VERSION_UPGRADE_TYPE") TAG=$FINAL_RELEASE_VERSION
         echo "- analysed deployable version $FINAL_RELEASE_VERSION"
         ;;
     *)
-        echo "- invalid release type: $RELEASE_TYPE"
+        echo "- invalid release type: $VERSION_UPGRADE_TYPE"
         ;;
     esac
 fi
@@ -108,7 +121,7 @@ fi
 
 # Check if release notes are available
 echo "- reading release notes"
-RELEASE_NOTES=$(cat .release/release-notes.md)
+RELEASE_NOTES=$(cat .release/release-notes.txt)
 
 if [ $? != 0 ]; then
     echo "- release notes not provided"
@@ -121,12 +134,14 @@ echo "- RELEASE_NOTES: $RELEASE_NOTES"
 echo "- PACKAGE_NAME: $PACKAGE_NAME"
 echo "- PACKAGE_VERSION: $PACKAGE_VERSION"
 echo "- FINAL_RELEASE_VERSION: $FINAL_RELEASE_VERSION"
-echo "- RELEASE_TYPE:$RELEASE_TYPE"
-echo "- TAG:$TAG"
+echo "- VERSION_UPGRADE_TYPE: $VERSION_UPGRADE_TYPE"
+echo "- TAG: $TAG"
+echo "- RELEASE_TYPE: $RELEASE_TYPE"
 
 # Set output
 echo "tag=$(echo $TAG)" >>$GITHUB_OUTPUT
 echo "release-notes=$(echo $RELEASE_NOTES)" >>$GITHUB_OUTPUT
 echo "final-release-version=$(echo $FINAL_RELEASE_VERSION)" >>$GITHUB_OUTPUT
-echo "release-type=$(echo $RELEASE_TYPE)" >>$GITHUB_OUTPUT
+echo "release-type=$(echo $VERSION_UPGRADE_TYPE)" >>$GITHUB_OUTPUT
 echo "package-version=$(echo $PACKAGE_VERSION)" >>$GITHUB_OUTPUT
+echo "release-type=$(echo $RELEASE_TYPE)" >>$GITHUB_OUTPUT

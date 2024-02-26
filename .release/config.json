@@ -1,3 +1,4 @@
 {
-  "versionUpgradeType": "patch"
+  "versionUpgradeType": "patch",
+  "releaseType": "--prerelease"
 }
