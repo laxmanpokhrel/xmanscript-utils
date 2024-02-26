@@ -1,4 +1,4 @@
-import areObjectsEqual from './areObjectsEqual';
+import areObjectsEqual from '../areObjectsEqual';
 
 /**
  * The function removes the target object from the array if it exists, otherwise it adds it to the

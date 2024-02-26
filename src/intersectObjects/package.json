@@ -1,8 +1,0 @@
-{
-        "name": "@xmanscript/utils/intersectObjects",
-        "type": "module",
-        "main": "../../lib/intersectObjects/index.js",
-        "module": "../../lib/intersectObjects/index.js",
-        "types": "../../lib/intersectObjects/index.d.ts",
-        "sideEffects": false
-      }
