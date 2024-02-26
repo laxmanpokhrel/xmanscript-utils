@@ -2,3 +2,4 @@
 - Folder structure changed and types removed from package.json
 - changed export pattern
 - individual package.json
+- @types for decleration file

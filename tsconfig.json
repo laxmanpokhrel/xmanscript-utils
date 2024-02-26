@@ -22,6 +22,7 @@
     "module": "commonjs",
     "outDir": "./lib/commonjs",
     "moduleResolution": "node",
+    "declarationDir": "./lib/@types"
   },
   "exclude": ["node_modules",],
   "include": [".eslintrc.cjs", "src", "src/**/*.ts"]
