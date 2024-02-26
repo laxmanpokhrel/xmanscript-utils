@@ -9,129 +9,254 @@
   "type": "module",
   "exports": {
     "./abbreviateCurrencyValue": {
-      "types": "./lib/abbreviateCurrencyValue/index.d.ts",
-      "default": "./lib/abbreviateCurrencyValue/index.js"
+      "types": {
+        "require": "./lib/cjs/abbreviateCurrencyValue/index.d.ts",
+        "default": "./lib/esm/abbreviateCurrencyValue/index.d.ts"
+      },
+      "import": "./lib/esm/abbreviateCurrencyValue/index.js",
+      "require": "./lib/cjs/abbreviateCurrencyValue/index.js"
     },
     "./areObjectsEqual": {
-      "types": "./lib/areObjectsEqual/index.d.ts",
-      "default": "./lib/areObjectsEqual/index.js"
+      "types": {
+        "require": "./lib/cjs/areObjectsEqual/index.d.ts",
+        "default": "./lib/esm/areObjectsEqual/index.d.ts"
+      },
+      "import": "./lib/esm/areObjectsEqual/index.js",
+      "require": "./lib/cjs/areObjectsEqual/index.js"
     },
     "./calculateAndInjectPercentageByMaxValue": {
-      "types": "./lib/calculateAndInjectPercentageByMaxValue/index.d.ts",
-      "default": "./lib/calculateAndInjectPercentageByMaxValue/index.js"
+      "types": {
+        "require": "./lib/cjs/calculateAndInjectPercentageByMaxValue/index.d.ts",
+        "default": "./lib/esm/calculateAndInjectPercentageByMaxValue/index.d.ts"
+      },
+      "import": "./lib/esm/calculateAndInjectPercentageByMaxValue/index.js",
+      "require": "./lib/cjs/calculateAndInjectPercentageByMaxValue/index.js"
     },
     "./calculateAndInjectPercentageBySum": {
-      "types": "./lib/calculateAndInjectPercentageBySum/index.d.ts",
-      "default": "./lib/calculateAndInjectPercentageBySum/index.js"
+      "types": {
+        "require": "./lib/cjs/calculateAndInjectPercentageBySum/index.d.ts",
+        "default": "./lib/esm/calculateAndInjectPercentageBySum/index.d.ts"
+      },
+      "import": "./lib/esm/calculateAndInjectPercentageBySum/index.js",
+      "require": "./lib/cjs/calculateAndInjectPercentageBySum/index.js"
     },
     "./calculateSumOfKey": {
-      "types": "./lib/calculateSumOfKey/index.d.ts",
-      "default": "./lib/calculateSumOfKey/index.js"
+      "types": {
+        "require": "./lib/cjs/calculateSumOfKey/index.d.ts",
+        "default": "./lib/esm/calculateSumOfKey/index.d.ts"
+      },
+      "import": "./lib/esm/calculateSumOfKey/index.js",
+      "require": "./lib/cjs/calculateSumOfKey/index.js"
     },
     "./containsBinaryData": {
-      "types": "./lib/containsBinaryData/index.d.ts",
-      "default": "./lib/containsBinaryData/index.js"
+      "types": {
+        "require": "./lib/cjs/containsBinaryData/index.d.ts",
+        "default": "./lib/esm/containsBinaryData/index.d.ts"
+      },
+      "import": "./lib/esm/containsBinaryData/index.js",
+      "require": "./lib/cjs/containsBinaryData/index.js"
     },
     "./convertNestedKeysToObject": {
-      "types": "./lib/convertNestedKeysToObject/index.d.ts",
-      "default": "./lib/convertNestedKeysToObject/index.js"
+      "types": {
+        "require": "./lib/cjs/convertNestedKeysToObject/index.d.ts",
+        "default": "./lib/esm/convertNestedKeysToObject/index.d.ts"
+      },
+      "import": "./lib/esm/convertNestedKeysToObject/index.js",
+      "require": "./lib/cjs/convertNestedKeysToObject/index.js"
     },
     "./countKeyOccurrences": {
-      "types": "./lib/countKeyOccurrences/index.d.ts",
-      "default": "./lib/countKeyOccurrences/index.js"
+      "types": {
+        "require": "./lib/cjs/countKeyOccurrences/index.d.ts",
+        "default": "./lib/esm/countKeyOccurrences/index.d.ts"
+      },
+      "import": "./lib/esm/countKeyOccurrences/index.js",
+      "require": "./lib/cjs/countKeyOccurrences/index.js"
     },
     "./distributePercentageEqually": {
-      "types": "./lib/distributePercentageEqually/index.d.ts",
-      "default": "./lib/distributePercentageEqually/index.js"
+      "types": {
+        "require": "./lib/cjs/distributePercentageEqually/index.d.ts",
+        "default": "./lib/esm/distributePercentageEqually/index.d.ts"
+      },
+      "import": "./lib/esm/distributePercentageEqually/index.js",
+      "require": "./lib/cjs/distributePercentageEqually/index.js"
     },
     "./distributePercentageEquallyWithRemainder": {
-      "types": "./lib/distributePercentageEquallyWithRemainder/index.d.ts",
-      "default": "./lib/distributePercentageEquallyWithRemainder/index.js"
+      "types": {
+        "require": "./lib/cjs/distributePercentageEquallyWithRemainder/index.d.ts",
+        "default": "./lib/esm/distributePercentageEquallyWithRemainder/index.d.ts"
+      },
+      "import": "./lib/esm/distributePercentageEquallyWithRemainder/index.js",
+      "require": "./lib/cjs/distributePercentageEquallyWithRemainder/index.js"
     },
     "./formatNumberToCommaString": {
-      "types": "./lib/formatNumberToCommaString/index.d.ts",
-      "default": "./lib/formatNumberToCommaString/index.js"
+      "types": {
+        "require": "./lib/cjs/formatNumberToCommaString/index.d.ts",
+        "default": "./lib/esm/formatNumberToCommaString/index.d.ts"
+      },
+      "import": "./lib/esm/formatNumberToCommaString/index.js",
+      "require": "./lib/cjs/formatNumberToCommaString/index.js"
     },
     "./getDifferenceObject": {
-      "types": "./lib/getDifferenceObject/index.d.ts",
-      "default": "./lib/getDifferenceObject/index.js"
+      "types": {
+        "require": "./lib/cjs/getDifferenceObject/index.d.ts",
+        "default": "./lib/esm/getDifferenceObject/index.d.ts"
+      },
+      "import": "./lib/esm/getDifferenceObject/index.js",
+      "require": "./lib/cjs/getDifferenceObject/index.js"
     },
     "./getFileExtension": {
-      "types": "./lib/getFileExtension/index.d.ts",
-      "default": "./lib/getFileExtension/index.js"
+      "types": {
+        "require": "./lib/cjs/getFileExtension/index.d.ts",
+        "default": "./lib/esm/getFileExtension/index.d.ts"
+      },
+      "import": "./lib/esm/getFileExtension/index.js",
+      "require": "./lib/cjs/getFileExtension/index.js"
     },
     "./getMinMax": {
-      "types": "./lib/getMinMax/index.d.ts",
-      "default": "./lib/getMinMax/index.js"
+      "types": {
+        "require": "./lib/cjs/getMinMax/index.d.ts",
+        "default": "./lib/esm/getMinMax/index.d.ts"
+      },
+      "import": "./lib/esm/getMinMax/index.js",
+      "require": "./lib/cjs/getMinMax/index.js"
     },
     "./groupArrayOfObjectsByValueOfAKey": {
-      "types": "./lib/groupArrayOfObjectsByValueOfAKey/index.d.ts",
-      "default": "./lib/groupArrayOfObjectsByValueOfAKey/index.js"
+      "types": {
+        "require": "./lib/cjs/groupArrayOfObjectsByValueOfAKey/index.d.ts",
+        "default": "./lib/esm/groupArrayOfObjectsByValueOfAKey/index.d.ts"
+      },
+      "import": "./lib/esm/groupArrayOfObjectsByValueOfAKey/index.js",
+      "require": "./lib/cjs/groupArrayOfObjectsByValueOfAKey/index.js"
     },
     "./intersectObjects": {
-      "types": "./lib/intersectObjects/index.d.ts",
-      "default": "./lib/intersectObjects/index.js"
+      "types": {
+        "require": "./lib/cjs/intersectObjects/index.d.ts",
+        "default": "./lib/esm/intersectObjects/index.d.ts"
+      },
+      "import": "./lib/esm/intersectObjects/index.js",
+      "require": "./lib/cjs/intersectObjects/index.js"
     },
     "./isJSONObject": {
-      "types": "./lib/isJSONObject/index.d.ts",
-      "default": "./lib/isJSONObject/index.js"
+      "types": {
+        "require": "./lib/cjs/isJSONObject/index.d.ts",
+        "default": "./lib/esm/isJSONObject/index.d.ts"
+      },
+      "import": "./lib/esm/isJSONObject/index.js",
+      "require": "./lib/cjs/isJSONObject/index.js"
     },
     "./markCheckedByStringMatch": {
-      "types": "./lib/markCheckedByStringMatch/index.d.ts",
-      "default": "./lib/markCheckedByStringMatch/index.js"
+      "types": {
+        "require": "./lib/cjs/markCheckedByStringMatch/index.d.ts",
+        "default": "./lib/esm/markCheckedByStringMatch/index.d.ts"
+      },
+      "import": "./lib/esm/markCheckedByStringMatch/index.js",
+      "require": "./lib/cjs/markCheckedByStringMatch/index.js"
     },
     "./objectToFormDataWithFiles": {
-      "types": "./lib/objectToFormDataWithFiles/index.d.ts",
-      "default": "./lib/objectToFormDataWithFiles/index.js"
+      "types": {
+        "require": "./lib/cjs/objectToFormDataWithFiles/index.d.ts",
+        "default": "./lib/esm/objectToFormDataWithFiles/index.d.ts"
+      },
+      "import": "./lib/esm/objectToFormDataWithFiles/index.js",
+      "require": "./lib/cjs/objectToFormDataWithFiles/index.js"
     },
     "./omitKey": {
-      "types": "./lib/omitKey/index.d.ts",
-      "default": "./lib/omitKey/index.js"
+      "types": {
+        "require": "./lib/cjs/omitKey/index.d.ts",
+        "default": "./lib/esm/omitKey/index.d.ts"
+      },
+      "import": "./lib/esm/omitKey/index.js",
+      "require": "./lib/cjs/omitKey/index.js"
     },
     "./parseToBoolean": {
-      "types": "./lib/parseToBoolean/index.d.ts",
-      "default": "./lib/parseToBoolean/index.js"
+      "types": {
+        "require": "./lib/cjs/parseToBoolean/index.d.ts",
+        "default": "./lib/esm/parseToBoolean/index.d.ts"
+      },
+      "import": "./lib/esm/parseToBoolean/index.js",
+      "require": "./lib/cjs/parseToBoolean/index.js"
     },
     "./partitionObjectsByKey": {
-      "types": "./lib/partitionObjectsByKey/index.d.ts",
-      "default": "./lib/partitionObjectsByKey/index.js"
+      "types": {
+        "require": "./lib/cjs/partitionObjectsByKey/index.d.ts",
+        "default": "./lib/esm/partitionObjectsByKey/index.d.ts"
+      },
+      "import": "./lib/esm/partitionObjectsByKey/index.js",
+      "require": "./lib/cjs/partitionObjectsByKey/index.js"
     },
     "./removeObjectFromArray": {
-      "types": "./lib/removeObjectFromArray/index.d.ts",
-      "default": "./lib/removeObjectFromArray/index.js"
+      "types": {
+        "require": "./lib/cjs/removeObjectFromArray/index.d.ts",
+        "default": "./lib/esm/removeObjectFromArray/index.d.ts"
+      },
+      "import": "./lib/esm/removeObjectFromArray/index.js",
+      "require": "./lib/cjs/removeObjectFromArray/index.js"
     },
     "./scrollToComponent": {
-      "types": "./lib/scrollToComponent/index.d.ts",
-      "default": "./lib/scrollToComponent/index.js"
+      "types": {
+        "require": "./lib/cjs/scrollToComponent/index.d.ts",
+        "default": "./lib/esm/scrollToComponent/index.d.ts"
+      },
+      "import": "./lib/esm/scrollToComponent/index.js",
+      "require": "./lib/cjs/scrollToComponent/index.js"
     },
     "./setKeysToValueInObjects": {
-      "types": "./lib/setKeysToValueInObjects/index.d.ts",
-      "default": "./lib/setKeysToValueInObjects/index.js"
+      "types": {
+        "require": "./lib/cjs/setKeysToValueInObjects/index.d.ts",
+        "default": "./lib/esm/setKeysToValueInObjects/index.d.ts"
+      },
+      "import": "./lib/esm/setKeysToValueInObjects/index.js",
+      "require": "./lib/cjs/setKeysToValueInObjects/index.js"
     },
     "./setValueOfKeyForMatchingValuesOfAKey": {
-      "types": "./lib/setValueOfKeyForMatchingValuesOfAKey/index.d.ts",
-      "default": "./lib/setValueOfKeyForMatchingValuesOfAKey/index.js"
+      "types": {
+        "require": "./lib/cjs/setValueOfKeyForMatchingValuesOfAKey/index.d.ts",
+        "default": "./lib/esm/setValueOfKeyForMatchingValuesOfAKey/index.d.ts"
+      },
+      "import": "./lib/esm/setValueOfKeyForMatchingValuesOfAKey/index.js",
+      "require": "./lib/cjs/setValueOfKeyForMatchingValuesOfAKey/index.js"
     },
     "./splitArrayIntoChunks": {
-      "types": "./lib/splitArrayIntoChunks/index.d.ts",
-      "default": "./lib/splitArrayIntoChunks/index.js"
+      "types": {
+        "require": "./lib/cjs/splitArrayIntoChunks/index.d.ts",
+        "default": "./lib/esm/splitArrayIntoChunks/index.d.ts"
+      },
+      "import": "./lib/esm/splitArrayIntoChunks/index.js",
+      "require": "./lib/cjs/splitArrayIntoChunks/index.js"
     },
     "./strictIntersectObjects": {
-      "types": "./lib/strictIntersectObjects/index.d.ts",
-      "default": "./lib/strictIntersectObjects/index.js"
+      "types": {
+        "require": "./lib/cjs/strictIntersectObjects/index.d.ts",
+        "default": "./lib/esm/strictIntersectObjects/index.d.ts"
+      },
+      "import": "./lib/esm/strictIntersectObjects/index.js",
+      "require": "./lib/cjs/strictIntersectObjects/index.js"
     },
     "./toggleObjectInArray": {
-      "types": "./lib/toggleObjectInArray/index.d.ts",
-      "default": "./lib/toggleObjectInArray/index.js"
+      "types": {
+        "require": "./lib/cjs/toggleObjectInArray/index.d.ts",
+        "default": "./lib/esm/toggleObjectInArray/index.d.ts"
+      },
+      "import": "./lib/esm/toggleObjectInArray/index.js",
+      "require": "./lib/cjs/toggleObjectInArray/index.js"
     },
     "./uniqueValuesOfKey": {
-      "types": "./lib/uniqueValuesOfKey/index.d.ts",
-      "default": "./lib/uniqueValuesOfKey/index.js"
+      "types": {
+        "require": "./lib/cjs/uniqueValuesOfKey/index.d.ts",
+        "default": "./lib/esm/uniqueValuesOfKey/index.d.ts"
+      },
+      "import": "./lib/esm/uniqueValuesOfKey/index.js",
+      "require": "./lib/cjs/uniqueValuesOfKey/index.js"
     },
     "./validateObjectsForKey": {
-      "types": "./lib/validateObjectsForKey/index.d.ts",
-      "default": "./lib/validateObjectsForKey/index.js"
+      "types": {
+        "require": "./lib/cjs/validateObjectsForKey/index.d.ts",
+        "default": "./lib/esm/validateObjectsForKey/index.d.ts"
+      },
+      "import": "./lib/esm/validateObjectsForKey/index.js",
+      "require": "./lib/cjs/validateObjectsForKey/index.js"
     }
+    
   },
   "keywords": [
     "utils",
