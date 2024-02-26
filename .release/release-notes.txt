@@ -1,2 +1,2 @@
 ## This release for testing subpath modules and their declerations
-- Folder structure changed
+- Folder structure changed and types removed from package.json
