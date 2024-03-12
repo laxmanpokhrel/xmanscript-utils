@@ -1,4 +1,5 @@
 # Ignore development tools and configuration files
+src/
 
 node_modules/
 .git/
