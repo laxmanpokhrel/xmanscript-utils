@@ -1,5 +1,2 @@
 ## Changes
-- Folder structure changed and types removed from package.json
-- changed export pattern
-- @types dir for decleration file
-- documented the types guidence
+- added a missing export `toggleStringInArray`

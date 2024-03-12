@@ -255,6 +255,14 @@
       },
       "import": "./lib/esm/validateObjectsForKey/index.js",
       "require": "./lib/cjs/validateObjectsForKey/index.js"
+    },
+    "./toggleStringInArray": {
+      "types": {
+        "require": "./@types/toggleStringInArray/index.d.ts",
+        "default": "./@types/toggleStringInArray/index.d.ts"
+      },
+      "import": "./lib/esm/toggleStringInArray/index.js",
+      "require": "./lib/cjs/toggleStringInArray/index.js"
     }
   },
   "keywords": [
