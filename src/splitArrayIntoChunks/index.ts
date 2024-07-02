@@ -7,8 +7,8 @@
  * @returns an array of arrays. Each inner array contains a subset of the original array, with each
  * subset having a maximum size specified by the "size" parameter.
  */
-export default function splitArrayIntoChunks(array: Record<string, any>[], size: number) {
-  return array.reduce((acc: Record<string, any>[][], current: Record<string, any>) => {
+export default function splitArrayIntoChunks<T>(array: T[], size: number): T[][] {
+  return array.reduce((acc: T[][], current: T) => {
     if (acc.length === 0 || acc[acc.length - 1].length === size) {
       acc.push([current]);
     } else {

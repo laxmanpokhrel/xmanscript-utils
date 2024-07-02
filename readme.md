@@ -8,7 +8,6 @@ Installation guide for **@xmanscript/utils**, a versatile npm package that provi
 
 It is not recommended to add it to your project's `devDependencies`.
 
-
 ## Prerequisites
 
 Before you can install and use **@xmanscript/utils**, ensure that you have the following prerequisites installed on your system:
@@ -27,6 +26,7 @@ To install **@xmanscript/utils** using npm, open your terminal and run the follo
 ```shell
 npm install @xmanscript/utils
 ```
+
 ### yarn
 
 To install **@xmanscript/utils** using npm, open your terminal and run the following command:
@@ -34,6 +34,7 @@ To install **@xmanscript/utils** using npm, open your terminal and run the follo
 ```shell
 yarn add @xmanscript/utils
 ```
+
 ### pnpm
 
 To install **@xmanscript/utils** using npm, open your terminal and run the following command:
@@ -62,10 +63,14 @@ To ensure proper recognition of declaration files, follow these steps:
   }
 }
 ```
+
 This configuration tells TypeScript where to find the declaration files for @xmanscript/utils. With this setup, TypeScript will be able to properly utilize the types provided by the package.
 
+Note: The path `./node_modules/@xmanscript/utils/@types/*` depends upon the `baseUrl`. For example; if the `baseUrl` is `./src/` then the path wll be `../node_modules/@xmanscript/utils/@types/*`.
+The idea is to point to the location that contains decleration files.
 
 ## Utility Functions Provided By The Package:
+
 1. partitionObjectsByKey
 2. convertNestedKeysToObject
 3. markCheckedByStringMatch
@@ -99,18 +104,22 @@ This configuration tells TypeScript where to find the declaration files for @xma
 31. strictIntersectObjects (new)
 
 ##
+
 ## 1. `partitionObjectsByKey` Function
 
 The `partitionObjectsByKey` function splits an array of objects into two separate arrays based on the presence of a specified key.
 
 ### Parameters
+
 - `arr` (Type: `Record<string, any>[]`): An array of objects, where each object has a string key and any value.
 - `key` (Type: `string`): The key to be used for splitting the objects.
 
 ### Returns
+
 - `[Record<string, any>[], Record<string, any>[]]`: Returns an array containing two elements. The first element is an array of objects that have the specified `key`, and the second element is an array of objects that do not have the specified `key`.
 
 ### Example Usage
+
 ```typescript
 import partitionObjectsByKey from '@xmanscript/utils/partitionObjectsByKey';
 
@@ -134,19 +143,22 @@ console.log(withoutKey);
 //   { id: 1, name: 'Alice' },
 //   { id: 3, name: 'Charlie' },
 // ]
-
 ```
+
 ## 2. `convertNestedKeysToObject` Function
 
 The `convertNestedKeysToObject` function converts an input object with nested keys in the format of "name[index].nestedKey" into an output object with nested arrays and objects.
 
 ### Parameters
+
 - `input` (Type: `Record<string, any>`): A JavaScript object with string keys and any values.
 
 ### Returns
+
 - `any`: Returns an object with the converted input. The input is an object with string keys and any values. The function converts any keys that match the pattern of "name[index].nestedKey" into nested objects within an array. The function returns the converted object.
 
 ### Example Usage
+
 ```typescript
 import convertNestedKeysToObject from '@xmanscript/utils/convertNestedKeysToObject';
 
@@ -155,7 +167,7 @@ const input = {
   'user[0].age': 30,
   'user[1].name': 'Bob',
   'user[1].age': 25,
-  'status': 'active',
+  status: 'active',
 };
 
 const convertedObject = convertNestedKeysToObject(input);
@@ -167,7 +179,7 @@ const convertedObject = convertNestedKeysToObject(input);
 //     { name: 'Bob', age: 25 },
 //   ],
 //   status: 'active',
-// } 
+// }
 ```
 
 ## 3. `markCheckedByStringMatch` Function
@@ -175,14 +187,17 @@ const convertedObject = convertNestedKeysToObject(input);
 The `markCheckedByStringMatch` function adds a "checked" field to each object in an array based on whether a corresponding string value is included in another array.
 
 ### Parameters
+
 - `objects` (Type: `T[]`): An array of objects of type `T`.
 - `strings` (Type: `string[]`): An array of strings to be used for checking against the values of the `chooseKey` property in each object.
 - `chooseKey` (Type: `keyof T`): The key of the property in the objects that you want to compare with the `strings` array. It can be any valid key of the objects in the `objects` array.
 
 ### Returns
+
 - `T[]`: Returns an array of objects of type `T` with an additional `checked` field.
 
 ### Example Usage
+
 ```typescript
 import markCheckedByStringMatch from '@xmanscript/utils/markCheckedByStringMatch';
 
@@ -214,13 +229,16 @@ const itemsWithCheckedField = markCheckedByStringMatch(items, selectedItems, 'na
 The `intersectObjects` function takes two objects as input and returns a new object containing only the properties that exist in both input objects.
 
 ### Parameters
+
 - `obj1` (Type: `Record<string, any>`): An object that can have any number of properties of any type.
 - `obj2` (Type: `Record<string, any>`): A record object that contains key-value pairs.
 
 ### Returns
+
 - `Record<string, any>`: Returns a new object that contains the intersection of properties between `obj1` and `obj2`.
 
 ### Example Usage
+
 ```typescript
 import intersectObjects from '@xmanscript/utils/intersectObjects';
 
@@ -240,18 +258,20 @@ const intersection = intersectObjects(object1, object2);
 // Result: { age: 30 }
 ```
 
-
 ## 5. `containsBinaryData` Function
 
 The `containsBinaryData` function recursively checks if an object or any of its nested properties contain binary data.
 
 ### Parameters
+
 - `obj` (Type: `Record<string, any>`): An object with string keys and values of any type.
 
 ### Returns
+
 - `boolean`: Returns `true` if the object or any of its nested properties contains binary data (e.g., `Blob`, `File`, or `ArrayBuffer`), otherwise returns `false`.
 
 ### Example Usage
+
 ```typescript
 import containsBinaryData from '@xmanscript/utils/containsBinaryData';
 
@@ -270,21 +290,22 @@ console.log(hasBinary); // Result: true
 
 const hasNoBinary = containsBinaryData(objectWithoutBinaryData);
 console.log(hasNoBinary); // Result: false
-
-``````
-
+```
 
 ## 6. `isJSONObject` Function
 
 The `isJSONObject` function checks if a given string is a valid JSON object.
 
 ### Parameters
+
 - `value` (Type: `string`): The string to validate as a JSON object.
 
 ### Returns
+
 - `boolean`: Returns `true` if the input string represents a valid JSON object, and `false` otherwise.
 
 ### Example Usage
+
 ```typescript
 import isJSONObject from '@xmanscript/utils/isJSONObject';
 
@@ -300,12 +321,15 @@ console.log(isJSONObject(jsonString2)); // false
 The `objectToFormDataWithFiles` function converts a JSON object into a FormData object, handling file uploads and nested objects.
 
 ### Parameters
+
 - `obj` (Type: `Record<string, any>`): The object containing key-value pairs. The keys represent the names of the form fields, and the values represent the corresponding values for those fields. Values can be of any type, including strings, numbers, booleans, arrays, or objects.
 
 ### Returns
+
 - `FormData`: Returns a FormData object representing the converted data.
 
 ### Example Usage
+
 ```typescript
 import objectToFormDataWithFiles from '@xmanscript/utils/objectToFormDataWithFiles';
 
@@ -327,13 +351,16 @@ const formData = objectToFormDataWithFiles({
 The `areObjectsEqual` function checks if two objects are equal by comparing their keys and values.
 
 ### Parameters
+
 - `obj1` (Type: `any`): The first object to compare.
 - `obj2` (Type: `any`): The second object to compare with `obj1` to check if they are equal.
 
 ### Returns
+
 - `boolean`: Returns `true` if the two objects are equal (have the same keys and corresponding values), and `false` otherwise.
 
 ### Example Usage
+
 ```typescript
 import areObjectsEqual from '@xmanscript/utils/areObjectsEqual';
 
@@ -344,24 +371,28 @@ const obj3 = { name: 'Alice', age: 25 };
 console.log(areObjectsEqual(obj1, obj2)); // true
 console.log(areObjectsEqual(obj1, obj3)); // false
 ```
+
 ## 9.`abbreviateCurrencyValue` Function
 
 The `abbreviateCurrencyValue` function converts a number into a currency system by abbreviating it with "B" for billions, "M" for millions, and "K" for thousands.
 
 ### Parameters
+
 - `labelValue` (Type: `number`): The number to convert into a currency system. It represents a value in the currency system.
 
 ### Returns
+
 - `string | number`: Returns a string if the number is in the currency system (e.g., "1.5 B", "7.5 M", "2.5 K"), and returns a number if it's not in the specified range.
 
 ### Example Usage
+
 ```typescript
 import abbreviateCurrencyValue from '@xmanscript/utils/abbreviateCurrencyValue';
 
 const value1 = 1500000000; // 1.5 billion
-const value2 = 7500000;    // 7.5 million
-const value3 = 2500;       // 2.5 thousand
-const value4 = 42;         // 42
+const value2 = 7500000; // 7.5 million
+const value3 = 2500; // 2.5 thousand
+const value4 = 42; // 42
 
 console.log(abbreviateCurrencyValue(value1)); // "1.5 B"
 console.log(abbreviateCurrencyValue(value2)); // "7.5 M"
@@ -374,13 +405,16 @@ console.log(abbreviateCurrencyValue(value4)); // 42
 The `omitKey` function removes a specified key from an object and returns a new object without that key.
 
 ### Parameters
+
 - `obj` (Type: `T`): The object from which you want to remove a key. It can be of any type `T`.
 - `key` (Type: `K`): The key of the property to remove from the object. It should be a valid key of the object's type `T`.
 
 ### Returns
+
 - `Omit<T, K>`: Returns an object of type `Omit<T, K>`, which is the original object `obj` with the specified `key` removed.
 
 ### Example Usage
+
 ```typescript
 import omitKey from '@xmanscript/utils/omitKey';
 
@@ -400,14 +434,17 @@ const userWithoutId = omitKey(user, 'id');
 The `setKeysToValueInObjects` function takes an array of objects and an array of keys, and returns a new array of objects where the specified keys are assigned the value of zero.
 
 ### Parameters
+
 - `arr` (Type: `Record<string, any>[]`): An array of objects, where each object represents a record with key-value pairs.
 - `keys` (Type: `string[]`): An array of strings representing the keys that need to be assigned the `value` in each object in the array.
 - `value` (Type: `any`): A value that need to be assigned in each object in the array.
 
 ### Returns
+
 - `Record<string, any>[]`: Returns an array of objects where the specified keys are assigned the specified value.
 
 ### Example Usage
+
 ```typescript
 import setKeysToValueInObjects from '@xmanscript/utils/setKeysToValueInObjects';
 
@@ -429,13 +466,16 @@ const newData = setKeysToValueInObjects(data, ['value1', 'value2', 0]);
 The `toggleStringInArray` function removes the target string from the array if it exists, otherwise, it adds the target string to the array.
 
 ### Parameters
+
 - `arr` (Type: `string[]`): An array of strings.
 - `targetString` (Type: `string`): The string that you want to either remove from the array or add to the array.
 
 ### Returns
+
 - `string[]`: Returns an array of strings after the operation. If the target string existed, it is removed; if not, it is added.
 
 ### Example Usage
+
 ```typescript
 import toggleStringInArray from '@xmanscript/utils/toggleStringInArray';
 
@@ -455,13 +495,16 @@ const newArray2 = toggleStringInArray(myArray, 'strawberry');
 The `toggleObjectInArray` function removes the target object from the array if it exists, otherwise, it adds it to the array. The equality comparison is done using the `isEqual` function.
 
 ### Parameters
+
 - `arr` (Type: `T[]`): An array of objects of type `T`.
 - `targetObject` (Type: `T`): The object that you want to either remove from the array if it exists or add to the array if it doesn't exist.
 
 ### Returns
+
 - `T[]`: Returns the updated array after either removing or adding the target object.
 
 ### Example Usage
+
 ```typescript
 import toggleObjectInArray from '@xmanscript/utils/toggleObjectInArray';
 
@@ -478,18 +521,22 @@ const updatedData1 = toggleObjectInArray(data, { id: 2, name: 'Bob' });
 const updatedData2 = toggleObjectInArray(data, { id: 3, name: 'Charlie' });
 // Result: [{ id: 1, name: 'Alice' }, { id: 3, name: 'Charlie' }]
 ```
+
 ## 14. `calculateAndInjectPercentageByMaxValue` Function
 
 The `calculateAndInjectPercentageByMaxValue` function calculates the percentage of a specific key's value in each object of an array and injects the percentage value into each object based on the max value of that key.
 
 ### Parameters
+
 - `arr` (Type: `Record<string, any>[]`): An array of objects. Each object represents a data entry and contains various properties.
 - `key` (Type: `string`): The string representing the key or property name in each object of the `arr` array. This key is used to access the corresponding value in each object for calculating the percentage.
 
 ### Returns
+
 - `Record<string, any>[]`: Returns the modified array `arr` with an additional `percentage` property added to each object.
 
 ### Example Usage
+
 ```typescript
 import calculateAndInjectPercentageByMaxValue from '@xmanscript/utils/calculateAndInjectPercentageByMaxValue';
 
@@ -514,13 +561,16 @@ const newData = calculateAndInjectPercentageByMaxValue(data, 'value');
 The `calculateAndInjectPercentageBySum` function calculates the percentage of a specific key's value in each object of an array and injects the percentage value into each object based on the sum of values of the key.
 
 ### Parameters
+
 - `arr` (Type: `Record<string, any>[]`): An array of objects. Each object represents a data entry and contains various properties.
 - `key` (Type: `string`): The string representing the key or property name in each object of the `arr` array. This key is used to access the corresponding value in each object for calculating the percentage.
 
 ### Returns
+
 - `Record<string, any>[]`: Returns the modified array `arr` with an additional `percentage` property added to each object.
 
 ### Example Usage
+
 ```typescript
 import calculateAndInjectPercentageBySum from '@xmanscript/utils/calculateAndInjectPercentageBySum';
 
@@ -547,52 +597,54 @@ const newData = calculateAndInjectPercentageBySum(data, 'value');
 The `calculateSumOfKey` function calculates the sum of a specified key in an array of objects.
 
 ### Parameters
+
 - `data` (Type: `Record<string, any>[]`): An array of objects where each object has one or more key-value pairs.
 - `key` (Type: `string`): A string representing the key of the property in each object of the `data` array that you want to sum up.
 
 ### Returns
+
 - `number`: Returns the sum of the values of the specified `key` in an array of objects. If the array is empty, it returns 0.
 
 ### Example Usage
+
 ```typescript
 import calculateSumOfKey from '@xmanscript/utils/calculateSumOfKey';
 
-const data = [
-  { value: 10 },
-  { value: 20 },
-  { value: 30 },
-];
+const data = [{ value: 10 }, { value: 20 }, { value: 30 }];
 
 const total = calculateSumOfKey(data, 'value');
 
 // Result: 60
 ```
+
 ## 17. `setValueOfKeyForMatchingValuesOfAKey` Function
 
 The `setValueOfKeyForMatchingValuesOfAKey` function changes the 'value' property of objects in an array if their specified key-value pair matches the provided values. The 'value' property of matching objects will be set to zero.
 
 ### Parameters
+
 - `arr` (Type: `Record<string, any>[]`): An array of objects where each object has key-value pairs.
 - `key` (Type: `string`): A string representing the key or property name of the object in the array that you want to check for a specific value.
 - `values` (Type: `any[]`): An array of values to be matched against the value of the specified key in each object. Objects with matching key-value pairs will have their 'value' property set to zero.
 - `updateKey` (Type: `string`): A key that need to be updated in each object that matches the criteria in the array.
 - `value` (Type: `any`): A value that need to be assigned in each object in the array.
 
-
 ### Returns
+
 - `Record<string, any>[]`: Returns the modified array where the 'value' property of matching objects is set to zero.
 
 ### Example Usage
+
 ```typescript
 import setValueOfKeyForMatchingValuesOfAKey from '@xmanscript/utils/setValueOfKeyForMatchingValuesOfAKey';
 
 const data = [
-  { name: 'A', code: 'x', value:100 },
+  { name: 'A', code: 'x', value: 100 },
   { name: 'B', code: 'y' },
   { name: 'C', code: 'x' },
 ];
 
-const modifiedData = setValueOfKeyForMatchingValuesOfAKey(data, 'code', ['x'],'value', 50);
+const modifiedData = setValueOfKeyForMatchingValuesOfAKey(data, 'code', ['x'], 'value', 50);
 
 // Result:
 // [
@@ -601,11 +653,13 @@ const modifiedData = setValueOfKeyForMatchingValuesOfAKey(data, 'code', ['x'],'v
 //   { name: 'C', code: 'x', value: 50 },
 // ]
 ```
+
 ## 18. `scrollToComponent` Function
 
 The `scrollToComponent` function scrolls to a specified component on the page and optionally focuses on it after scrolling.
 
 ### Parameters
+
 - `props` (Type: `scrollToComponentProps`): An object with two properties:
   - `componentId` (Type: `string`): The id of the component to scroll to.
   - `focusAfterScroll` (Type: `boolean`): A boolean indicating whether to focus on the component after scrolling.
@@ -613,44 +667,43 @@ The `scrollToComponent` function scrolls to a specified component on the page an
   - `focusDelay` (Type: `number`): Delay time to focus
 
 ### Returns
+
 - No return value.
 
 ### Example Usage
+
 ```typescript
 import scrollToComponent from '@xmanscript/utils/scrollToComponent';
 
 // Scroll to component with id "myComponent" and focus on it after scrolling. There is no delay in scrolling and focusing by default.
-scrollToComponent({ componentId: 'myComponent', focusAfterScroll: true, scrollDelay:100, focusDelay:100 });
+scrollToComponent({ componentId: 'myComponent', focusAfterScroll: true, scrollDelay: 100, focusDelay: 100 });
 ```
-
 
 ## 19. `distributePercentageEquallyWithRemainder` Function
 
 The `distributePercentageEquallyWithRemainder` function divides a given percentage into equal parts and distributes any remaining percentage across the parts.
 
 ### Parameters
+
 - `array` (Type: `Record<string, any>[]`): An array of objects, where each object represents a part that needs to be divided into equal parts. Each object should have a `percentage` property.
 
 ### Returns
+
 - `Record<string, any>[]`: Returns an array of objects, where each object represents a part and contains a `percentage` property.
 
 ### Example Usage
+
 ```typescript
 import distributePercentageEquallyWithRemainder from '@xmanscript/utils/distributePercentageEquallyWithRemainder';
 
-const partsToDivide = [
-  { id: 30 },
-  { id: 20 },
-  { id: 25 },
-];
+const partsToDivide = [{ id: 30 }, { id: 20 }, { id: 25 }];
 
 const dividedParts = distributePercentageEquallyWithRemainder(partsToDivide);
 
-//  Result: [ 
+//  Result: [
 //   { id: 30, percentage:33 },
 //   { id: 20, percentage:33 },
 //   { id: 25, percentage:34 },]
-
 ```
 
 ## 20. `splitArrayIntoChunks` Function
@@ -658,13 +711,16 @@ const dividedParts = distributePercentageEquallyWithRemainder(partsToDivide);
 The `splitArrayIntoChunks` function splits an array into multiple arrays of a specified size.
 
 ### Parameters
+
 - `array` (Type: `Record<string, any>[]`): An array of objects, where each object has string keys and any values.
 - `size` (Type: `number`): The desired size of each subarray. It determines how many elements should be included in each subarray when splitting the original array.
 
 ### Returns
+
 - `Record<string, any>[][]`: Returns an array of arrays. Each inner array contains a subset of the original array, with each subset having a maximum size specified by the `size` parameter.
 
 ### Example Usage
+
 ```typescript
 import splitArrayIntoChunks from '@xmanscript/utils/splitArrayIntoChunks';
 
@@ -686,19 +742,20 @@ const subarrays = splitArrayIntoChunks(originalArray, 2);
 // ]
 ```
 
-
-
 ## 21. `getFileExtension` Function
 
 The `getFileExtension` function takes a URL as input and returns the file extension of the URL as a lowercase string. If the URL is undefined or empty, it returns an empty string. If no file extension is found in the URL, it returns null.
 
 ### Parameters
+
 - `url` (Type: `string | undefined`): A string that represents the URL of a file.
 
 ### Returns
+
 - `string | null`: Returns the file extension of the given URL as a lowercase string. If the URL is undefined or empty, an empty string is returned. If no file extension is found in the URL, null is returned.
 
 ### Example Usage
+
 ```typescript
 import getFileExtension from '@xmanscript/utils/getFileExtension';
 
@@ -717,13 +774,16 @@ const extension4 = getFileExtension(undefined); // Result: ''
 The `removeObjectFromArray` function removes a specified object from an array of objects based on a deep comparison.
 
 ### Parameters
+
 - `objects` (Type: `Record<string, any>[]`): An array of objects.
 - `object` (Type: `Record<string, any>`): The object that you want to remove from the `objects` array.
 
 ### Returns
+
 - `Record<string, any>[]`: Returns the updated array after removing the specified object. If the object is not found in the array, the original array is returned unchanged.
 
 ### Example Usage
+
 ```typescript
 import removeObjectFromArray from '@xmanscript/utils/removeObjectFromArray';
 
@@ -749,12 +809,15 @@ console.log(updatedArray);
 The `parseToBoolean` function takes a string value and returns a boolean value based on whether the string is equal to "true."
 
 ### Parameters
+
 - `val` (Type: `string`): A string that represents a boolean value.
 
 ### Returns
+
 - `boolean`: Returns a boolean value. If the input string is equal to 'true', it will return true. Otherwise, it will return false.
 
 ### Example Usage
+
 ```typescript
 import parseToBoolean from '@xmanscript/utils/parseToBoolean';
 
@@ -763,22 +826,23 @@ const result1 = parseToBoolean('true');
 
 const result2 = parseToBoolean('false');
 // Result: false
-
 ```
-
 
 ## 24. `groupArrayOfObjectsByValueOfAKey` Function
 
 The `groupArrayOfObjectsByValueOfAKey` function takes an array of objects and a key, and groups the objects based on the similarity of their values for that key.
 
 ### Parameters
+
 - `arr` (Type: `Record<string, any>[]`): An array of objects. Each object in the array has properties with key-value pairs.
 - `key` (Type: `string`): The `key` parameter is a string that represents the key in each object of the `arr` array that will be used to group the objects.
 
 ### Returns
+
 - `Record<string, any>[][]`: Returns an array of arrays. Each inner array contains objects from the input array `arr` that have the same value for the specified `key`.
 
 ### Example Usage
+
 ```typescript
 import groupArrayOfObjectsByValueOfAKey from '@xmanscript/utils/groupArrayOfObjectsByValueOfAKey';
 
@@ -793,46 +857,52 @@ const groupedData = groupArrayOfObjectsByValueOfAKey(data, 'category');
 // Result: [ [{ category: 'A', value: 1 }, { category: 'A', value: 3 }], [{ category: 'B', value: 2 }], [{ category: 'C', value: 4 }] ]
 ```
 
-
 ## 25. `countKeyOccurrences` Function
 
 The `countKeyOccurrences` function counts the number of occurrences of a specific key in a JSON object or array.
 
 ### Parameters
+
 - `json` (Type: `any`): The `json` parameter is the JSON object or array that you want to search for the specified key in.
 - `key` (Type: `string`): The `key` parameter is a string that represents the key you want to count in the JSON object.
 
 ### Returns
+
 - `number`: Returns the count of how many times the specified key appears in the given JSON object.
 
 ### Example Usage
+
 ```typescript
 import countKeyOccurrences from '@xmanscript/utils/countKeyOccurrences';
 
 const jsonObject = {
- key1: 'value',
- key2: 'value',
- nested: {
-   key1: 'value',
-   key3: 'value',
- },
+  key1: 'value',
+  key2: 'value',
+  nested: {
+    key1: 'value',
+    key3: 'value',
+  },
 };
 
 const keyCount = countKeyOccurrences(jsonObject, 'key1');
 // Result: 2 (Occurrences of 'key1' in the JSON object)
 ```
+
 ## 26. `distributePercentageEqually` Function
 
 The `distributePercentageEqually` function takes a JSON object and a key, and updates the values of that key in the object to distribute a percentage evenly among all occurrences of the key.
 
 ### Parameters
+
 - `json` (Type: `any`): The `json` parameter is an object or an array that represents a JSON structure. It can contain nested objects and arrays.
 - `key` (Type: `string`): The `key` parameter is a string that represents the key in the JSON object that you want to divide the percentage for.
 
 ### Returns
+
 - Updated JSON object: Returns the updated JSON object with the percentage values divided evenly among the objects that have the specified key.
 
 ### Example Usage
+
 ```typescript
 import distributePercentageEqually from '@xmanscript/utils/distributePercentageEqually';
 
@@ -876,17 +946,21 @@ const uniqueNames = uniqueValuesOfKey(data, 'name');
 console.log(uniqueNames);
 // Output: ['John', 'Jane']
 ```
+
 ## 28. `formatNumberToCommaString` Function
 
 The `formatNumberToCommaString` function converts a number to a comma-separated string representation, rounded to the nearest whole number.
 
 ### Parameters
+
 - `value` (Type: `number`): The number to be converted.
 
 ### Returns
+
 - (Type: `string`): A comma-separated string representation of the rounded number.
 
 ### Example Usage
+
 ```typescript
 import formatNumberToCommaString from '@xmanscript/utils/formatNumberToCommaString';
 
@@ -896,72 +970,76 @@ console.log(formattedNumber);
 // Output: '1,234,568'
 ```
 
-
-
 ## 29. `getMinMax` Function
 
 The `getMinMax` function finds the minimum and maximum values of a specified key in an array of objects.
 
 ### Parameters
+
 - `arr` (Type: `any[]`): An array of objects where each object has a property specified by the `key` parameter.
 - `key` (Type: `string`): The property name to be used for finding the minimum and maximum values.
 
 ### Returns
+
 - (Type: `object`): An object with two properties: "min" and "max". "min" represents the minimum value found in the array of objects based on the specified key, and "max" represents the maximum value.
 
 ### Example Usage
-```typescript
-import getMinMax  from '@xmanscript/utils/getMinMax';
 
-const data = [
-  { age: 25 },
-  { age: 32 },
-  { age: 18 },
-  { age: 42 },
-];
+```typescript
+import getMinMax from '@xmanscript/utils/getMinMax';
+
+const data = [{ age: 25 }, { age: 32 }, { age: 18 }, { age: 42 }];
 
 const result = getMinMax(data, 'age');
 console.log(result);
 // Output: { min: 18, max: 42 }
 ```
+
 ## 30. `getDifferenceObject` Function
 
 The `getDifferenceObject` function finds the minimum and maximum values of a specified key in an array of objects.
 
 ### Parameters
-- `object1`:  The first object to compare. It should be of type `Record<string, any>`, which means it can have any number of properties of any type.
-- `object2`:  The `object2` parameter is a record (object) containing key-value pairs.
+
+- `object1`: The first object to compare. It should be of type `Record<string, any>`, which means it can have any number of properties of any type.
+- `object2`: The `object2` parameter is a record (object) containing key-value pairs.
 
 ### Returns
+
 - (Type: `object`): a record object that represents the difference between `object1` and `object2`.
 
 ### Example Usage
+
 ```typescript
 import getDifferenceObject from '@xmanscript/utils/getDifferenceObject';
 
 const obj1 = { name: 'john', family: 'deo' };
-const obj1 =  { name: 'john', family: { familyName: 'deo' } };
+const obj1 = { name: 'john', family: { familyName: 'deo' } };
 
 const result = getDifferenceObject(obj1, obj2);
 console.log(result);
 // Output: { family: { familyName: 'deo' } }
 ```
 
-
 # 31. `strictIntersectObjects` Function
 
 The `strictIntersectObjects` takes two objects as input and returns a new object that
- * contains only the key-value pairs that exist in both input objects and have the same value.
+
+- contains only the key-value pairs that exist in both input objects and have the same value.
 
 ### Parameters
+
 - `obj1` (Type: `Record<string, any>`): An object that can have any number of properties of any type.
 - `obj2` (Type: `Record<string, any>`): A record object that contains key-value pairs.
 
 ### Returns
+
 - `Record<string, any>`: a new object that contains the key-value pairs from `obj2` that also exist in `obj1` and
- * have the same value.
+
+* have the same value.
 
 ### Example Usage
+
 ```typescript
 import strictIntersectObjects from '@xmanscript/utils/strictIntersectObjects';
 
