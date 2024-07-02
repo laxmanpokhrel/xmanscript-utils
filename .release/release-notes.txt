@@ -1,2 +1,3 @@
 ## Changes
-- remove tsconfig from npm ignore
+- splitArrayIntoChunks converted to template
+- doc update for using in TS project
