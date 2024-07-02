@@ -1,3 +1,2 @@
 ## Changes
-- splitArrayIntoChunks converted to template
-- doc update for using in TS project
+- connonjs export outdir to cjs dir

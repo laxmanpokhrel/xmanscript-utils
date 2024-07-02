@@ -17,7 +17,7 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": false,
     "module": "commonjs",
-    "outDir": "./lib/commonjs",
+    "outDir": "./lib/cjs",
     "moduleResolution": "node",
     "declarationDir": "./@types"
   },
