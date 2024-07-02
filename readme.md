@@ -42,6 +42,29 @@ To install **@xmanscript/utils** using npm, open your terminal and run the follo
 pnpm add @xmanscript/utils
 ```
 
+### Additional Configuration for TypeScript Projects
+
+If you're using **@xmanscript/utils** in a TypeScript project, you'll need to add a specific configuration to your `tsconfig.json` file. This is necessary because the TypeScript compiler (TSC) might not automatically detect the declaration files of the package.
+
+To ensure proper recognition of declaration files, follow these steps:
+
+1. Open your `tsconfig.json` file in your project.
+
+2. Add the following configuration within the `"compilerOptions"` section:
+
+```json
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@xmanscript/utils/*": ["./node_modules/@xmanscript/utils/@types/*"]
+    }
+  }
+}
+```
+This configuration tells TypeScript where to find the declaration files for @xmanscript/utils. With this setup, TypeScript will be able to properly utilize the types provided by the package.
+
+
 ## Utility Functions Provided By The Package:
 1. partitionObjectsByKey
 2. convertNestedKeysToObject
@@ -89,7 +112,7 @@ The `partitionObjectsByKey` function splits an array of objects into two separat
 
 ### Example Usage
 ```typescript
-import { partitionObjectsByKey } from '@xmanscript/utils';
+import partitionObjectsByKey from '@xmanscript/utils/partitionObjectsByKey';
 
 const array = [
   { id: 1, name: 'Alice' },
@@ -125,7 +148,7 @@ The `convertNestedKeysToObject` function converts an input object with nested ke
 
 ### Example Usage
 ```typescript
-import { convertNestedKeysToObject } from '@xmanscript/utils';
+import convertNestedKeysToObject from '@xmanscript/utils/convertNestedKeysToObject';
 
 const input = {
   'user[0].name': 'Alice',
@@ -161,7 +184,7 @@ The `markCheckedByStringMatch` function adds a "checked" field to each object in
 
 ### Example Usage
 ```typescript
-import { markCheckedByStringMatch } from '@xmanscript/utils';
+import markCheckedByStringMatch from '@xmanscript/utils/markCheckedByStringMatch';
 
 interface Item {
   id: number;
@@ -199,7 +222,7 @@ The `intersectObjects` function takes two objects as input and returns a new obj
 
 ### Example Usage
 ```typescript
-import { intersectObjects } from '@xmanscript/utils';
+import intersectObjects from '@xmanscript/utils/intersectObjects';
 
 const object1 = {
   name: 'John',
@@ -230,7 +253,7 @@ The `containsBinaryData` function recursively checks if an object or any of its 
 
 ### Example Usage
 ```typescript
-import { containsBinaryData } from '@xmanscript/utils';
+import containsBinaryData from '@xmanscript/utils/containsBinaryData';
 
 const objectWithBinaryData = {
   image: new Blob(['binary data'], { type: 'image/png' }),
@@ -263,7 +286,7 @@ The `isJSONObject` function checks if a given string is a valid JSON object.
 
 ### Example Usage
 ```typescript
-import { isJSONObject } from '@xmanscript/utils';
+import isJSONObject from '@xmanscript/utils/isJSONObject';
 
 const jsonString1 = '{"name": "John", "age": 30}';
 const jsonString2 = 'This is not a JSON object';
@@ -284,7 +307,7 @@ The `objectToFormDataWithFiles` function converts a JSON object into a FormData 
 
 ### Example Usage
 ```typescript
-import { objectToFormDataWithFiles } from '@xmanscript/utils';
+import objectToFormDataWithFiles from '@xmanscript/utils/objectToFormDataWithFiles';
 
 const formData = objectToFormDataWithFiles({
   name: 'John',
@@ -312,7 +335,7 @@ The `areObjectsEqual` function checks if two objects are equal by comparing thei
 
 ### Example Usage
 ```typescript
-import { areObjectsEqual } from '@xmanscript/utils';
+import areObjectsEqual from '@xmanscript/utils/areObjectsEqual';
 
 const obj1 = { name: 'John', age: 30 };
 const obj2 = { age: 30, name: 'John' };
@@ -333,7 +356,7 @@ The `abbreviateCurrencyValue` function converts a number into a currency system 
 
 ### Example Usage
 ```typescript
-import { abbreviateCurrencyValue } from '@xmanscript/utils';
+import abbreviateCurrencyValue from '@xmanscript/utils/abbreviateCurrencyValue';
 
 const value1 = 1500000000; // 1.5 billion
 const value2 = 7500000;    // 7.5 million
@@ -359,7 +382,7 @@ The `omitKey` function removes a specified key from an object and returns a new 
 
 ### Example Usage
 ```typescript
-import { omitKey } from '@xmanscript/utils';
+import omitKey from '@xmanscript/utils/omitKey';
 
 const user = {
   id: 1,
@@ -386,7 +409,7 @@ The `setKeysToValueInObjects` function takes an array of objects and an array of
 
 ### Example Usage
 ```typescript
-import { setKeysToValueInObjects } from '@xmanscript/utils';
+import setKeysToValueInObjects from '@xmanscript/utils/setKeysToValueInObjects';
 
 const data = [
   { id: 1, value1: 10, value2: 20 },
@@ -414,7 +437,7 @@ The `toggleStringInArray` function removes the target string from the array if i
 
 ### Example Usage
 ```typescript
-import { toggleStringInArray } from '@xmanscript/utils';
+import toggleStringInArray from '@xmanscript/utils/toggleStringInArray';
 
 const myArray = ['apple', 'banana', 'cherry'];
 
@@ -440,7 +463,7 @@ The `toggleObjectInArray` function removes the target object from the array if i
 
 ### Example Usage
 ```typescript
-import { toggleObjectInArray } from '@xmanscript/utils';
+import toggleObjectInArray from '@xmanscript/utils/toggleObjectInArray';
 
 const data = [
   { id: 1, name: 'Alice' },
@@ -468,7 +491,7 @@ The `calculateAndInjectPercentageByMaxValue` function calculates the percentage 
 
 ### Example Usage
 ```typescript
-import { calculateAndInjectPercentageByMaxValue } from '@xmanscript/utils';
+import calculateAndInjectPercentageByMaxValue from '@xmanscript/utils/calculateAndInjectPercentageByMaxValue';
 
 const data = [
   { name: 'A', value: 50 },
@@ -499,7 +522,7 @@ The `calculateAndInjectPercentageBySum` function calculates the percentage of a 
 
 ### Example Usage
 ```typescript
-import { calculateAndInjectPercentageBySum } from '@xmanscript/utils';
+import calculateAndInjectPercentageBySum from '@xmanscript/utils/calculateAndInjectPercentageBySum';
 
 const data = [
   { name: 'A', value: 25 },
@@ -532,7 +555,7 @@ The `calculateSumOfKey` function calculates the sum of a specified key in an arr
 
 ### Example Usage
 ```typescript
-import { calculateSumOfKey } from '@xmanscript/utils';
+import calculateSumOfKey from '@xmanscript/utils/calculateSumOfKey';
 
 const data = [
   { value: 10 },
@@ -561,7 +584,7 @@ The `setValueOfKeyForMatchingValuesOfAKey` function changes the 'value' property
 
 ### Example Usage
 ```typescript
-import { setValueOfKeyForMatchingValuesOfAKey } from '@xmanscript/utils';
+import setValueOfKeyForMatchingValuesOfAKey from '@xmanscript/utils/setValueOfKeyForMatchingValuesOfAKey';
 
 const data = [
   { name: 'A', code: 'x', value:100 },
@@ -594,7 +617,7 @@ The `scrollToComponent` function scrolls to a specified component on the page an
 
 ### Example Usage
 ```typescript
-import { scrollToComponent } from '@xmanscript/utils';
+import scrollToComponent from '@xmanscript/utils/scrollToComponent';
 
 // Scroll to component with id "myComponent" and focus on it after scrolling. There is no delay in scrolling and focusing by default.
 scrollToComponent({ componentId: 'myComponent', focusAfterScroll: true, scrollDelay:100, focusDelay:100 });
@@ -613,7 +636,7 @@ The `distributePercentageEquallyWithRemainder` function divides a given percenta
 
 ### Example Usage
 ```typescript
-import { distributePercentageEquallyWithRemainder } from '@xmanscript/utils';
+import distributePercentageEquallyWithRemainder from '@xmanscript/utils/distributePercentageEquallyWithRemainder';
 
 const partsToDivide = [
   { id: 30 },
@@ -643,7 +666,7 @@ The `splitArrayIntoChunks` function splits an array into multiple arrays of a sp
 
 ### Example Usage
 ```typescript
-import { splitArrayIntoChunks } from '@xmanscript/utils';
+import splitArrayIntoChunks from '@xmanscript/utils/splitArrayIntoChunks';
 
 const originalArray = [
   { id: 1, name: 'Item 1' },
@@ -677,7 +700,7 @@ The `getFileExtension` function takes a URL as input and returns the file extens
 
 ### Example Usage
 ```typescript
-import { getFileExtension } from '@xmanscript/utils';
+import getFileExtension from '@xmanscript/utils/getFileExtension';
 
 const url1 = 'https://example.com/image.jpg';
 const url2 = 'https://example.com/document.pdf';
@@ -702,7 +725,7 @@ The `removeObjectFromArray` function removes a specified object from an array of
 
 ### Example Usage
 ```typescript
-import { removeObjectFromArray } from '@xmanscript/utils';
+import removeObjectFromArray from '@xmanscript/utils/removeObjectFromArray';
 
 const array = [
   { id: 1, name: 'Alice' },
@@ -733,7 +756,7 @@ The `parseToBoolean` function takes a string value and returns a boolean value b
 
 ### Example Usage
 ```typescript
-import { parseToBoolean } from '@xmanscript/utils';
+import parseToBoolean from '@xmanscript/utils/parseToBoolean';
 
 const result1 = parseToBoolean('true');
 // Result: true
@@ -757,7 +780,7 @@ The `groupArrayOfObjectsByValueOfAKey` function takes an array of objects and a 
 
 ### Example Usage
 ```typescript
-import { groupArrayOfObjectsByValueOfAKey } from '@xmanscript/utils';
+import groupArrayOfObjectsByValueOfAKey from '@xmanscript/utils/groupArrayOfObjectsByValueOfAKey';
 
 const data = [
   { category: 'A', value: 1 },
@@ -784,7 +807,7 @@ The `countKeyOccurrences` function counts the number of occurrences of a specifi
 
 ### Example Usage
 ```typescript
-import { countKeyOccurrences } from '@xmanscript/utils';
+import countKeyOccurrences from '@xmanscript/utils/countKeyOccurrences';
 
 const jsonObject = {
  key1: 'value',
@@ -798,9 +821,9 @@ const jsonObject = {
 const keyCount = countKeyOccurrences(jsonObject, 'key1');
 // Result: 2 (Occurrences of 'key1' in the JSON object)
 ```
-## 26. `distributePercentageEquall` Function
+## 26. `distributePercentageEqually` Function
 
-The `distributePercentageEquall` function takes a JSON object and a key, and updates the values of that key in the object to distribute a percentage evenly among all occurrences of the key.
+The `distributePercentageEqually` function takes a JSON object and a key, and updates the values of that key in the object to distribute a percentage evenly among all occurrences of the key.
 
 ### Parameters
 - `json` (Type: `any`): The `json` parameter is an object or an array that represents a JSON structure. It can contain nested objects and arrays.
@@ -811,7 +834,7 @@ The `distributePercentageEquall` function takes a JSON object and a key, and upd
 
 ### Example Usage
 ```typescript
-import { distributePercentageEquall } from '@xmanscript/utils';
+import distributePercentageEqually from '@xmanscript/utils/distributePercentageEqually';
 
 const jsonObject = {
   items: [
@@ -821,7 +844,7 @@ const jsonObject = {
   ],
 };
 
-const updatedJsonObject = distributePercentageEquall(jsonObject, 'percentage');
+const updatedJsonObject = distributePercentageEqually(jsonObject, 'percentage');
 // Result: All items' 'percentage' values in the JSON object are evenly distributed. {"items": [{ "name": "A", "percentage": 33 },{ "name": "B", "percentage": 33 },{ "name": "C", "percentage": 34 }]}
 ```
 
@@ -841,7 +864,7 @@ The `uniqueValuesOfKey` function is used to extract unique string values from a 
 ### Example Usage
 
 ```typescript
-import { uniqueValuesOfKey } from '@xmanscript/utils';
+import uniqueValuesOfKey from '@xmanscript/utils/uniqueValuesOfKey';
 
 const data = [
   { id: 1, name: 'John' },
@@ -865,7 +888,7 @@ The `formatNumberToCommaString` function converts a number to a comma-separated 
 
 ### Example Usage
 ```typescript
-import { formatNumberToCommaString } from '@xmanscript/utils';
+import formatNumberToCommaString from '@xmanscript/utils/formatNumberToCommaString';
 
 const number = 1234567.89;
 const formattedNumber = formatNumberToCommaString(number);
@@ -888,7 +911,7 @@ The `getMinMax` function finds the minimum and maximum values of a specified key
 
 ### Example Usage
 ```typescript
-import { getMinMax } from '@xmanscript/utils';
+import getMinMax  from '@xmanscript/utils/getMinMax';
 
 const data = [
   { age: 25 },
@@ -914,7 +937,7 @@ The `getDifferenceObject` function finds the minimum and maximum values of a spe
 
 ### Example Usage
 ```typescript
-import { getDifferenceObject } from '@xmanscript/utils';
+import getDifferenceObject from '@xmanscript/utils/getDifferenceObject';
 
 const obj1 = { name: 'john', family: 'deo' };
 const obj1 =  { name: 'john', family: { familyName: 'deo' } };
@@ -940,7 +963,7 @@ The `strictIntersectObjects` takes two objects as input and returns a new object
 
 ### Example Usage
 ```typescript
-import { strictIntersectObjects } from '@xmanscript/utils';
+import strictIntersectObjects from '@xmanscript/utils/strictIntersectObjects';
 
 const object1 = {
   name: 'John',

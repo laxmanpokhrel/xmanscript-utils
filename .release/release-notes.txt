@@ -1,0 +1,2 @@
+## Changes
+- remove tsconfig from npm ignore

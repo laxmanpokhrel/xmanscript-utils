@@ -1,0 +1,21 @@
+# Ignore development tools and configuration files
+src/*
+src
+
+node_modules/
+.git/
+.editorconfig
+.eslintrc
+.github
+.husky
+.release
+
+.eslintignore
+.eslintrc.cjs
+.eslintrc.js
+.lintstagedrc
+.prettierrc
+.releaserc
+yarn.lock
+package-lock.json
+
