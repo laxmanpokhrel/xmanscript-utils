@@ -1,5 +1,6 @@
 # Ignore development tools and configuration files
-src/
+src/*
+src
 
 node_modules/
 .git/
@@ -17,5 +18,4 @@ node_modules/
 .releaserc
 yarn.lock
 package-lock.json
-tsconfig.esm.json
-tsconfig.json
+
