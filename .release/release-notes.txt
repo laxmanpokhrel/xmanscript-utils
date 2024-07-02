@@ -1,2 +1,2 @@
 ## Changes
-- added a missing export `toggleStringInArray`
+- remove tsconfig from npm ignore
